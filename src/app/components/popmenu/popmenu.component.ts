@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { HomeResultsPage } from 'src/app/pages/home-results/home-results.page';
 
 @Component({
   selector: 'popmenu',
@@ -9,13 +10,17 @@ import { NavController } from '@ionic/angular';
 export class PopmenuComponent implements OnInit {
   openMenu: Boolean = false;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(public navCtrl: NavController, public homeCtrl: HomeResultsPage) { }
 
   ngOnInit() {
   }
 
   togglePopupMenu() {
     return this.openMenu = !this.openMenu;
+  }
+
+  consoleLog(){
+    return this.homeCtrl.consoleLog();
   }
 
 }

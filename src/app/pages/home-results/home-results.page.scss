@@ -12,5 +12,35 @@
         &.no-radius {
             border-radius: 0;
         }
+        * {
+            font-family: 'Josefin Sans', sans-serif;
+        }    
     }
+    
+    
+    .titleicon {
+        position: absolute;
+        width: 100%;
+        left: 40px;
+        top: 1px;
+        bottom: 0;
+        text-align:center;
+    }
+
+    ion-thumbnail {
+        min-width: 5rem;    
+        min-height: 5rem;
+        img {
+            max-width: 5rem;    
+            min-width: 5rem;
+        }
+    }
+    
+    .spinner-container {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+      }
 }

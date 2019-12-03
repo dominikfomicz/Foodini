@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchFilterPage } from './search-filter.page';
+import { LocalCardPage } from './local-card.page';
 
 describe('SearchFilterPage', () => {
-  let component: SearchFilterPage;
-  let fixture: ComponentFixture<SearchFilterPage>;
+  let component: LocalCardPage;
+  let fixture: ComponentFixture<LocalCardPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFilterPage ],
+      declarations: [ LocalCardPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchFilterPage);
+    fixture = TestBed.createComponent(LocalCardPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

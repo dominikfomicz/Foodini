@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   AlertController,
@@ -8,20 +8,27 @@ import {
   ModalController } from '@ionic/angular';
 
 // Modals
-import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 import { ImagePage } from './../modal/image/image.page';
 // Call notifications test by Popover and Custom Component.
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
+import { DataService } from 'src/app/services/data.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from "rxjs/operators";
+import { LocalCardPage } from '../modal/local-card/local-card.page';
 
 @Component({
   selector: 'app-home-results',
   templateUrl: './home-results.page.html',
   styleUrls: ['./home-results.page.scss']
 })
-export class HomeResultsPage {
+export class HomeResultsPage implements OnInit {
   searchKey = '';
   yourLocation = '123 Test Street';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
+  public searchControl: FormControl;
+  public searchTerm: string = "";
+  public items: any;
+  searching: any = false;
 
   constructor(
     public navCtrl: NavController,
@@ -29,9 +36,29 @@ export class HomeResultsPage {
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private dataService: DataService
   ) {
+    this.searchControl = new FormControl();
+  }
 
+  ngOnInit() {
+    this.setFilteredItems();
+    this.searchControl.valueChanges
+      .pipe(debounceTime(700))
+      .subscribe(search => {
+        this.setFilteredItems();
+      });
+  }
+
+  setFilteredItems() {
+    this.searching = true;
+    this.items = this.dataService.filterItems(this.searchTerm);
+    // this.searching = false;
+  }
+  
+  onSearchInput(){
+    this.searching = true;
   }
 
   ionViewWillEnter() {
@@ -44,33 +71,32 @@ export class HomeResultsPage {
 
   async alertLocation() {
     const changeLocation = await this.alertCtrl.create({
-      header: 'Change Location',
-      message: 'Type your Address.',
-      inputs: [
-        {
-          name: 'location',
-          placeholder: 'Enter your new Location',
-          type: 'text'
-        },
-      ],
+      header: 'Wybierz miasto',
+      message: 'Opole',
+      // inputs: [
+      //   {
+      //     name: 'location',
+      //     placeholder: 'Enter your new Location',
+      //     type: 'text'
+      //   },
+      // ],
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Anuluj',
           handler: data => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Change',
+          text: 'Zmień',
           handler: async (data) => {
             console.log('Change clicked', data);
-            this.yourLocation = data.location;
             const toast = await this.toastCtrl.create({
-              message: 'Location was change successfully',
+              message: 'Zmieniono miasto',
               duration: 3000,
               position: 'top',
               closeButtonText: 'OK',
-              showCloseButton: true
+              showCloseButton: false
             });
 
             toast.present();
@@ -81,9 +107,13 @@ export class HomeResultsPage {
     changeLocation.present();
   }
 
-  async searchFilter () {
+  async openLocationCard (foo, bar) {
     const modal = await this.modalCtrl.create({
-      component: SearchFilterPage
+      component: LocalCardPage,
+      componentProps: { 
+        foo: foo,
+        bar: bar
+      }
     });
     return await modal.present();
   }
@@ -104,6 +134,10 @@ export class HomeResultsPage {
       showBackdrop: true
     });
     return await popover.present();
+  }
+
+  async consoleLog(){
+    console.log("ok");
   }
 
 }

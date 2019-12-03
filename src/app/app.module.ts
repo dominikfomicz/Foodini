@@ -13,10 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Modal Pages
 import { ImagePageModule } from './pages/modal/image/image.module';
-import { SearchFilterPageModule } from './pages/modal/search-filter/search-filter.module';
 
 // Components
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { NotificationsComponent } from './components/notifications/notifications
     AppRoutingModule,
     HttpClientModule,
     ImagePageModule,
-    SearchFilterPageModule
+    LocalCardPageModule
   ],
   entryComponents: [NotificationsComponent],
   providers: [

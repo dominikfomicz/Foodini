@@ -23,23 +23,30 @@ export class AppComponent {
   ) {
     this.appPages = [
       {
-        title: 'Home',
+        title: 'Lokale',
         url: '/home-results',
         direct: 'root',
         icon: 'home'
       },
       {
-        title: 'About',
-        url: '/about',
+        title: 'Kupony',
+        url: '/tickets',
         direct: 'forward',
-        icon: 'information-circle-outline'
+        icon: 'barcode'
       },
 
       {
-        title: 'App Settings',
-        url: '/settings',
+        title: 'Ulubione',
+        url: '/favourites',
         direct: 'forward',
-        icon: 'cog'
+        icon: 'star'
+      },
+
+      {
+        title: 'Mapa',
+        url: '/map',
+        direct: 'forward',
+        icon: 'pin'
       }
     ];
 

@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,700,700i&display=swap&subset=latin-ext');
+
 :host {
     ion-content {
-        --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+        --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary));
+    }
+    ion-header {
+        --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary));
     }
 
     ion-list {
@@ -9,3 +14,8 @@
         }
     }
 }
+
+* {
+    font-family: 'Josefin Sans', sans-serif;
+}
+

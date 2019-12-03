@@ -1,24 +1,21 @@
-<ion-fab vertical="bottom" horizontal="center" slot="fixed" class="animated fadeInDown">
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" class="animated fadeInDown">
   <ion-fab-button (click)="togglePopupMenu()">
+  <!-- <ion-fab-button (click)="consoleLog()"> -->
     <ion-ripple-effect></ion-ripple-effect>
-    <ion-icon name="apps"></ion-icon>
+    <ion-icon name="star"></ion-icon>
   </ion-fab-button>
 </ion-fab>
 
 <div class="popup-menu">
   <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}"></div>
   <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
-    <div class="popup-menu-item">
-      <ion-icon name="cog" slot="middle" size="large"></ion-icon>
-      <span>Config</span>
+    <div class="popup-menu-item" (click)="togglePopupMenu()">
+      <ion-icon name="barcode" slot="middle" size="large"></ion-icon>
+      <span>Kupony</span>
     </div>
-    <div class="popup-menu-item">
-      <ion-icon name="beer" slot="middle" size="large"></ion-icon>
-      <span>Activities</span>
-    </div>
-    <div class="popup-menu-item">
-      <ion-icon name="person" slot="middle" size="large"></ion-icon>
-      <span>Settings</span>
+    <div class="popup-menu-item" (click)="togglePopupMenu()">
+      <ion-icon name="home" slot="middle" size="large"></ion-icon>
+      <span>Lokale</span>
     </div>
   </div>
 </div>

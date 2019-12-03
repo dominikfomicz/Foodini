@@ -1,33 +1,38 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-        <ion-text color="light">
-          <ion-text color="light" class="fw700">Ionic 4 Start</ion-text>
-        </ion-text>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+            <ion-icon name="notifications"></ion-icon>
+            <ion-badge color="dark" slot="end">2</ion-badge>
+          </ion-button> -->
+          <ion-back-button icon="arrow-back"  defaultHref=""></ion-back-button>
+          <div class="titleicon">
+              <img height="35px" src="assets/img/small.png">
+          </div>
+        </ion-buttons>
+    <ion-title text-center>
+        <ion-button shape="round" fill="outline" class="ion-align-self-center" size="medium" color="primary" (click)="alertLocation()">
+            Opole 
+            <ion-icon style="margin-left:10px" name="pin"></ion-icon>
+          </ion-button>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="notifications()">
-        <ion-icon name="notifications"></ion-icon>
-        <ion-badge color="dark" slot="end">2</ion-badge>
-      </ion-button>
-    </ion-buttons>
+        <ion-menu-button color="primary"></ion-menu-button>
+      </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar color="dark">
-    <ion-searchbar [(ngModel)]="searchKey"></ion-searchbar>
-    <ion-buttons slot="end">
-      <ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+  <ion-toolbar color="secondary">
+    <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+    <!-- <ion-buttons slot="end">
+      <ion-button size="small" shape="round" color="primary" (click)="searchFilter()">
         <ion-icon name="options"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card no-margin class="no-radius">
-    <ion-item lines="none" color="medium">
+  <!-- <ion-card no-margin class="no-radius">
+    <ion-item lines="none" color="secondary">
       <ion-label>
         <h2 no-margin class="fw500 no-margin">
           <ion-text color="dark">Alert / Toast test</ion-text>
@@ -37,24 +42,65 @@
           <ion-text  color="primary">{{yourLocation}}</ion-text>
         </p>
       </ion-label>
-      <ion-button shape="round" fill="outline" size="small" color="primary" (click)="alertLocation()">
-        Location
+      <ion-button shape="round" fill="outline" class="ion-align-self-center" size="small" color="primary" (click)="alertLocation()">
+        Opole 
         <ion-icon name="locate"></ion-icon>
       </ion-button>
     </ion-item>
-  </ion-card>
+  </ion-card> -->
 
-  <ion-card class="bg-white">
+  <!-- <ion-card class="bg-white">
     <ion-img [src]="themeCover"></ion-img>
     <ion-button expand="full" color="dark" (click)="presentImage(themeCover)" no-margin>
       Modal 1: Modal Image
     </ion-button>
+  </ion-card> -->
+  <ion-card>
+    <ion-item lines="none" href="#" *ngFor="let item of items" (click)="openLocationCard('test1','test2')"> 
+      <!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
+      <ion-thumbnail slot="start">
+          <img src="assets/img/pizza-hut.png">
+        </ion-thumbnail>
+        <ion-grid>
+            <!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
+            <!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
+            <ion-row>
+              <ion-col text-center size="12">
+                <h4><b>{{ item.title }}</b></h4>
+                <ion-row>
+                    <ion-col>
+                      <div style="background-color:rgba(233, 0, 0, 0.411); color:rgb(214, 5, 5); padding:6px; font-size:10px;">
+                        Burger
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div style="background-color:rgba(0, 233, 0, 0.411); color:rgb(0, 182, 0); padding:6px; font-size:10px;">
+                        Vege
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div style="background-color:rgba(6, 106, 255, 0.411); color:rgb(0, 130, 182); padding:6px; font-size:10px;">
+                        Mecze
+                      </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="1"><ion-icon color="success" name="time" style="font-size: 22px;"></ion-icon></ion-col>
+                  <ion-col style="text-align: left; margin-left: 15px; margin-top: 5px; color: #26de6f">06:00 - 24:00</ion-col>
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col size="3"><img style="max-height: 1rem; max-width: 1rem;" src="assets/img/first.png"></ion-col>
+                    <ion-col size="3"><img style="max-height: 1rem; max-width: 1rem;" src="assets/img/second.png"></ion-col>
+                    <ion-col size="3"><img style="max-height: 1rem; max-width: 1rem;" src="assets/img/third.png"></ion-col>
+                </ion-row> -->
+              </ion-col>
+            </ion-row>
+          </ion-grid>    
+    </ion-item>
   </ion-card>
-
-  <ion-button margin shape="round" expand="full" color="secondary" (click)="searchFilter()">
+  <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
     Modal 2: Search Filter
   </ion-button>
-  
-  <popmenu></popmenu>
 </ion-content>
+<popmenu></popmenu>
   

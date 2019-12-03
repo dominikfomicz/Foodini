@@ -14,6 +14,7 @@ ion-item {
     --ion-item-background: transparent;
 }
 
+
 // backgrounds //
 .bg-white {
   background-color: #fff;
@@ -113,7 +114,7 @@ ion-item {
   // Custom toolbar (overriding Shadow DOM)
   ion-toolbar {
     &.ion-color-primary {
-      --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+      --ion-color-base: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary)) !important;
     }
   }
   
