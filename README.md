@@ -1,9 +1,5 @@
 <h1>Foodini</h1>
-
-<br><br><br><br><br><br><br>
-
----
-
+<br>
 Requirements
 ------------
 
