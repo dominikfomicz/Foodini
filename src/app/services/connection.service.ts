@@ -24,8 +24,8 @@ export class ConnectionService {
 	}
 
 	getToken() {
-		// return localStorage.getItem('token');
-		return 'c13a1d19-6b91-4bb8-b17c-a6e013a99fbc';
+		return localStorage.getItem('token');
+		// return 'c13a1d19-6b91-4bb8-b17c-a6e013a99fbc';
 	}
 
 	login(username: string, password: string) {

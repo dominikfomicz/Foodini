@@ -46,10 +46,11 @@ export class HomeResultsPage implements OnInit {
 		public connection: ConnectionService
 	) {
 		this.searchControl = new FormControl();
+		this.connection.setToken('c13a1d19-6b91-4bb8-b17c-a6e013a99fbc');
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet("city/all").subscribe(data => {
+		this.connection.getDataByGet("lokal/all?idMiasta=MQ==").subscribe(data => {
 			console.log(data);
 		});
 		this.setFilteredItems();
