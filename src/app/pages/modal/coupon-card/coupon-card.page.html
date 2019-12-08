@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+        <ion-button color="primary" (click)="closeModal()">
+            <ion-icon name="close" color="light"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>
+    	Dwie pizze w cenie jednej!
+	</ion-title> -->
+	<ion-buttons slot="primary">
+		<ion-button (click)="changeFavColor()">
+			<ion-icon slot="icon-only" [color]="favColor" name="star"></ion-icon>
+		</ion-button>
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- <div class="bg-profile" text-center>
+	<ion-badge style="position: absolute; top:60px; right: 0px; font-size: 20px;" align-items-center color="danger">55 kuponów</ion-badge>
+	<img src="assets/img/pizza-hut-cover.jpg">
+</div> -->
+<ion-content fullscreen>
+	<ion-card>
+		<img src="assets/img/restaurant.png" />
+		<ion-card-header>
+			<ion-card-subtitle>Destination</ion-card-subtitle>
+			<ion-card-title>Madison, WI</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+		</ion-card-content>
+	</ion-card>
+	<ion-card *ngIf="code != null">
+		<ion-item>
+			<ion-label text-center>
+				<img src="assets/img/qr-code.png">
+				<span style="font-size: 50px;">{{ code }}</span>
+			</ion-label>
+		</ion-item>				  
+	</ion-card>
+</ion-content>
+<ion-footer>
+	<ion-grid>
+		<ion-row>
+				<!-- <ion-col size="6"><a href="tel:534290115"><ion-button expand="block" shape="round" size="large" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col> -->
+				<ion-col><ion-button expand="block" shape="round" size="large" color="primary" (click)="generateCode()" [disabled]="!button ? 'disabled': null"><span style="color: #ffd500">Odbierz kupon</span></ion-button></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

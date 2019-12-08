@@ -20,6 +20,7 @@ import { ImagePageModule } from './pages/modal/image/image.module';
 // Components
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
+import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { LocalCardPageModule } from './pages/modal/local-card/local-card.module'
     AppRoutingModule,
     HttpClientModule,
     ImagePageModule,
-    LocalCardPageModule
+    LocalCardPageModule,
+    CouponCardPageModule
   ],
   entryComponents: [NotificationsComponent],
   providers: [
