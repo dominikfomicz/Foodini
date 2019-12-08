@@ -18,6 +18,7 @@ import { DataService } from 'src/app/services/data.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from "rxjs/operators";
 import { LocalCardPage } from '../modal/local-card/local-card.page';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
   selector: 'app-home-results',
@@ -42,17 +43,15 @@ export class HomeResultsPage implements OnInit {
 		public modalCtrl: ModalController,
 		public toastCtrl: ToastController,
 		public dataService: DataService,
-		public uniqueDeviceID: UniqueDeviceID,
-		public uid: Uid,
-		public androidPermissions: AndroidPermissions
+		public connection: ConnectionService
 	) {
 		this.searchControl = new FormControl();
 	}
 
 	ngOnInit() {
-		this.getPermission();
-		this.getID_UID('MAC');
-		// this.getUniqueDeviceID();
+		this.connection.getDataByGet("city/all").subscribe(data => {
+			console.log(data);
+		});
 		this.setFilteredItems();
 		this.searchControl.valueChanges
 		.pipe(debounceTime(700))
@@ -61,49 +60,6 @@ export class HomeResultsPage implements OnInit {
 		});
 	}
 
-	getUniqueDeviceID() {
-		this.uniqueDeviceID.get()
-		.then((uuid: any) => {
-			console.log(uuid);
-			this.UniqueDeviceID = uuid;
-		})
-		.catch((error: any) => {
-			console.log(error);
-			this.UniqueDeviceID = "Error! ${error}";
-		});
-	}
-
-	getID_UID(type){
-		if(type == "IMEI"){
-		return this.uid.IMEI;
-		}else if(type == "ICCID"){
-		return this.uid.ICCID;
-		}else if(type == "IMSI"){
-		return this.uid.IMSI;
-		}else if(type == "MAC"){
-			alert(this.uid.MAC);
-		return this.uid.MAC;
-		}else if(type == "UUID"){
-		return this.uid.UUID;
-		}
-	}
-
-	getPermission(){
-		this.androidPermissions.checkPermission(
-		this.androidPermissions.PERMISSION.READ_PHONE_STATE
-		).then(res => {
-		if(res.hasPermission){
-		} else {
-			this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(res => {
-			alert("Persmission Granted Please Restart App!");
-			}).catch(error => {
-			alert("Error! "+error);
-			});
-		}
-		}).catch(error => {
-		alert("Error! "+error);
-		});
-	}
 
 	setFilteredItems() {
 		this.searching = true;
