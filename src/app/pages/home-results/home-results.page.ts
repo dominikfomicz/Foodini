@@ -50,7 +50,7 @@ export class HomeResultsPage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet("lokal/all?idMiasta=MQ==").subscribe(data => {
+		this.connection.getDataByGet("/city/MQ==").subscribe(data => {
 			console.log(data);
 		});
 		this.setFilteredItems();

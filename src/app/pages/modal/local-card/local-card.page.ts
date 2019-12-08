@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-local-card',
@@ -17,7 +17,7 @@ export class LocalCardPage implements OnInit {
   bar;
   public favColor = "secondary";
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }
 
   ngOnInit() {
     console.log(`${this.foo} ${this.bar}`)
@@ -33,6 +33,11 @@ export class LocalCardPage implements OnInit {
     }else{
       this.favColor = "light";
     }
+  }
+
+  openCouponList(){
+    this.navCtrl.navigateForward('local-coupons-card');
+    this.closeModal();
   }
 
 }
