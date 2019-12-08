@@ -8,7 +8,7 @@
     "class-name": true,
     "comment-format": [
       true,
-      "check-space"
+      "check-tab"
     ],
     "curly": true,
     "deprecation": {
@@ -19,7 +19,7 @@
     "import-spacing": true,
     "indent": [
       true,
-      "spaces"
+      "tabs"
     ],
     "interface-over-type-literal": true,
     "label-position": true,
