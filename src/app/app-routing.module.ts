@@ -9,7 +9,9 @@ const routes: Routes = [
   { path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },
   { path: 'edit-profile', loadChildren: './pages/edit-profile/edit-profile.module#EditProfilePageModule' },
   { path: 'home-results', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
-  { path: 'local-coupons-card', loadChildren: './pages/local-coupons-card/local-coupons-card.module#LocalCouponsCardPageModule' },
+  { path: 'local-coupons-card', loadChildren: './pages/local-coupons-card/local-coupons-card.module#LocalCouponsCardPageModule' },  { path: 'map-card', loadChildren: './pages/map-card/map-card.module#MapCardPageModule' },
+  { path: 'welcome-page', loadChildren: './pages/welcome-page/welcome-page.module#WelcomePagePageModule' },
+
 
 ];
 

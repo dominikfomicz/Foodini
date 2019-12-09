@@ -44,7 +44,14 @@ export class AppComponent {
 
       {
         title: 'Mapa',
-        url: '/map',
+        url: '/map-card',
+        direct: 'forward',
+        icon: 'pin'
+      },
+
+      {
+        title: 'Strona powitalna',
+        url: '/welcome-page',
         direct: 'forward',
         icon: 'pin'
       }
