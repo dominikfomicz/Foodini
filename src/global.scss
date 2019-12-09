@@ -13,10 +13,7 @@
 ion-item {
 		--ion-item-background: transparent;
 }
-ion-content {
-	--background: #ffd500;
-	// --background: var(--ion-color-light);
-}
+
 
 // backgrounds //
 .bg-white {
@@ -235,7 +232,7 @@ ion-content {
 	}
 	ion-searchbar {
 		background: #fdfdfd !important;
-		border-radius: 20px 20px 0% 0%;
+		border-radius: 25px 25px 0% 0%;
 		padding: 1rem 1.5rem !important;
 		.searchbar-input {
 			background: #FFF !important;
@@ -248,7 +245,7 @@ ion-content {
 			border: 1px solid #e2e2e2 !important;
 			color: #c5c5c5 !important;
 		}
-		.searchbar-search-icon {
+		.searchbar-search-  {
 			color: #c5c5c5 !important;
 		}
 	}

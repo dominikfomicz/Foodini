@@ -1,6 +1,6 @@
 :host {
     ion-content {
-        --background: var(--ion-color-light);
+        --background: var(--ion-color-primary);
     }
 
     ion-item {
@@ -18,16 +18,45 @@
         * {
             font-family: 'Josefin Sans', sans-serif;
         }
+        ion-item {
+            ion-row {
+                text-align: left;
+                &.tags {
+                    ion-col {
+                        &:first-child {
+                            padding-left: 0;
+                        }
+                        div {
+                            text-align: center;
+                        }
+                    }
+                }
+                &.info {
+                    text-align: center;
+                    ion-col {
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-start;
+                        ion-icon {
+                            padding: 6px;
+                            color: #c5c5c5;
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
 
+
     .titleicon {
-        position: absolute;
+        // position: absolute;
         // width: 100%;
         width: 2.5rem;
-        height: 2rem;
-        left: 25px;
-        top: 1px;
+        height: 100%;
+        // left: 25px;
+        // top: 1px;
         bottom: 0;
         text-align:center;
     }
@@ -39,11 +68,11 @@
     }
 
     ion-thumbnail {
-        min-width: 4rem;
-        min-height: 4rem;
+        min-width: 5rem;
+        min-height: 5rem;
         img {
-            max-width: 4rem;
-            min-width: 4rem;
+            max-width: 5rem;
+            min-width: 5rem;
         }
     }
 

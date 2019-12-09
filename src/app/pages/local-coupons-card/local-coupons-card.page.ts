@@ -3,23 +3,23 @@ import { CouponCardPage } from '../modal/coupon-card/coupon-card.page';
 import { ModalController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-local-coupons-card',
-  templateUrl: './local-coupons-card.page.html',
-  styleUrls: ['./local-coupons-card.page.scss'],
+	selector: 'app-local-coupons-card',
+	templateUrl: './local-coupons-card.page.html',
+	styleUrls: ['./local-coupons-card.page.scss'],
 })
 export class LocalCouponsCardPage implements OnInit {
 
-  constructor(
-    public modalCtrl: ModalController
-  ) { }
+	constructor(
+		public modalCtrl: ModalController
+	) { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  async openCouponCard (foo, bar) {
+	async openCouponCard (foo, bar) {
 		const modal = await this.modalCtrl.create({
 		component: CouponCardPage,
-		componentProps: { 
+		componentProps: {
 			foo: foo,
 			bar: bar
 		}
