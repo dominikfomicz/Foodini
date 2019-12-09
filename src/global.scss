@@ -125,7 +125,7 @@ ion-content {
 	}
 	// Custom toolbar (overriding Shadow DOM)
 	ion-toolbar {
-		padding: 1rem 0;
+		// padding: 1rem 0;
 		&.ion-color-primary {
 			--ion-color-base: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary)) !important;
 		}
@@ -134,8 +134,20 @@ ion-content {
 	// Android card shadow
 	ion-card {
 		&.sc-ion-card-md-h {
-			box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb),.24);
+			margin: 0;
+			--background: #fdfdfd;
+			&.no-radius {
+				border-radius: 0;
+			}
+			box-shadow: none;
+			// box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb),.24);
+			ion-item {
+				margin: 0 1rem;
+			}
 		}
+		* {
+            font-family: 'Josefin Sans', sans-serif;
+        }
 	}
 
 	// style for auth pages
@@ -219,5 +231,24 @@ ion-content {
 		margin-top: 12px;
 		ion-icon {
 			margin-bottom: -2px;
+		}
+	}
+	ion-searchbar {
+		background: #fdfdfd !important;
+		border-radius: 20px 20px 0% 0%;
+		padding: 1rem 1.5rem !important;
+		.searchbar-input {
+			background: #FFF !important;
+			border-radius: 3px !important;
+			height: 40px !important;
+			box-shadow: none !important;
+			width: 100% !important;
+			// max-width: 80%;
+			// font-size: 1.25em !important;
+			border: 1px solid #e2e2e2 !important;
+			color: #c5c5c5 !important;
+		}
+		.searchbar-search-icon {
+			color: #c5c5c5 !important;
 		}
 	}
