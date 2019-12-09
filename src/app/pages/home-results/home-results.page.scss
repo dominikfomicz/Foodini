@@ -11,21 +11,22 @@
     }
 
     ion-card {
-        margin: 0;
-        box-shadow: none;
-        --background: #fdfdfd;
-        &.no-radius {
-            border-radius: 0;
-        }
-        * {
-            font-family: 'Josefin Sans', sans-serif;
-        }
+        // margin: 0;
+        // box-shadow: none;
+        // --background: #fefefe;
+        // &.no-radius {
+        //     border-radius: 0;
+        // }
+
     }
 
     ion-searchbar {
-        background: #fdfdfd;
+        // background: #fdfdfd;
         // --background: var(--ion-color-light);
-        border-radius: 20px 20px 0% 0%;
+        // border-radius: 20px 20px 0% 0%;
+        // input {
+
+        // }
     }
 
     .titleicon {
@@ -57,4 +58,8 @@
     }
 
 
+}
+
+.rounded {
+    border-radius: 15px !important;
 }
