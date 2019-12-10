@@ -129,6 +129,17 @@ export class HomeResultsPage implements OnInit {
 		return await modal.present();
 	}
 
+	async searchFilter (foo, bar) {
+		const modal = await this.modalCtrl.create({
+		component: LocalCardPage,
+		componentProps: {
+			foo: foo,
+			bar: bar
+		}
+		});
+		return await modal.present();
+	}
+
 	async presentImage(image: any) {
 		const modal = await this.modalCtrl.create({
 		component: ImagePage,

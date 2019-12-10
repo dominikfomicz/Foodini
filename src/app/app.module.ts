@@ -21,10 +21,11 @@ import { ImagePageModule } from './pages/modal/image/image.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
+import { FilterCardComponent } from './pages/modal/filter-card/filter-card.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NotificationsComponent],
+  declarations: [AppComponent, NotificationsComponent, FilterCardComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

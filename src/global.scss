@@ -123,6 +123,14 @@ ion-item {
 	}
 	// Custom toolbar (overriding Shadow DOM)
 	ion-toolbar {
+		&.search {
+			background: #fdfdfd !important;
+			border-radius: 25px 25px 0% 0% !important;
+			padding: 1rem 1.5rem !important;
+			ion-icon {
+				color: #bebebe;
+			}
+		}
 		// padding: 1rem 0;
 		&.ion-color-primary {
 			--ion-color-base: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-primary)) !important;
@@ -228,9 +236,6 @@ ion-item {
 		}
 	}
 	ion-searchbar {
-		background: #fdfdfd !important;
-		border-radius: 25px 25px 0% 0% !important;
-		padding: 1rem 1.5rem !important;
 		.searchbar-input {
 			background: #FFF !important;
 			border-radius: 3px !important;
