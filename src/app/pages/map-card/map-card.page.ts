@@ -28,14 +28,14 @@ export class MapCardPage implements OnInit {
 	loadMap() {
 		Environment.setEnv({
 			'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
-			'API_KEY_FOR_BROWSER_DEBUG': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk'
+			'API_KEY_FOR_BROWSER_DEBUG': ''
 		});;
 
 		let mapOptions: GoogleMapOptions = {
 			camera: {
 				target: {
-				lat: 43.0741904,
-				lng: -89.3809802
+					lat: 50.6745737,
+					lng: 17.9372723
 				},
 				zoom: 18,
 				tilt: 30
@@ -44,13 +44,13 @@ export class MapCardPage implements OnInit {
 
 		this.map = GoogleMaps.create('map_canvas', mapOptions);
 
-		let marker: Marker = this.map.addMarkerSync({
+		const marker: Marker = this.map.addMarkerSync({
 			title: 'Ionic',
 			icon: 'blue',
 			animation: 'DROP',
 			position: {
-			lat: 43.0741904,
-			lng: -89.3809802
+			lat: 50.6745737,
+			lng: 17.9372723
 			}
 		});
 		marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
