@@ -44,18 +44,33 @@ export class MapCardPage implements OnInit {
 
 		this.map = GoogleMaps.create('map_canvas', mapOptions);
 
-		const marker: Marker = this.map.addMarkerSync({
-			title: 'Ionic',
-			icon: 'blue',
+		const marker_1: Marker = this.map.addMarkerSync({
+			title: 'Solaris :D',
+			icon: 'red',
 			animation: 'DROP',
 			position: {
 			lat: 50.6745737,
 			lng: 17.9372723
 			}
 		});
-		marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-			alert('clicked');
+		marker_1.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+			alert('clicked 1');
+		});
+
+		const marker_2: Marker = this.map.addMarkerSync({
+			title: 'Opolanin :(',
+			icon: 'red',
+			animation: 'DROP',
+			position: {
+			lat: 50.6712784,
+			lng: 17.9344813
+			}
+		});
+		marker_2.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+			alert('clicked 2');
 		});
 	}
+
+	
 
 }
