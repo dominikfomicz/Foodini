@@ -16,14 +16,18 @@
 				<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
 			</ion-button>
 		</ion-title>
-		<ion-buttons slot="end">
-			<ion-menu-button color="secondary"></ion-menu-button>
-		</ion-buttons>
   	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-	<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+	<ion-toolbar>
+		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+		<ion-buttons slot="end">
+			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+				<ion-icon name="options"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 	<ion-card class="no-radius">
 		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->

@@ -23,7 +23,15 @@
 </ion-header>
 
 <ion-content>
-	<ion-searchbar class="margin-bottom" color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+	<ion-toolbar>
+		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+		<ion-buttons slot="end">
+			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
+				<ion-icon name="options"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+		<ion-menu-button color="primary"></ion-menu-button>
 	<ion-card class="no-radius">
 		<ion-item lines="none" detail="false" href="#" *ngFor="let item of items" (click)="openLocationCard('test1','test2')">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
