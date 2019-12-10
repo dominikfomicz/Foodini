@@ -13,6 +13,8 @@ const routes: Routes = [
 	{ path: 'map-card', loadChildren: './pages/modal/filter-card/filter-card.module#FilterCardPageModule' },
 	{ path: 'filter-card', loadChildren: './pages/map-card/map-card.module#MapCardPageModule' },
 	{ path: 'welcome-page', loadChildren: './pages/welcome-page/welcome-page.module#WelcomePagePageModule' },
+	{ path: 'filter-card', loadChildren: './pages/modal/filter-card/filter-card.module#FilterCardPageModule' },
+
 ];
 
 @NgModule({

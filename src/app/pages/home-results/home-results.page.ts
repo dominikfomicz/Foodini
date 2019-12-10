@@ -20,6 +20,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 import { LocalCardPage } from '../modal/local-card/local-card.page';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { FilterCardPage } from '../modal/filter-card/filter-card.page';
 
 @Component({
 	selector: 'app-home-results',
@@ -131,7 +132,7 @@ export class HomeResultsPage implements OnInit {
 
 	async searchFilter (foo, bar) {
 		const modal = await this.modalCtrl.create({
-		component: LocalCardPage,
+		component: FilterCardPage,
 		componentProps: {
 			foo: foo,
 			bar: bar

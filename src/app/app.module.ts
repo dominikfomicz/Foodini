@@ -21,31 +21,30 @@ import { ImagePageModule } from './pages/modal/image/image.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
-import { FilterCardComponent } from './pages/modal/filter-card/filter-card.component';
-
+import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
 
 @NgModule({
-  declarations: [AppComponent, NotificationsComponent, FilterCardComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    HttpClientModule,
-    ImagePageModule,
-    LocalCardPageModule,
-    CouponCardPageModule
-  ],
-  entryComponents: [NotificationsComponent],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    UniqueDeviceID,
-    Uid,
-    AndroidPermissions,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent, NotificationsComponent, FilterCardPageModule],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		IonicModule.forRoot(),
+		AppRoutingModule,
+		HttpClientModule,
+		ImagePageModule,
+		LocalCardPageModule,
+		CouponCardPageModule
+	],
+	entryComponents: [NotificationsComponent],
+	providers: [
+		StatusBar,
+		SplashScreen,
+		UniqueDeviceID,
+		Uid,
+		AndroidPermissions,
+		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+	],
+	bootstrap: [AppComponent]
 })
 
 export class AppModule {}
