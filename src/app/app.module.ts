@@ -24,7 +24,7 @@ import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.modu
 import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
 
 @NgModule({
-	declarations: [AppComponent, NotificationsComponent, FilterCardPageModule],
+	declarations: [AppComponent, NotificationsComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -33,7 +33,8 @@ import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.modu
 		HttpClientModule,
 		ImagePageModule,
 		LocalCardPageModule,
-		CouponCardPageModule
+		CouponCardPageModule,
+		FilterCardPageModule
 	],
 	entryComponents: [NotificationsComponent],
 	providers: [
