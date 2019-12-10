@@ -1,4 +1,5 @@
 :host {
+
     ion-content {
         --background: var(--ion-color-primary);
     }
@@ -19,8 +20,23 @@
             font-family: 'Josefin Sans', sans-serif;
         }
         ion-item {
+            .coupon-image {
+                display: flex;
+                align-items: flex-end;
+            }
             ion-row {
                 text-align: left;
+                &.title-company {
+                    h4 {
+                        margin-bottom: 0.1rem;
+                    }
+                }
+                &.title-offer {
+                    h4 {
+                        color: var(--ion-color-primary);
+                        margin-top: 0.1rem;
+                    }
+                }
                 &.tags {
                     ion-col {
                         &:first-child {
@@ -40,6 +56,9 @@
                         ion-icon {
                             padding: 6px;
                             color: #c5c5c5;
+                            &.active {
+                                color: #000;
+                            }
                         }
                     }
                 }

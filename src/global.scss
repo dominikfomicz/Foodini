@@ -16,9 +16,9 @@ ion-item {
 
 
 // backgrounds //
-.bg-white {
-	background-color: #fff;
-}
+	.bg-white {
+		background-color: #fff;
+	}
 
 	.bg-light {
 		background-color: var(--ion-color-light);
@@ -92,11 +92,12 @@ ion-item {
 
 	.text-secondary {
 		color: var(--ion-color-secondary);
-}
+	}
 
 	.text-dark {
 		color: var(--ion-color-dark);
 	}
+
 
 	// menu //
 	// Menu user profile
@@ -131,16 +132,12 @@ ion-item {
 	// Android card shadow
 	ion-card {
 		&.sc-ion-card-md-h {
-			margin: 0;
-			--background: #fdfdfd;
-			&.no-radius {
-				border-radius: 0;
-			}
-			box-shadow: none;
+			// &.no-radius {
+			// 	border-radius: 0;
+			// }
 			// box-shadow: 0 2px 4px rgba(var(--ion-color-dark-rgb),.24);
-			ion-item {
-				margin: 0 1rem;
-			}
+			// ion-item {
+			// }
 		}
 		* {
             font-family: 'Josefin Sans', sans-serif;
@@ -232,7 +229,7 @@ ion-item {
 	}
 	ion-searchbar {
 		background: #fdfdfd !important;
-		border-radius: 25px 25px 0% 0%;
+		border-radius: 25px 25px 0% 0% !important;
 		padding: 1rem 1.5rem !important;
 		.searchbar-input {
 			background: #FFF !important;

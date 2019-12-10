@@ -12,8 +12,8 @@
 		</ion-buttons>
 		<ion-title text-center>
 			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="secondary" (click)="alertLocation()">
-				Opole
-				<ion-icon style="margin-left:10px" name="pin"></ion-icon>
+				Pizza Hut
+				<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
 			</ion-button>
 		</ion-title>
 		<ion-buttons slot="end">
@@ -34,40 +34,51 @@
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
-					<ion-col text-center size="12">
-						<ion-row class="title">
+					<ion-col text-center size="9">
+						<ion-row class="title-company">
 							<h4><b>Pizza Hut</b></h4>
+						</ion-row>
+						<ion-row class="title-offer">
 							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
 						</ion-row>
-							<ion-row class="tags">
-								<ion-col>
-									<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-									Pizza
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-									Kurczak
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-									Ser
-									</div>
-								</ion-col>
-							</ion-row>
-							<ion-row class="info">
-								<ion-col>
-									<div style="color: green; font-size:12px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-										06:00 - 24:00
-									</div>
-									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:13px;">
-										<ion-icon name="car" ></ion-icon>
-										<ion-icon name="home"></ion-icon>
-										<ion-icon name="filing"></ion-icon>
-									</div>
-								</ion-col>
-							</ion-row>
+						<ion-row class="tags">
+							<ion-col>
+								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
+								Pizza
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
+								Kurczak
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
+								Ser
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="home"></ion-icon>
+									<ion-icon name="filing" class="active"></ion-icon>
+									<ion-icon name="bicycle"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -81,40 +92,51 @@
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
-					<ion-col text-center size="12">
-						<ion-row class="title">
+					<ion-col text-center size="9">
+						<ion-row class="title-company">
 							<h4><b>Pizza Hut</b></h4>
-							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
 						</ion-row>
-							<ion-row class="tags">
-								<ion-col>
-									<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-									Pizza
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-									Kurczak
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-									Ser
-									</div>
-								</ion-col>
-							</ion-row>
-							<ion-row class="info">
-								<ion-col>
-									<div style="color: green; font-size:12px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-										06:00 - 24:00
-									</div>
-									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:13px;">
-										<ion-icon name="car" ></ion-icon>
-										<ion-icon name="home"></ion-icon>
-										<ion-icon name="filing"></ion-icon>
-									</div>
-								</ion-col>
-							</ion-row>
+						<ion-row class="title-offer">
+							<h4 color="primary"><b>Pizza + Coca Cola</b></h4>
+						</ion-row>
+						<ion-row class="tags">
+							<ion-col>
+								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
+								Pizza
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
+								Kurczak
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
+								Ser
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="home" class="active"></ion-icon>
+									<ion-icon name="filing"></ion-icon>
+									<ion-icon name="bicycle" class="active"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -128,40 +150,51 @@
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
-					<ion-col text-center size="12">
-						<ion-row class="title">
+					<ion-col text-center size="9">
+						<ion-row class="title-company">
 							<h4><b>Pizza Hut</b></h4>
-							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
 						</ion-row>
-							<ion-row class="tags">
-								<ion-col>
-									<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-									Pizza
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-									Kurczak
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-									Ser
-									</div>
-								</ion-col>
-							</ion-row>
-							<ion-row class="info">
-								<ion-col>
-									<div style="color: green; font-size:12px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-										06:00 - 24:00
-									</div>
-									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:13px;">
-										<ion-icon name="car" ></ion-icon>
-										<ion-icon name="home"></ion-icon>
-										<ion-icon name="filing"></ion-icon>
-									</div>
-								</ion-col>
-							</ion-row>
+						<ion-row class="title-offer">
+							<h4 color="primary"><b>FARFALLE DI POLLO</b></h4>
+						</ion-row>
+						<ion-row class="tags">
+							<ion-col>
+								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
+								Pizza
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
+								Kurczak
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
+								Ser
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="home" class="active"></ion-icon>
+									<ion-icon name="filing"></ion-icon>
+									<ion-icon name="bicycle"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -175,43 +208,51 @@
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
-					<ion-col text-center size="8">
-						<ion-row class="title">
+					<ion-col text-center size="9">
+						<ion-row class="title-company">
 							<h4><b>Pizza Hut</b></h4>
-							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
 						</ion-row>
-							<ion-row class="tags">
-								<ion-col>
-									<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-									Pizza
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-									Kurczak
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-									Ser
-									</div>
-								</ion-col>
-							</ion-row>
-							<ion-row class="info">
-								<ion-col>
-									<div style="color: green; font-size:12px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-										06:00 - 24:00
-									</div>
-									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:13px;">
-										<ion-icon name="car" ></ion-icon>
-										<ion-icon name="home"></ion-icon>
-										<ion-icon name="filing"></ion-icon>
-									</div>
-								</ion-col>
-							</ion-row>
+						<ion-row class="title-offer">
+							<h4 color="primary"><b>FARFALLE DI POLLO + Coca Cola</b></h4>
+						</ion-row>
+						<ion-row class="tags">
+							<ion-col>
+								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
+								Pizza
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
+								Kurczak
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
+								Ser
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
-					<ion-col size="4">
-						<img src="assets/img/icon.png">
+					<ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col>
+	`			</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="home"></ion-icon>
+									<ion-icon name="filing" class="active"></ion-icon>
+									<ion-icon name="bicycle" class="active"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -225,43 +266,51 @@
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
-					<ion-col text-center size="8">
-						<ion-row class="title">
+					<ion-col text-center size="9">
+						<ion-row class="title-company">
 							<h4><b>Pizza Hut</b></h4>
-							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
 						</ion-row>
-							<ion-row class="tags">
-								<ion-col>
-									<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-									Pizza
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-									Kurczak
-									</div>
-								</ion-col>
-								<ion-col>
-									<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-									Ser
-									</div>
-								</ion-col>
-							</ion-row>
-							<ion-row class="info">
-								<ion-col>
-									<div style="color: green; font-size:12px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-										06:00 - 24:00
-									</div>
-									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:13px;">
-										<ion-icon name="car" ></ion-icon>
-										<ion-icon name="home"></ion-icon>
-										<ion-icon name="filing"></ion-icon>
-									</div>
-								</ion-col>
-							</ion-row>
+						<ion-row class="title-offer">
+							<h4 color="primary"><b>FARFALLE DI POLLO + Coca Cola</b></h4>
+						</ion-row>
+						<ion-row class="tags">
+							<ion-col>
+								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
+								Pizza
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
+								Kurczak
+								</div>
+							</ion-col>
+							<ion-col>
+								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
+								Ser
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
-					<ion-col size="4">
-						<img src="assets/img/icon.png">
+					<ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="home" class="active"></ion-icon>
+									<ion-icon name="filing" class="active"></ion-icon>
+									<ion-icon name="bicycle"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
 					</ion-col>
 				</ion-row>
 			</ion-grid>

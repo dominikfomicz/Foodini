@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import {
-  NavController,
-  AlertController,
-  MenuController,
-  ToastController,
-  PopoverController,
-  ModalController } from '@ionic/angular';
+	NavController,
+	AlertController,
+	MenuController,
+	ToastController,
+	PopoverController,
+	ModalController
+} from '@ionic/angular';
 
 // Modals
 import { ImagePage } from './../modal/image/image.page';
@@ -16,22 +17,22 @@ import { ImagePage } from './../modal/image/image.page';
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
 import { DataService } from 'src/app/services/data.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from "rxjs/operators";
+import { debounceTime } from 'rxjs/operators';
 import { LocalCardPage } from '../modal/local-card/local-card.page';
 import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
-  selector: 'app-home-results',
-  templateUrl: './home-results.page.html',
-  styleUrls: ['./home-results.page.scss']
+	selector: 'app-home-results',
+	templateUrl: './home-results.page.html',
+	styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage implements OnInit {
-	UniqueDeviceID:string;
+	UniqueDeviceID: string;
 	searchKey = '';
 	yourLocation = '123 Test Street';
 	themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 	public searchControl: FormControl;
-	public searchTerm: string = "";
+	public searchTerm = '';
 	public items: any;
 	searching: any = false;
 
@@ -50,7 +51,7 @@ export class HomeResultsPage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet("/city/MQ==").subscribe(data => {
+		this.connection.getDataByGet('/city/MQ==').subscribe(data => {
 			console.log(data);
 		});
 		this.setFilteredItems();
@@ -61,14 +62,13 @@ export class HomeResultsPage implements OnInit {
 		});
 	}
 
-
 	setFilteredItems() {
 		this.searching = true;
 		this.items = this.dataService.filterItems(this.searchTerm);
 		// this.searching = false;
 	}
 
-	onSearchInput(){
+	onSearchInput() {
 		this.searching = true;
 	}
 
@@ -121,7 +121,7 @@ export class HomeResultsPage implements OnInit {
 	async openLocationCard (foo, bar) {
 		const modal = await this.modalCtrl.create({
 		component: LocalCardPage,
-		componentProps: { 
+		componentProps: {
 			foo: foo,
 			bar: bar
 		}
@@ -147,8 +147,7 @@ export class HomeResultsPage implements OnInit {
 		return await popover.present();
 	}
 
-	async consoleLog(){
-		console.log("ok");
+	async consoleLog() {
+		console.log('ok');
 	}
-
-	}
+}
