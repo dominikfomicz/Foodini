@@ -22,6 +22,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
 import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
+import { MapCardPageModule } from './pages/map-card/map-card.module';
+import { MapItemCardPageModule } from './pages/modal/map-card/map-item-card.module';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -34,7 +36,8 @@ import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.modu
 		ImagePageModule,
 		LocalCardPageModule,
 		CouponCardPageModule,
-		FilterCardPageModule
+		FilterCardPageModule,
+		MapItemCardPageModule
 	],
 	entryComponents: [NotificationsComponent],
 	providers: [
