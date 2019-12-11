@@ -12,7 +12,7 @@ export class FilterCardPage implements OnInit {
 		upper: 500,
 		lower: 10
 	};
-
+	public sortWay = ['Najnowsze', 'Najpopularniejsze', 'Polecane', 'Alfabetycznie rosnąco', 'Alfabetycznie malejąco'];
 	foo;
 	bar;
 	public favColor = 'secondary';

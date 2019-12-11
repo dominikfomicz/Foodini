@@ -41,8 +41,7 @@
 				<ion-row>
 					<ion-col size="12">
 						<ion-select value="price" okText="Zastosuj" cancelText="Anuluj" style="font-size: 14px;">
-							<ion-select-option value="price" style="font-size: 14px;">Ceny</ion-select-option>
-							<ion-select-option value="rating" style="font-size: 14px;">Oceny</ion-select-option>
+							<ion-select-option *ngFor="let item of sortWay" value="price" style="font-size: 14px;">{{item}}</ion-select-option>
 						</ion-select>
 					</ion-col>
 				</ion-row>
