@@ -15,7 +15,7 @@ export class LocalCardPage implements OnInit {
 
 	foo;
 	bar;
-	public favColor = "secondary";
+	public favColor = 'secondary';
 
 	constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }
 
@@ -28,10 +28,10 @@ export class LocalCardPage implements OnInit {
 	}
 
 	changeFavColor(){
-		if(this.favColor == "light"){
-			this.favColor = "secondary"
-		}else{
-			this.favColor = "light";
+		if (this.favColor === 'light') {
+			this.favColor = 'secondary';
+		} else {
+			this.favColor = 'light';
 		}
 	}
 

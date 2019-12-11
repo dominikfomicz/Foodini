@@ -9,6 +9,8 @@
         border-bottom: 1px dotted var(--ion-color-medium);
     }
 
+
+
     ion-card {
         margin: 0;
         box-shadow: none;
@@ -20,12 +22,15 @@
             font-family: 'Josefin Sans', sans-serif;
         }
         ion-item {
-            .coupon-image {
-                display: flex;
-                align-items: flex-end;
-            }
+            margin: 0 1rem;
             ion-row {
                 text-align: left;
+                ion-col {
+                    &.coupon-image {
+                        display: flex;
+                        align-items: flex-end;
+                    }
+                }
                 &.title-company {
                     h4 {
                         margin-bottom: 0.1rem;

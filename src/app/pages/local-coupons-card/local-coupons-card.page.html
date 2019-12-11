@@ -20,7 +20,7 @@
 </ion-header>
 
 <ion-content>
-	<ion-toolbar>
+	<ion-toolbar class="search">
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
 		<ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">

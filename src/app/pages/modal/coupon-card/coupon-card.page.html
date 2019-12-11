@@ -36,14 +36,14 @@
 				<img src="assets/img/qr-code.png">
 				<span style="font-size: 50px;">{{ code }}</span>
 			</ion-label>
-		</ion-item>				  
+		</ion-item>
 	</ion-card>
 </ion-content>
 <ion-footer>
 	<ion-grid>
-		<ion-row>
+		<ion-row class="cta">
 				<!-- <ion-col size="6"><a href="tel:534290115"><ion-button expand="block" shape="round" size="large" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col> -->
-				<ion-col><ion-button expand="block" shape="round" size="large" color="primary" (click)="generateCode()" [disabled]="!button ? 'disabled': null"><span style="color: #ffd500">Odbierz kupon</span></ion-button></ion-col>
+				<ion-col><ion-button expand="block" shape="round" size="default" color="primary" (click)="generateCode()" [disabled]="!button ? 'disabled': null"><span style="color: #ffd500">Odbierz kupon</span></ion-button></ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-footer>
