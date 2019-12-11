@@ -1,5 +1,27 @@
-h3 {
+h4 {
+    font-family: 'Josefin Sans', sans-serif;
     border-left: 1px solid #bebebe;
     padding-left: .5rem;
-    color: #bebebe;
+    // color: #bebebe;
+}
+:host {
+    ion-content {
+    }
+    ion-card {
+        margin: 0;
+        box-shadow: none;
+        --background: #fdfdfd;
+        &.no-radius {
+            border-radius: 0;
+        }
+        * {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+    }
+    ion-select {
+        display: flex;
+        align-items: center;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
 }

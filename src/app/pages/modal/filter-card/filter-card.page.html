@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
 	<ion-toolbar color="primary">
 		<ion-buttons slot="start">
 			<ion-button color="primary" (click)="closeModal()">
@@ -8,84 +8,80 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-	<ion-grid>
-		<ion-row>
-			<ion-col>
-				<h3>Sortuj według...</h3>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<ion-select value="price" okText="Zastosuj" cancelText="Anuluj">
-					<ion-select-option value="price">Ceny</ion-select-option>
-					<ion-select-option value="rating">Oceny</ion-select-option>
-				</ion-select>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<h3>Kategorie</h3>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col size="3" text-center>
-				<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:15px;">
-					Burger
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:15px;">
-					Vege
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:15px;">
-					Mecze
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:15px;">
-					Mecze
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:15px;">
-					Mecze
-				</div>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col>
-				<h3>Forma płatności</h3>
-			</ion-col>
-		</ion-row>
-		<ion-row>
-			<ion-col size="3" text-center>
-				<div style="padding:6px; font-size:12px;">
-					<img src="../../../../assets/img/gotowka.png" style="height: 50px;"  alt="" (click)="closeModal()">
-					<p>Gotówka</p>
-				</div>
-			</ion-col>
-			<ion-col size-md="3" text-center>
-				<div style="padding:6px; font-size:12px;">
-					<img src="../../../../assets/img/karta.png" style="height: 50px;"  alt="" (click)="closeModal()">
-					<p>Karta</p>
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style="padding:6px; font-size:12px;">
-					<img src="../../../../assets/img/google-pay.png" style="height: 50px;"  alt="" (click)="closeModal()">
-					<p>Google Pay</p>
-				</div>
-			</ion-col>
-			<ion-col size="3" text-center>
-				<div style=" padding:6px; font-size:12px;">
-					<img src="../../../../assets/img/apple-pay.png" style="height: 50px;" alt="" (click)="closeModal()">
-					<p>Apple Pay</p>
-				</div>
-			</ion-col>
-		</ion-row>
-	</ion-grid>
 
-</ion-content>
+<ion-content fullscreen>
+	<ion-card>
+		<ion-item>
+
+		</ion-item>
+	</ion-card>
+</ion-content> -->
+<ion-header>
+	<ion-toolbar color="primary">
+		<ion-buttons slot="start">
+			<ion-button color="primary" (click)="closeModal()">
+				<ion-icon name="close" color="light"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>
+			Filtry
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+  <ion-content>
+	  <ion-card class="bg-white">
+		  <ion-card-content>
+			<ion-grid>
+				<ion-row >
+					<ion-col>
+						<h4>Sortuj według...</h4>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col size="12">
+						<ion-select value="price" okText="Zastosuj" cancelText="Anuluj" style="font-size: 14px;">
+							<ion-select-option value="price" style="font-size: 14px;">Ceny</ion-select-option>
+							<ion-select-option value="rating" style="font-size: 14px;">Oceny</ion-select-option>
+						</ion-select>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col class="ion-padding-top">
+						<h4>Kategorie</h4>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col size="3" text-center>
+						<div style="background-color:rgba(220, 223, 189, 1); color:rgb(86, 86, 75); padding:6px; font-size:14px;" (click)="closeModal()">
+							Pizza
+						</div>
+					</ion-col>
+					<ion-col size="3" text-center>
+						<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:14px;" (click)="closeModal()">
+							Kebab
+						</div>
+					</ion-col>
+					<ion-col size="3" text-center>
+						<div style="background-color:rgba(247, 200, 3, 1); color:rgb(119, 96, 96); padding:6px; font-size:14px;" (click)="closeModal()">
+							Sushi
+						</div>
+					</ion-col>
+					<ion-col size="3" text-center>
+						<div style="background-color:rgba(251, 191, 211, 1); color:rgb(119, 96, 96); padding:6px; font-size:14px;" (click)="closeModal()">
+							Sałatki
+						</div>
+					</ion-col>
+					<ion-col size="3" text-center>
+						<div style="background-color:rgba(189, 223, 203, 1); color:rgb(119, 96, 96); padding:6px; font-size:14px;" (click)="closeModal()">
+							Ramen
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		  </ion-card-content>
+	  </ion-card>
+
+
+  </ion-content>
+
