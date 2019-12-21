@@ -48,26 +48,26 @@ export class HomeResultsPage implements OnInit {
 		public connection: ConnectionService
 	) {
 		this.searchControl = new FormControl();
-		this.connection.setToken('c13a1d19-6b91-4bb8-b17c-a6e013a99fbc');
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet('/city/MQ==').subscribe(data => {
+		this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+			this.items = data;
 			console.log(data);
 		});
-		this.setFilteredItems();
-		this.searchControl.valueChanges
-		.pipe(debounceTime(700))
-		.subscribe(search => {
-			this.setFilteredItems();
-		});
+		// this.setFilteredItems();
+		// this.searchControl.valueChanges
+		// .pipe(debounceTime(700))
+		// .subscribe(search => {
+		// 	this.setFilteredItems();
+		// });
 	}
 
-	setFilteredItems() {
-		this.searching = true;
-		this.items = this.dataService.filterItems(this.searchTerm);
-		// this.searching = false;
-	}
+	// setFilteredItems() {
+	// 	this.searching = true;
+	// 	this.items = this.dataService.filterItems(this.searchTerm);
+	// 	// this.searching = false;
+	// }
 
 	onSearchInput() {
 		this.searching = true;

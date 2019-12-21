@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
 	// { path: '', loadChildren: './pages/login/login.module#LoginPageModule' },
-	{ path: '', loadChildren: './pages/home-results/home-results.module#HomeResultsPageModule' },
+	{ path: '', loadChildren: './pages/welcome-page/welcome-page.module#WelcomePagePageModule' },
 	{ path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
 	{ path: 'about', loadChildren: './pages/about/about.module#AboutPageModule' },
 	{ path: 'settings', loadChildren: './pages/settings/settings.module#SettingsPageModule' },

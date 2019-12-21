@@ -24,7 +24,8 @@
 
 <ion-content>
 	<ion-toolbar class="search">
-		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
+		<ion-searchbar color="light" placeholder="Znajdź restauracje"></ion-searchbar>
 		<ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
@@ -43,29 +44,19 @@
 				<ion-row>
 					<ion-col text-center size="12">
 						<ion-row class="title">
-							<h5><b>{{ item.title }}</b></h5>
+							<h5><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Burger
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Vege
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Mecze
+							<ion-col *ngFor="let tag of item.tags | keyvalue">
+								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+								{{tag.value.name}}
 								</div>
 							</ion-col>
 						</ion-row>
 						<ion-row class="info">
 							<ion-col>
 								<div style="color: green; font-size:15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-									06:00 - 24:00
+									{{ item.open_from }} - {{ item.open_to }}
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
 									<ion-icon name="bicycle" class="active"></ion-icon>
@@ -84,8 +75,8 @@
 			</ion-grid>
 		</ion-item>
 	</ion-card>
-	<ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
+	<!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
 		Modal 2: Search Filter
-	</ion-button>
+	</ion-button> -->
 </ion-content>
 <popmenu></popmenu>

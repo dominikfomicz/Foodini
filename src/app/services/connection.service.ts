@@ -11,13 +11,9 @@ export class ConnectionService {
 
 	constructor(private http: HttpClient, private router: Router) { }
 
-	mainUrl = 'https://repo.foodini.net.pl/api-one/';
+	mainUrl = 'http://repo.foodini.net.pl/';
 
 	httpOptions = {};
-	authOptions = { headers: new HttpHeaders({
-					'Authorization': 'Basic YXV0aHNlcnZlcjpEamlKOTltR0NkeDVsa1VEM0I=',
-					'Content-Type': 'application/x-www-form-urlencoded'
-				})};
 
 	setToken(token: string) {
 		localStorage.setItem('token', token);
@@ -25,24 +21,28 @@ export class ConnectionService {
 
 	getToken() {
 		return localStorage.getItem('token');
-		// return 'c13a1d19-6b91-4bb8-b17c-a6e013a99fbc';
 	}
 
 	login(username: string, password: string) {
 		const post_data = new HttpParams()
 			.set('username', username)
 			.set('password', password)
+			.set('client_id', '1')
+			.set('client_secret', 'wYp5wj6LRF6zE8M2DAQofcOUAc7JHeGVlFF5P8au')
+			.set('scope', '')
 			.set('grant_type', 'password');
 
-		return this.http.post('https://repo.foodini.net.pl/bifrost/oauth/token', post_data, this.authOptions).subscribe(
+		return this.http.post('http://repo.foodini.net.pl/oauth/token', post_data, this.httpOptions).subscribe(
 			(data) => {
 				if (data && data['access_token']) {
 					console.log(data['access_token']);
 					this.setToken(data['access_token']);
 				}
-				return this.router.navigateByUrl('home-result');
+				// return this.router.navigateByUrl('home-results');
+				alert(data['access_token']);
 			},
 			response => {
+				alert(response)
 				console.log(response);
 			});
 	}
