@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { Device } from '@ionic-native/device/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
 	selector: 'app-welcome-page',
@@ -10,16 +11,17 @@ import { ConnectionService } from 'src/app/services/connection.service';
 export class WelcomePagePage implements OnInit {
 
 	message = "";
-	token = "";
 	
-	constructor(public device: UniqueDeviceID, public connection: ConnectionService) {
-		this.device.get()
-						.then((uuid: any) => this.message = uuid)
-						.catch((error: any) => this.message = error)
+	constructor(public connection: ConnectionService, private device: Device, private platform: Platform) {
 		}
 
 	ngOnInit() {
-		this.connection.login("dominik@excode.eu","codex2435");
+		this.setup();
 	}
 
+	async setup() {
+		await this.platform.ready();
+		this.message = this.device.uuid;
+		this.connection.login("dominik@excode.eu","codex2435");
+	}
 }

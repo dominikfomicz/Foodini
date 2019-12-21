@@ -7,8 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
-import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 import { AppComponent } from './app.component';
@@ -24,6 +22,7 @@ import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.modu
 import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
 import { MapCardPageModule } from './pages/map-card/map-card.module';
 import { MapItemCardPageModule } from './pages/modal/map-card/map-item-card.module';
+import { Device } from '@ionic-native/device/ngx';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -43,8 +42,7 @@ import { MapItemCardPageModule } from './pages/modal/map-card/map-item-card.modu
 	providers: [
 		StatusBar,
 		SplashScreen,
-		UniqueDeviceID,
-		Uid,
+		Device,
 		AndroidPermissions,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
 	],

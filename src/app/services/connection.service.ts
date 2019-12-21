@@ -38,11 +38,9 @@ export class ConnectionService {
 					console.log(data['access_token']);
 					this.setToken(data['access_token']);
 				}
-				// return this.router.navigateByUrl('home-results');
-				alert(data['access_token']);
+				return this.router.navigateByUrl('home-results');
 			},
 			response => {
-				alert(response)
 				console.log(response);
 			});
 	}
