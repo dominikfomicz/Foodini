@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, LoadingController } from '@ionic/angular';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
 	selector: 'app-local-card',
@@ -13,14 +14,28 @@ export class LocalCardPage implements OnInit {
 		lower: 10
 	};
 
-	foo;
-	bar;
-	public favColor = 'secondary';
+	public id_local_data_main;
+	public items: any;
+	public favColor: any;
 
-	constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }
+	constructor(private modalCtrl: ModalController,
+				public navCtrl: NavController,
+				public loadingCtrl: LoadingController,
+				public connection: ConnectionService ) {
+		
+		this.presentLoading();
+	}
 
 	ngOnInit() {
-		console.log(`${this.foo} ${this.bar}`)
+		this.connection.getDataByGet('locals/getDetails/'+ this.id_local_data_main).subscribe(data => {
+			this.items = data;
+			if(this.items.is_is_favourite === true){
+				this.favColor = 'secondary';
+			} else {
+				this.favColor = 'light';
+			}
+			this.loadingCtrl.dismiss('loading');
+		});
 	}
 
 	closeModal() {
@@ -30,8 +45,10 @@ export class LocalCardPage implements OnInit {
 	changeFavColor(){
 		if (this.favColor === 'light') {
 			this.favColor = 'secondary';
+			//dodaj do ulubionych
 		} else {
 			this.favColor = 'light';
+			//usun z ulubioncyh
 		}
 	}
 
@@ -40,4 +57,10 @@ export class LocalCardPage implements OnInit {
 		this.closeModal();
 	}
 
+	async presentLoading() {
+		const loading = await this.loadingCtrl.create({
+			message: 'Ładowanie',
+		});
+		await loading.present();
+	}
 }

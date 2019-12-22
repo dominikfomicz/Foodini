@@ -85,13 +85,6 @@ export class HomeResultsPage implements OnInit {
 		const changeLocation = await this.alertCtrl.create({
 		header: 'Wybierz miasto',
 		message: 'Opole',
-		// inputs: [
-		//   {
-		//     name: 'location',
-		//     placeholder: 'Enter your new Location',
-		//     type: 'text'
-		//   },
-		// ],
 		buttons: [
 			{
 			text: 'Anuluj',
@@ -119,12 +112,11 @@ export class HomeResultsPage implements OnInit {
 		changeLocation.present();
 	}
 
-	async openLocationCard (foo, bar) {
+	async openLocationCard (id_local_data_main) {
 		const modal = await this.modalCtrl.create({
 		component: LocalCardPage,
 		componentProps: {
-			foo: foo,
-			bar: bar
+			id_local_data_main: id_local_data_main
 		}
 		});
 		return await modal.present();

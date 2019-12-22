@@ -93,7 +93,13 @@ ion-content {
         top: 40%;
     }
 
+    .open_hours {
+        color: green; font-size:15px; padding-right: 6px; border-right: 1px solid #e3e3e3
+    }
 
+    .close_hours {
+        color: red; font-size:15px; padding-right: 6px; border-right: 1px solid #e3e3e3
+    }
 }
 
 .rounded {

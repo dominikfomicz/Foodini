@@ -6,7 +6,7 @@
         </ion-button>
     </ion-buttons>
     <ion-title text-center>
-    	Pizza Hut
+    	{{ items.name }}
 	</ion-title>
 	<ion-buttons slot="primary">
 		<ion-button (click)="changeFavColor()">
@@ -16,7 +16,7 @@
   </ion-toolbar>
 </ion-header>
 <div class="bg-profile" text-center>
-	<ion-badge style="position: absolute; top:60px; right: 0px; font-size: 20px;" align-items-center color="danger">55 kuponów</ion-badge>
+	<ion-badge style="position: absolute; top:60px; right: 5px; font-size: 20px;" align-items-center color="danger">{{ items.coupons_count }}</ion-badge>
 	<img src="assets/img/pizza-hut-cover.jpg">
 </div>
 <div class="vertical-center">
@@ -29,35 +29,25 @@
 		<ion-card-content>
 			<ion-grid>
 				<ion-row text-center>
-					<ion-col style="margin-top:20px">
-						<div style="background-color:rgba(233, 0, 0, 0.411); color:rgb(214, 5, 5); padding:6px; font-size:15px;">
-							Burger
-						</div>
-					</ion-col>
-					<ion-col style="margin-top:20px">
-						<div style="background-color:rgba(0, 233, 0, 0.411); color:rgb(0, 182, 0); padding:6px; font-size:15px;">
-							Vege
-						</div>
-					</ion-col>
-					<ion-col style="margin-top:20px">
-						<div style="background-color:rgba(6, 106, 255, 0.411); color:rgb(0, 130, 182); padding:6px; font-size:15px;">
-							Mecze
+					<ion-col style="margin-top:20px;" *ngFor="let tag of items.tags | keyvalue">
+						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+						{{tag.value.name}}
 						</div>
 					</ion-col>
 				</ion-row>
 				<ion-row margin text-center>
-					<ion-col>LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br>OTWARTE</ion-col>
-					<ion-col>KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br>OTWARTE</ion-col>
-					<ion-col>DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br>ZAMKNIĘTE</ion-col>
+					<ion-col [ngClass]="{'': items.local_open_status == true, 'closed': items.local_open_status == false }">LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br>OTWARTE</ion-col>
+					<ion-col [ngClass]="{'': items.kitchen_open_status == true, 'closed': items.kitchen_open_status == false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br>OTWARTE</ion-col>
+					<ion-col [ngClass]="{'': items.delivery_open_status == true, 'closed': items.delivery_open_status == false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br>ZAMKNIĘTE</ion-col>
 				</ion-row>
 				<ion-row text-center>
-					<ion-col>PON<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>WT<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>ŚR<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>CZW<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>PT<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>SB<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
-					<ion-col>ND<br><ion-button size="small" color="primary" style="font-size:12px">8-16</ion-button></ion-col>
+					<ion-col>PON<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>WT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>ŚR<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>CZW<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>PT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>SB<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>ND<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 				</ion-row>
 			</ion-grid>
 		</ion-card-content>
@@ -72,7 +62,7 @@
 				<ion-item>
 					<ion-icon name="pin" color="primary" slot="start"></ion-icon>
 					<ion-label>
-						<a href="http://maps.google.com/?q=Ostrówek 1, Opole"><h2>Ostrówek 1, 45-088 Opole</h2></a>
+						<a href="http://maps.google.com/?q={{items.address}}"><h2>{{ items.address }}</h2></a>
 					</ion-label>
 				</ion-item>
 
@@ -86,10 +76,13 @@
 		<ion-card-content>
 			<ion-grid>
 				<ion-row text-center>
-					<ion-col><img src="assets/img/gotowka.png" style="height:50px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
-					<ion-col><img src="assets/img/karta.png" style="height:50px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
-					<ion-col><img src="assets/img/blik.png" style="height:50px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
-					<ion-col><img src="assets/img/zblizeniowo.png" style="height:50px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
+					<ion-col [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:50px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
+					<ion-col [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:50px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
+					<ion-col [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:50px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
+					<ion-col [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:50px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-card-content>{{ items.description }}</ion-card-content>
 				</ion-row>
 			</ion-grid>
 		</ion-card-content>
