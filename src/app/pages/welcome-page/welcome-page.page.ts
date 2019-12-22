@@ -22,6 +22,11 @@ export class WelcomePagePage implements OnInit {
 	async setup() {
 		await this.platform.ready();
 		this.message = this.device.uuid;
-		this.connection.login("dominik@excode.eu","codex2435");
+		this.connection.registerStart(this.device.uuid).subscribe((data) => {
+				this.connection.login(this.device.uuid, this.device.uuid);
+		},
+		err => {
+			this.connection.login(this.device.uuid, this.device.uuid);
+		  });
 	}
 }

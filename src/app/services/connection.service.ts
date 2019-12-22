@@ -45,6 +45,15 @@ export class ConnectionService {
 			});
 	}
 
+	registerStart(uuid: string) {
+		const post_data = new HttpParams()
+			.set('name', uuid)
+			.set('password', uuid)
+			.set('email', uuid)
+
+		return this.http.post('http://repo.foodini.net.pl/auth-api/register', post_data, this.httpOptions);
+	}
+
 	getDataByPost(url: String, post_data: any) {
 		this.httpOptions = {
 			headers: new HttpHeaders({
