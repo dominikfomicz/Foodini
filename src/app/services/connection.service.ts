@@ -61,8 +61,7 @@ export class ConnectionService {
 				'Content-Type': 'application/json;charset=utf-8'
 			})
 		};
-		console.log(JSON.stringify(post_data));
-		return this.http.post(this.mainUrl + url, JSON.stringify(post_data), this.httpOptions)
+		return this.http.post(this.mainUrl + url, post_data, this.httpOptions)
 			.pipe(
 				(data => {
 					return data;
@@ -107,6 +106,10 @@ export class ConnectionService {
 					return throwError(error);
 				})
 			);
+	}
+
+	selectItem(app_list_string){
+		return this.getDataByPost('tools/getList', {app_list_string: app_list_string});
 	}
 
 	showError(message) {

@@ -21,7 +21,7 @@
 
 <ion-content>
 	<ion-toolbar class="search">
-		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar>
+		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
 		<ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
@@ -29,7 +29,7 @@
 		</ion-buttons>
 	</ion-toolbar>
 	<ion-card class="no-radius">
-		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
+		<ion-item lines="none" (click)="openCouponCard('test1','test2')" *ngFor="let item of items">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
 			<ion-thumbnail slot="start">
 				<img src="assets/img/pizza-hut.png">
@@ -40,25 +40,15 @@
 				<ion-row>
 					<ion-col text-center size="9">
 						<ion-row class="title-company">
-							<h4><b>Pizza Hut</b></h4>
+							<h4><b>{{ item.local_name }}</b></h4>
 						</ion-row>
 						<ion-row class="title-offer">
-							<h4 color="primary"><b>Dwie pizze w cenie jednej!</b></h4>
+							<h4 color="primary"><b>{{ item.coupon_name }}</b></h4>
 						</ion-row>
 						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Pizza
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Kurczak
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Ser
+							<ion-col *ngFor="let tag of item.tags | keyvalue">
+								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+									{{tag.value.name}}
 								</div>
 							</ion-col>
 						</ion-row>
@@ -78,238 +68,6 @@
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
 									<ion-icon name="home"></ion-icon>
-									<ion-icon name="filing" class="active"></ion-icon>
-									<ion-icon name="bicycle"></ion-icon>
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-item>
-		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
-			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
-			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
-			</ion-thumbnail>
-			<ion-grid>
-				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
-				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
-				<ion-row>
-					<ion-col text-center size="9">
-						<ion-row class="title-company">
-							<h4><b>Pizza Hut</b></h4>
-						</ion-row>
-						<ion-row class="title-offer">
-							<h4 color="primary"><b>Pizza + Coca Cola</b></h4>
-						</ion-row>
-						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Pizza
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Kurczak
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Ser
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-					<ion-col size="3" class="coupon-image">
-						<ion-row>
-							<img src="assets/img/icon.png">
-						</ion-row>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-row class="info">
-							<ion-col>
-								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-									Aktywny
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="home" class="active"></ion-icon>
-									<ion-icon name="filing"></ion-icon>
-									<ion-icon name="bicycle" class="active"></ion-icon>
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-item>
-		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
-			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
-			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
-			</ion-thumbnail>
-			<ion-grid>
-				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
-				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
-				<ion-row>
-					<ion-col text-center size="9">
-						<ion-row class="title-company">
-							<h4><b>Pizza Hut</b></h4>
-						</ion-row>
-						<ion-row class="title-offer">
-							<h4 color="primary"><b>FARFALLE DI POLLO</b></h4>
-						</ion-row>
-						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Pizza
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Kurczak
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Ser
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-					<ion-col size="3" class="coupon-image">
-						<ion-row>
-							<img src="assets/img/icon.png">
-						</ion-row>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-row class="info">
-							<ion-col>
-								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-									Aktywny
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="home" class="active"></ion-icon>
-									<ion-icon name="filing"></ion-icon>
-									<ion-icon name="bicycle"></ion-icon>
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-item>
-		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
-			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
-			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
-			</ion-thumbnail>
-			<ion-grid>
-				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
-				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
-				<ion-row>
-					<ion-col text-center size="9">
-						<ion-row class="title-company">
-							<h4><b>Pizza Hut</b></h4>
-						</ion-row>
-						<ion-row class="title-offer">
-							<h4 color="primary"><b>FARFALLE DI POLLO + Coca Cola</b></h4>
-						</ion-row>
-						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Pizza
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Kurczak
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Ser
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-					<ion-col size="3" class="coupon-image">
-						<ion-row>
-							<img src="assets/img/icon.png">
-						</ion-row>
-					</ion-col>
-	`			</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-row class="info">
-							<ion-col>
-								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-									Aktywny
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="home"></ion-icon>
-									<ion-icon name="filing" class="active"></ion-icon>
-									<ion-icon name="bicycle" class="active"></ion-icon>
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-				</ion-row>
-			</ion-grid>
-		</ion-item>
-		<ion-item lines="none" (click)="openCouponCard('test1','test2')">
-			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
-			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
-			</ion-thumbnail>
-			<ion-grid>
-				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->
-				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
-				<ion-row>
-					<ion-col text-center size="9">
-						<ion-row class="title-company">
-							<h4><b>Pizza Hut</b></h4>
-						</ion-row>
-						<ion-row class="title-offer">
-							<h4 color="primary"><b>FARFALLE DI POLLO + Coca Cola</b></h4>
-						</ion-row>
-						<ion-row class="tags">
-							<ion-col>
-								<div style="background-color:rgba(220, 223, 189, 1); color: rgb(86, 86, 75); padding:6px; font-size:10px;">
-								Pizza
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(209, 221, 247, 1); color:rgb(102, 108, 119); padding:6px; font-size:10px;">
-								Kurczak
-								</div>
-							</ion-col>
-							<ion-col>
-								<div style="background-color:rgba(247, 200, 199, 1); color:rgb(119, 96, 96); padding:6px; font-size:10px;">
-								Ser
-								</div>
-							</ion-col>
-						</ion-row>
-					</ion-col>
-					<ion-col size="3" class="coupon-image">
-						<ion-row>
-							<img src="assets/img/icon.png">
-						</ion-row>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-col>
-						<ion-row class="info">
-							<ion-col>
-								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
-									Aktywny
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="home" class="active"></ion-icon>
 									<ion-icon name="filing" class="active"></ion-icon>
 									<ion-icon name="bicycle"></ion-icon>
 								</div>

@@ -29,6 +29,7 @@ export class LocalCardPage implements OnInit {
 	ngOnInit() {
 		this.connection.getDataByGet('locals/getDetails/'+ this.id_local_data_main).subscribe(data => {
 			this.items = data;
+			console.log(data);
 			if(this.items.is_is_favourite === true){
 				this.favColor = 'secondary';
 			} else {
@@ -42,18 +43,20 @@ export class LocalCardPage implements OnInit {
 		this.modalCtrl.dismiss();
 	}
 
-	changeFavColor(){
+	changeFavColor(id_local_data_main){
 		if (this.favColor === 'light') {
 			this.favColor = 'secondary';
 			//dodaj do ulubionych
+			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main});
+			console.log(id_local_data_main)
 		} else {
 			this.favColor = 'light';
-			//usun z ulubioncyh
+			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main});
 		}
 	}
 
-	openCouponList(){
-		this.navCtrl.navigateForward('local-coupons-card');
+	openCouponList(id_local_data_main){
+		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main);
 		this.closeModal();
 	}
 

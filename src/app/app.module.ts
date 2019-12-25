@@ -23,6 +23,10 @@ import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.modu
 import { MapCardPageModule } from './pages/map-card/map-card.module';
 import { MapItemCardPageModule } from './pages/modal/map-card/map-item-card.module';
 import { Device } from '@ionic-native/device/ngx';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth.guard';
+import { NoAuthGuard } from './services/no-auth.guard';
+import { NoAuthService } from './services/no-auth.service';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -44,7 +48,8 @@ import { Device } from '@ionic-native/device/ngx';
 		SplashScreen,
 		Device,
 		AndroidPermissions,
-		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+		AuthService, AuthGuard, NoAuthGuard, NoAuthService
 	],
 	bootstrap: [AppComponent]
 })
