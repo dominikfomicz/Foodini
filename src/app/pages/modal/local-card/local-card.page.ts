@@ -8,11 +8,6 @@ import { ConnectionService } from 'src/app/services/connection.service';
 	styleUrls: ['./local-card.page.scss'],
 })
 export class LocalCardPage implements OnInit {
-	public radiusmiles = 1;
-	public minmaxprice = {
-		upper: 500,
-		lower: 10
-	};
 
 	public id_local_data_main;
 	public items: any;
@@ -22,21 +17,21 @@ export class LocalCardPage implements OnInit {
 				public navCtrl: NavController,
 				public loadingCtrl: LoadingController,
 				public connection: ConnectionService ) {
-		
-		this.presentLoading();
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet('locals/getDetails/'+ this.id_local_data_main).subscribe(data => {
-			this.items = data;
-			console.log(data);
-			if(this.items.is_is_favourite === true){
-				this.favColor = 'secondary';
-			} else {
-				this.favColor = 'light';
-			}
-			this.loadingCtrl.dismiss('loading');
-		});
+		this.presentLoading().then(a =>
+			this.connection.getDataByGet('locals/getDetails/'+ this.id_local_data_main).subscribe(data => {
+				this.items = data;
+				console.log(data);
+				if(this.items.is_favouirite === true){
+					this.favColor = 'secondary';
+				} else {
+					this.favColor = 'light';
+				}
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
 	}
 
 	closeModal() {
@@ -47,17 +42,21 @@ export class LocalCardPage implements OnInit {
 		if (this.favColor === 'light') {
 			this.favColor = 'secondary';
 			//dodaj do ulubionych
-			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main});
-			console.log(id_local_data_main)
+			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
+				console.log(data);
+			});
 		} else {
 			this.favColor = 'light';
-			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main});
+			//usun z ulubionych
+			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
+				console.log(data);
+			});
 		}
 	}
 
 	openCouponList(id_local_data_main){
-		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main);
 		this.closeModal();
+		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main);
 	}
 
 	async presentLoading() {

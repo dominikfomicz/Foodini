@@ -61,7 +61,7 @@ export class ConnectionService {
 				'Content-Type': 'application/json;charset=utf-8'
 			})
 		};
-		return this.http.post(this.mainUrl + url, post_data, this.httpOptions)
+		return this.http.post(this.mainUrl + url, JSON.stringify(post_data), this.httpOptions)
 			.pipe(
 				(data => {
 					return data;

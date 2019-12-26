@@ -25,7 +25,7 @@
 <ion-content>
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
-		<ion-searchbar color="light" placeholder="Znajdź restauracje"></ion-searchbar>
+		<ion-searchbar color="light" placeholder="Znajdź restauracje" animated></ion-searchbar>
 		<ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
@@ -72,5 +72,22 @@
 	<!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
 		Modal 2: Search Filter
 	</ion-button> -->
+	<!-- <ion-tabs>
+		<ion-tab-bar slot="bottom">
+			<ion-tab-button tab="schedule">
+			<ion-toggle color="secondary" ion-toggle-text></ion-toggle> :P
+			
+			</ion-tab-button>
+		
+			<ion-tab-button tab="map">
+			<ion-icon name="pin"></ion-icon>
+			</ion-tab-button>
+		
+			<ion-tab-button tab="fav">
+			<ion-icon name="star"></ion-icon>
+			</ion-tab-button>
+
+		</ion-tab-bar>
+	</ion-tabs> -->
 </ion-content>
-<popmenu></popmenu>
+<!-- <popmenu></popmenu> -->

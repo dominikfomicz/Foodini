@@ -8,7 +8,8 @@ import {
 	MenuController,
 	ToastController,
 	PopoverController,
-	ModalController
+	ModalController,
+	LoadingController
 } from '@ionic/angular';
 
 // Modals
@@ -45,16 +46,20 @@ export class HomeResultsPage implements OnInit {
 		public modalCtrl: ModalController,
 		public toastCtrl: ToastController,
 		public dataService: DataService,
-		public connection: ConnectionService
+		public connection: ConnectionService,
+		public loadingCtrl: LoadingController
 	) {
 		this.searchControl = new FormControl();
+		
 	}
 
 	ngOnInit() {
-		this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
-			this.items = data;
-			console.log(data);
-		});
+		this.presentLoading().then(a =>
+			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+				this.items = data;
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
 		// this.setFilteredItems();
 		// this.searchControl.valueChanges
 		// .pipe(debounceTime(700))
@@ -62,12 +67,6 @@ export class HomeResultsPage implements OnInit {
 		// 	this.setFilteredItems();
 		// });
 	}
-
-	// setFilteredItems() {
-	// 	this.searching = true;
-	// 	this.items = this.dataService.filterItems(this.searchTerm);
-	// 	// this.searching = false;
-	// }
 
 	onSearchInput() {
 		this.searching = true;
@@ -133,25 +132,14 @@ export class HomeResultsPage implements OnInit {
 		return await modal.present();
 	}
 
-	async presentImage(image: any) {
-		const modal = await this.modalCtrl.create({
-		component: ImagePage,
-		componentProps: { value: image }
-		});
-		return await modal.present();
-	}
-
-	async notifications(ev: any) {
-		const popover = await this.popoverCtrl.create({
-		component: NotificationsComponent,
-		event: ev,
-		animated: true,
-		showBackdrop: true
-		});
-		return await popover.present();
-	}
-
 	async consoleLog() {
 		console.log('ok');
+	}
+
+	async presentLoading() {
+		const loading = await this.loadingCtrl.create({
+			message: 'Ładowanie',
+		});
+		await loading.present();
 	}
 }

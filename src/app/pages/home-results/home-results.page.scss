@@ -105,3 +105,16 @@ ion-content {
 .rounded {
     border-radius: 15px !important;
 }
+
+ion-tab-bar {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fdfdfd !important;
+    border-radius: 15px 15px 0% 0% !important;
+    // padding: 10px 10px !important;
+}
+
+ion-tab-button {
+    color:#6a2c86;
+}

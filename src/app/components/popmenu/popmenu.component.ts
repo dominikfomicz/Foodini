@@ -20,7 +20,7 @@ export class PopmenuComponent implements OnInit {
   }
 
   consoleLog(){
-    return this.homeCtrl.consoleLog();
+    return 0;
   }
 
 }

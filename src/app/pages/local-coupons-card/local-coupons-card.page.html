@@ -67,9 +67,9 @@
 									Aktywny
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="home"></ion-icon>
-									<ion-icon name="filing" class="active"></ion-icon>
-									<ion-icon name="bicycle"></ion-icon>
+									<ion-icon name="car" [ngClass]="{'active': item.delivery == true, '': item.delivery == false }"></ion-icon>
+									<ion-icon name="restaurant" [ngClass]="{'active': item.eat_in_local == true, '': item.eat_in_local == false }" ></ion-icon>
+									<ion-icon name="swap" [ngClass]="{'active': item.pick_up_local == true, '': item.pick_up_local == false }"></ion-icon>
 								</div>
 							</ion-col>
 						</ion-row>
