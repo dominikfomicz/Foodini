@@ -25,14 +25,14 @@
 <ion-content color="light">
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
-		<ion-searchbar color="light" placeholder="Znajdź restauracje" animated></ion-searchbar>
+		<ion-searchbar color="light" placeholder="Szukaj" animated></ion-searchbar>
 		<ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
 			</ion-button>
 		</ion-buttons>
 	</ion-toolbar>
-	<ion-card class="no-radius">
+	<ion-card class="no-radius" *ngIf="viewList === 'locals'">
 		<ion-item lines="none" detail="false" *ngFor="let item of items" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="assets/img/pizza-hut.png">
