@@ -36,18 +36,19 @@
 					</ion-col>
 				</ion-row>
 				<ion-row margin text-center>
-					<ion-col [ngClass]="{'': items.local_open_status == true, 'closed': items.local_open_status == false }">LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br>OTWARTE</ion-col>
-					<ion-col [ngClass]="{'': items.kitchen_open_status == true, 'closed': items.kitchen_open_status == false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br>OTWARTE</ion-col>
-					<ion-col [ngClass]="{'': items.delivery_open_status == true, 'closed': items.delivery_open_status == false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br>ZAMKNIĘTE</ion-col>
+					<ion-col [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br><span *ngIf="items.local_open_status === true">OTWARTE</span><span *ngIf="items.local_open_status === false">ZAMKNIĘTE</span></ion-col>
+					<ion-col [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br><span *ngIf="items.kitchen_open_status === true">OTWARTE</span><span *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
+					<ion-col [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br><span *ngIf="items.delivery_open_status === true">OTWARTE</span><span *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
 				</ion-row>
-				<ion-row text-center>
-					<ion-col>PON<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+				<ion-row text-center *ngFor="let item_hours of items.work_hours | keyvalue">
+					<!-- <ion-col>PON<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 					<ion-col>WT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 					<ion-col>ŚR<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 					<ion-col>CZW<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 					<ion-col>PT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
 					<ion-col>SB<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>ND<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
+					<ion-col>ND<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col> -->
+					{{ item_hours.value.id_day }}
 				</ion-row>
 			</ion-grid>
 		</ion-card-content>

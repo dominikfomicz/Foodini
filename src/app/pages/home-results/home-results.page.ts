@@ -147,11 +147,7 @@ export class HomeResultsPage implements OnInit {
 		});
 		return await modal.present();
 	}
-
-	async consoleLog() {
-		console.log('ok');
-	}
-
+	
 	async presentLoading() {
 		const loading = await this.loadingCtrl.create({
 			message: 'Ładowanie',

@@ -13,17 +13,16 @@ export class CouponCardPage implements OnInit {
     lower: 10
   };
 
-  foo;
-  bar;
+  id_coupon_data_main;
   code;
   button = true;
 
-  public favColor = "secondary";
+  public favColor = "primary";
 
   constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }
 
   ngOnInit() {
-    console.log(`${this.foo} ${this.bar}`)
+    console.log(this.id_coupon_data_main)
   }
 
   closeModal() {
