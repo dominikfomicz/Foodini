@@ -74,12 +74,12 @@
 	</ion-button> -->
 </ion-content>
 <ion-tab-bar slot="bottom" color="primary">
-	<ion-tab-button tab="schedule">
-		<ion-chip outline color="secondary" *ngIf="viewList === 'locals'" (click)="toggleSwitchButton()">
+	<ion-tab-button (click)="toggleSwitchButton()">
+		<ion-chip outline color="secondary" *ngIf="viewList === 'locals'">
 			<ion-icon name="radio-button-on"></ion-icon>
 			<ion-label>Lokale</ion-label>
 		</ion-chip>
-		<ion-chip outline color="secondary" *ngIf="viewList === 'coupons'" (click)="toggleSwitchButton()">
+		<ion-chip outline color="secondary" *ngIf="viewList === 'coupons'">
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
 		</ion-chip>
