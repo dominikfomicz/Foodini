@@ -41,13 +41,11 @@ export class LocalCardPage implements OnInit {
 	changeFavColor(id_local_data_main){
 		if (this.favColor === 'light') {
 			this.favColor = 'secondary';
-			//dodaj do ulubionych
 			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
 				console.log(data);
 			});
 		} else {
 			this.favColor = 'light';
-			//usun z ulubionych
 			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
 				console.log(data);
 			});

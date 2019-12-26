@@ -33,10 +33,12 @@ export class HomeResultsPage implements OnInit {
 	searchKey = '';
 	yourLocation = '123 Test Street';
 	themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
-	public searchControl: FormControl;
-	public searchTerm = '';
-	public items: any;
+	searchControl: FormControl;
+	searchTerm = '';
+	items: any;
+	viewList = 'locals';
 	searching: any = false;
+
 
 	constructor(
 		public navCtrl: NavController,
@@ -50,22 +52,10 @@ export class HomeResultsPage implements OnInit {
 		public loadingCtrl: LoadingController
 	) {
 		this.searchControl = new FormControl();
-		
 	}
 
 	ngOnInit() {
-		this.presentLoading().then(a =>
-			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
-				this.items = data;
-				this.loadingCtrl.dismiss('loading');
-			})
-		);
-		// this.setFilteredItems();
-		// this.searchControl.valueChanges
-		// .pipe(debounceTime(700))
-		// .subscribe(search => {
-		// 	this.setFilteredItems();
-		// });
+		this.refreshLocalsList();
 	}
 
 	onSearchInput() {
@@ -78,6 +68,32 @@ export class HomeResultsPage implements OnInit {
 
 	settings() {
 		this.navCtrl.navigateForward('settings');
+	}
+
+	refreshLocalsList(){
+		this.presentLoading().then(a =>
+			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+				this.items = data;
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
+	}
+
+	refreshCouponsList(){
+		this.presentLoading().then(a =>
+			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+				this.items = data;
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
+	}
+
+	toggleSwitchButton(){
+		if(this.viewList === 'locals'){
+			this.viewList = 'coupons';
+		} else {
+			this.viewList = 'locals';
+		}
 	}
 
 	async alertLocation() {

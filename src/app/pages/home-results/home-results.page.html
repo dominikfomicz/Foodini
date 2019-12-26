@@ -22,7 +22,7 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
 		<ion-searchbar color="light" placeholder="Znajdź restauracje" animated></ion-searchbar>
@@ -72,22 +72,26 @@
 	<!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
 		Modal 2: Search Filter
 	</ion-button> -->
-	<!-- <ion-tabs>
-		<ion-tab-bar slot="bottom">
-			<ion-tab-button tab="schedule">
-			<ion-toggle color="secondary" ion-toggle-text></ion-toggle> :P
-			
-			</ion-tab-button>
-		
-			<ion-tab-button tab="map">
-			<ion-icon name="pin"></ion-icon>
-			</ion-tab-button>
-		
-			<ion-tab-button tab="fav">
-			<ion-icon name="star"></ion-icon>
-			</ion-tab-button>
-
-		</ion-tab-bar>
-	</ion-tabs> -->
 </ion-content>
+<ion-tab-bar slot="bottom" color="primary">
+	<ion-tab-button tab="schedule">
+		<ion-chip outline color="secondary" *ngIf="viewList === 'locals'" (click)="toggleSwitchButton()">
+			<ion-icon name="radio-button-on"></ion-icon>
+			<ion-label>Lokale</ion-label>
+		</ion-chip>
+		<ion-chip outline color="secondary" *ngIf="viewList === 'coupons'" (click)="toggleSwitchButton()">
+			<ion-label>Kupony</ion-label>
+			<ion-icon name="radio-button-on"></ion-icon>
+		</ion-chip>
+	</ion-tab-button>
+
+	<ion-tab-button href="/map-card">
+	<ion-icon name="pin" color="secondary"></ion-icon>
+	</ion-tab-button>
+
+	<ion-tab-button tab="fav">
+	<ion-icon name="star" color="secondary"></ion-icon>
+	</ion-tab-button>
+
+</ion-tab-bar>
 <!-- <popmenu></popmenu> -->
