@@ -9,9 +9,9 @@ import { ConnectionService } from 'src/app/services/connection.service';
 })
 export class LocalCardPage implements OnInit {
 
-	public id_local_data_main;
-	public items: any;
-	public favColor: any;
+	id_local_data_main;
+	items: any;
+	favColor: any;
 
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
