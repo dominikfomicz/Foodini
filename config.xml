@@ -109,4 +109,5 @@
         <icon src="resources/windows/icon/StoreLogo.png" target="StoreLogo" />
         <splash src="resources/windows/splash/Splash.png" target="SplashScreen" />
     </platform>
+    <engine name="android" spec="~8.1.0" />
 </widget>
