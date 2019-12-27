@@ -72,7 +72,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshLocalsList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items = data;
 				this.loadingCtrl.dismiss('loading');
 			})
@@ -81,7 +81,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('/locals/getList/1').subscribe(data => {
+			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items = data;
 				this.loadingCtrl.dismiss('loading');
 			})

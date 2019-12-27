@@ -40,15 +40,17 @@
 					<ion-col [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br><span *ngIf="items.kitchen_open_status === true">OTWARTE</span><span *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
 					<ion-col [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br><span *ngIf="items.delivery_open_status === true">OTWARTE</span><span *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
 				</ion-row>
-				<ion-row text-center *ngFor="let item_hours of items.work_hours | keyvalue">
-					<!-- <ion-col>PON<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>WT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>ŚR<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>CZW<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>PT<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>SB<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col>
-					<ion-col>ND<br><ion-button size="small" color="primary" style="font-size:9px">8-16</ion-button></ion-col> -->
-					{{ item_hours.value.id_day }}
+				<ion-row text-center>
+					<ion-col *ngFor="let item_hours of items.work_hours | keyvalue">
+						<span *ngIf="item_hours.value.id_day === 1">PON<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 2">WT<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 4">CZW<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 5">PT<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 6">SB<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+						<span *ngIf="item_hours.value.id_day === 0">ND<br><ion-button size="small" color="primary" style="font-size:9px">{{ item_hours.value.open_hours }}</ion-button></span>
+					</ion-col>
+					
 				</ion-row>
 			</ion-grid>
 		</ion-card-content>
