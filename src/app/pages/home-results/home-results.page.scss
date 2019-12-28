@@ -107,7 +107,12 @@ ion-content {
 }
 
 ion-tab-bar {
-    border-top: solid 1px #ececec;
+    // border-top: solid 1px #ececec;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    border: solid 0px;
 }
 
 ion-tab-button {

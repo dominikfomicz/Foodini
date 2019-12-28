@@ -73,25 +73,26 @@
 		Modal 2: Search Filter
 	</ion-button> -->
 </ion-content>
-<ion-tab-bar slot="bottom" color="primary">
+<ion-tab-bar slot="bottom">
 	<ion-tab-button (click)="toggleSwitchButton()">
-		<ion-chip outline color="secondary" *ngIf="viewList === 'locals'">
+		<ion-chip outline *ngIf="viewList === 'locals'">
 			<ion-icon name="radio-button-on"></ion-icon>
 			<ion-label>Lokale</ion-label>
 		</ion-chip>
-		<ion-chip outline color="secondary" *ngIf="viewList === 'coupons'">
+		<ion-chip outline *ngIf="viewList === 'coupons'">
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
 		</ion-chip>
 	</ion-tab-button>
 
 	<ion-tab-button href="/map-card">
-	<ion-icon name="pin" color="secondary"></ion-icon>
+	<ion-icon name="pin" color="light"></ion-icon>
 	</ion-tab-button>
 
 	<ion-tab-button tab="fav">
-	<ion-icon name="star" color="secondary"></ion-icon>
+	<ion-icon name="star" color="light"></ion-icon>
 	</ion-tab-button>
 
 </ion-tab-bar>
+
 <!-- <popmenu></popmenu> -->

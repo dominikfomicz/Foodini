@@ -42,13 +42,13 @@
 				</ion-row>
 				<ion-row text-center>
 					<ion-col class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
-						<span *ngIf="item_hours.value.id_day === 1">PON<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 4">CZW<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_hours }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 1">PON<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 4">CZW<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
 					</ion-col>
 					
 				</ion-row>
