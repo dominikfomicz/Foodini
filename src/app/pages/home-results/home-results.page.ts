@@ -22,6 +22,7 @@ import { debounceTime } from 'rxjs/operators';
 import { LocalCardPage } from '../modal/local-card/local-card.page';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { FilterCardPage } from '../modal/filter-card/filter-card.page';
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
 	selector: 'app-home-results',
