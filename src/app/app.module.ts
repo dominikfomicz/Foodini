@@ -33,7 +33,9 @@ import { NoAuthService } from './services/no-auth.service';
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
-		IonicModule.forRoot(),
+		IonicModule.forRoot({
+			mode: 'md'
+		}),
 		AppRoutingModule,
 		HttpClientModule,
 		ImagePageModule,

@@ -25,12 +25,12 @@
 <ion-content color="secondary">
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
-		<ion-searchbar color="light" placeholder="Szukaj" animated></ion-searchbar>
-		<ion-buttons slot="end">
+		<ion-searchbar placeholder="Szukaj"></ion-searchbar>
+		<!-- <ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
 			</ion-button>
-		</ion-buttons>
+		</ion-buttons> -->
 	</ion-toolbar>
 	<ion-card class="no-radius" *ngIf="viewList === 'locals'">
 		<ion-item lines="none" detail="false" *ngFor="let item of items" (click)="openLocationCard(item.local_id)">
@@ -72,27 +72,27 @@
 	<!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
 		Modal 2: Search Filter
 	</ion-button> -->
+	<div style="position: absolute; bottom:0px; margin-left:auto; margin-right: auto;">
+		<ion-tab-bar slot="bottom">
+			<ion-tab-button (click)="toggleSwitchButton()">
+				<ion-chip outline *ngIf="viewList === 'locals'">
+					<ion-icon name="radio-button-on"></ion-icon>
+					<ion-label>Lokale</ion-label>
+				</ion-chip>
+				<ion-chip outline *ngIf="viewList === 'coupons'">
+					<ion-label>Kupony</ion-label>
+					<ion-icon name="radio-button-on"></ion-icon>
+				</ion-chip>
+			</ion-tab-button>
+	
+			<ion-tab-button href="/map-card">
+			<ion-icon name="pin" color="light"></ion-icon>
+			</ion-tab-button>
+	
+			<ion-tab-button tab="fav">
+			<ion-icon name="star" color="light"></ion-icon>
+			</ion-tab-button>
+		</ion-tab-bar>
+	</div>
 </ion-content>
-<ion-tab-bar slot="bottom">
-	<ion-tab-button (click)="toggleSwitchButton()">
-		<ion-chip outline *ngIf="viewList === 'locals'">
-			<ion-icon name="radio-button-on"></ion-icon>
-			<ion-label>Lokale</ion-label>
-		</ion-chip>
-		<ion-chip outline *ngIf="viewList === 'coupons'">
-			<ion-label>Kupony</ion-label>
-			<ion-icon name="radio-button-on"></ion-icon>
-		</ion-chip>
-	</ion-tab-button>
-
-	<ion-tab-button href="/map-card">
-	<ion-icon name="pin" color="light"></ion-icon>
-	</ion-tab-button>
-
-	<ion-tab-button tab="fav">
-	<ion-icon name="star" color="light"></ion-icon>
-	</ion-tab-button>
-
-</ion-tab-bar>
-
 <!-- <popmenu></popmenu> -->
