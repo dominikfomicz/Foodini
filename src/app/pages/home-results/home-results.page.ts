@@ -36,10 +36,11 @@ export class HomeResultsPage implements OnInit {
 	themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 	searchControl: FormControl;
 	searchTerm = '';
-	items: any;
+	items_locals: any;
+	items_coupons: any;
 	viewList = 'locals';
 	searching: any = false;
-
+	favColor: any = 'light';
 
 	constructor(
 		public navCtrl: NavController,
@@ -74,7 +75,7 @@ export class HomeResultsPage implements OnInit {
 	refreshLocalsList(){
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
-				this.items = data;
+				this.items_locals = data;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
@@ -82,19 +83,85 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsList(){
 		this.presentLoading().then(a =>
+			this.connection.getDataByGet('coupons/getList/1').subscribe(data => {
+				this.items_coupons = data;
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
+	}
+
+	refreshLocalsFavList(){
+		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
-				this.items = data;
+				this.items_locals = data;
+				this.loadingCtrl.dismiss('loading');
+			})
+		);
+	}
+
+	refreshCouponsFavList(){
+		this.presentLoading().then(a =>
+			this.connection.getDataByGet('coupons/getList/1').subscribe(data => {
+				this.items_coupons = data;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
 	}
 
 	toggleSwitchButton(){
-		if(this.viewList === 'locals'){
-			this.viewList = 'coupons';
-		} else {
-			this.viewList = 'locals';
+		switch(this.viewList) {
+			case 'locals': {
+				this.refreshCouponsList();
+				this.viewList = 'coupons';
+				break;
+			}
+			case 'locals_fav': {
+				this.refreshCouponsFavList();
+				this.viewList = 'coupons_fav';
+				break;
+			}
+			case 'coupons': {
+				this.refreshLocalsList();
+				this.viewList = 'locals';
+				break;
+			}
+			case 'coupons_fav': {
+				this.refreshLocalsFavList();
+				this.viewList = 'locals_fav';
+			}
 		}
+	}
+
+	toggleFav(){
+		switch(this.viewList) {
+			case 'locals': {
+				this.refreshLocalsFavList();
+				this.viewList = 'locals_fav';
+				this.favColor = 'secondary';
+				break;
+			}
+			case 'locals_fav': {
+				this.refreshLocalsList();
+				this.viewList = 'locals';
+				this.favColor = 'light';
+				break;
+			}
+			case 'coupons': {
+				this.refreshCouponsFavList();
+				this.viewList = 'coupons_fav';
+				this.favColor = 'secondary';
+				break;
+			}
+			case 'coupons_fav': {
+				this.refreshCouponsList();
+				this.viewList = 'coupons';
+				this.favColor = 'light';
+			}
+		}
+	}
+
+	navigateToMapCard(){
+		this.navCtrl.navigateForward('map-card');
 	}
 
 	async alertLocation() {

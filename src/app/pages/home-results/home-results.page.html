@@ -32,8 +32,9 @@
 			</ion-button>
 		</ion-buttons> -->
 	</ion-toolbar>
-	<ion-card class="no-radius" *ngIf="viewList === 'locals'">
-		<ion-item lines="none" detail="false" *ngFor="let item of items" (click)="openLocationCard(item.local_id)">
+	<!-- Lokale -->
+	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
+		<ion-item lines="none" detail="false" *ngFor="let item of items_locals" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="assets/img/pizza-hut.png">
 			</ion-thumbnail>
@@ -69,44 +70,78 @@
 			</ion-grid>
 		</ion-item>
 	</ion-card>
-	<!-- <ion-button margin shape="round" expand="full" color="secondary" (click)="openLocationCard('test1','test2')">
-		Modal 2: Search Filter
-	</ion-button> -->
-		<!-- <ion-tab-bar slot="bottom">
-			<ion-tab-button (click)="toggleSwitchButton()">
-				<ion-chip outline *ngIf="viewList === 'locals'">
-					<ion-icon name="radio-button-on"></ion-icon>
-					<ion-label>Lokale</ion-label>
-				</ion-chip>
-				<ion-chip outline *ngIf="viewList === 'coupons'">
-					<ion-label>Kupony</ion-label>
-					<ion-icon name="radio-button-on"></ion-icon>
-				</ion-chip>
-			</ion-tab-button>
-	
-			<ion-tab-button href="/map-card">
-			<ion-icon name="pin" color="light"></ion-icon>
-			</ion-tab-button>
-	
-			<ion-tab-button tab="fav">
-			<ion-icon name="star" color="light"></ion-icon>
-			</ion-tab-button>
-		</ion-tab-bar> -->
-		
+
+	<!-- Kupony -->
+	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'">
+		<ion-item lines="none" *ngFor="let item of items_coupons" (click)="openCouponCard(item.coupon_id)">
+			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
+			<ion-thumbnail slot="start">
+				<img src="assets/img/pizza-hut.png">
+			</ion-thumbnail>
+			<ion-grid>
+				<ion-badge style="position: absolute; bottom:15px; right: 0px; font-size: 20px;" class="ion-align-items-center" color="danger">x{{ item.coupon_left }}</ion-badge>
+				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
+				<ion-row>
+					<ion-col class="ion-text-center" size="12">
+						<ion-row class="title-company">
+							<h4><b>{{ item.local_name }}</b></h4>
+						</ion-row>
+						<ion-row class="title-offer">
+							<h4 color="primary"><b>{{ item.coupon_name }}</b></h4>
+						</ion-row>
+						<ion-row class="tags">
+							<ion-col *ngFor="let tag of item.tags | keyvalue">
+								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+									{{tag.value.name}}
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+					<!-- <ion-col size="3" class="coupon-image">
+						<ion-row>
+							<img src="assets/img/icon.png">
+						</ion-row>
+					</ion-col> -->
+				</ion-row>
+				<ion-row>
+					<ion-col>
+						<ion-row class="info">
+							<ion-col>
+								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+									Aktywny
+								</div>
+								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+									<ion-icon name="car" [ngClass]="{'active': item.delivery == true, '': item.delivery == false }"></ion-icon>
+									<ion-icon name="restaurant" [ngClass]="{'active': item.eat_in_local == true, '': item.eat_in_local == false }" ></ion-icon>
+									<ion-icon name="swap" [ngClass]="{'active': item.pick_up_local == true, '': item.pick_up_local == false }"></ion-icon>
+								</div>
+							</ion-col>
+						</ion-row>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+	</ion-card>
 </ion-content>
 <section style="position: sticky; bottom:0px; z-index:1000;">
 	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
-		<ion-chip style="background-color: #6a2c86;float:left"  *ngIf="viewList === 'locals'" color="secondary" (click)="toggleSwitchButton()">
+		<ion-chip style="background-color: #6a2c86;float:left;border: solid #5c2873 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
 			<ion-icon name="radio-button-on"></ion-icon>
 			<ion-label>Lokale</ion-label>
 		</ion-chip>
-		<ion-chip style="bottom:0px;background-color: #ffd500;float:left" *ngIf="viewList === 'coupons'" color="primary" (click)="toggleSwitchButton()">
+		<ion-chip style="bottom:0px;background-color: #ffd500;float:left;border: solid #e4bf03 3px;" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" color="primary" (click)="toggleSwitchButton()">
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
 		</ion-chip>
-		<div style="float:left; background-color: red; border-radius: 10px;">
-			<div style="padding:10px;">
-				<ion-icon large name="star"></ion-icon>
+		<div style="float:left; background-color: #6a2c86; border-top-left-radius: 10px;border-top-right-radius: 10px; font-size: 1.0rem;">
+			<div style="float:left; padding-left:5px">
+				<ion-button (click)="navigateToMapCard()"><ion-icon slot="icon-only" color="light" name="pin"></ion-icon></ion-button>
+			</div>
+			<div style="float:left">
+				<ion-button (click)="searchFilter()"><ion-icon slot="icon-only" color="light" name="options"></ion-icon></ion-button>
+			</div>
+			<div style="float:left; padding-right: 5px;">
+				<ion-button (click)="toggleFav()"><ion-icon slot="icon-only" [color]="favColor" name="star"></ion-icon></ion-button>
 			</div>
 		</div>
 	</div>	
