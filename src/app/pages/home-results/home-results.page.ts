@@ -23,6 +23,7 @@ import { LocalCardPage } from '../modal/local-card/local-card.page';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { FilterCardPage } from '../modal/filter-card/filter-card.page';
 import { trigger, state, transition, style, animate } from '@angular/animations';
+import { CouponCardPage } from '../modal/coupon-card/coupon-card.page';
 
 @Component({
 	selector: 'app-home-results',
@@ -92,7 +93,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshLocalsFavList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
+			this.connection.getDataByGet('locals/getFavouriteList/1').subscribe(data => {
 				this.items_locals = data;
 				this.loadingCtrl.dismiss('loading');
 			})
@@ -101,7 +102,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsFavList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('coupons/getList/1').subscribe(data => {
+			this.connection.getDataByGet('coupons/getFavouriteList').subscribe(data => {
 				this.items_coupons = data;
 				this.loadingCtrl.dismiss('loading');
 			})
@@ -200,6 +201,16 @@ export class HomeResultsPage implements OnInit {
 		component: LocalCardPage,
 		componentProps: {
 			id_local_data_main: id_local_data_main
+		}
+		});
+		return await modal.present();
+	}
+
+	async openCouponCard (id_coupon_data_main) {
+		const modal = await this.modalCtrl.create({
+		component: CouponCardPage,
+		componentProps: {
+			id_coupon_data_main: id_coupon_data_main
 		}
 		});
 		return await modal.present();
