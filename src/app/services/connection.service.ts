@@ -35,8 +35,12 @@ export class ConnectionService {
 		return this.http.post('http://repo.foodini.net.pl/oauth/token', post_data, this.httpOptions).subscribe(
 			(data) => {
 				if (data && data['access_token']) {
-					console.log(data['access_token']);
 					this.setToken(data['access_token']);
+					this.getDataByGet('user').subscribe(user_data => {
+						localStorage.setItem('username', user_data['name']);
+						localStorage.setItem('user_email', user_data['email']);
+						localStorage.setItem('user_type', user_data['user_type']);
+					});
 				}
 				return this.router.navigateByUrl('home-results');
 			},
@@ -61,7 +65,7 @@ export class ConnectionService {
 				'Content-Type': 'application/json;charset=utf-8'
 			})
 		};
-		return this.http.post(this.mainUrl + url, JSON.stringify(post_data), this.httpOptions)
+		return this.http.post(this.mainUrl + url, post_data, this.httpOptions)
 			.pipe(
 				(data => {
 					return data;

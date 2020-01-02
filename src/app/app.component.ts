@@ -13,6 +13,8 @@ import { Pages } from './interfaces/pages';
 })
 export class AppComponent {
 
+  user_status: any;
+
   public appPages: Array<Pages>;
 
   constructor(
@@ -79,6 +81,7 @@ export class AppComponent {
     ];
 
     this.initializeApp();
+    this.user_status = localStorage.getItem('user_type');
   }
 
   initializeApp() {

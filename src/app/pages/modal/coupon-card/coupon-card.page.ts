@@ -59,8 +59,12 @@ export class CouponCardPage implements OnInit {
 		}
 	}
 
-	generateCode(){
-		this.code = Math.random().toString().slice(5,11);
+	generateCode(id_coupon_data_main){
+		this.connection.getDataByPost('coupons/orderCoupon', {id_coupon_data_main : id_coupon_data_main}).subscribe(data => {
+			this.code = data;
+			// console.log(data);
+		});
+		// console.log(id_coupon_data_main);
 		this.button = false;
 	}
 

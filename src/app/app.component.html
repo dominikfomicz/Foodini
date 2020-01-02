@@ -30,35 +30,83 @@
                 {{p.title}}
               </ion-label>
             </ion-item>
-          </ion-menu-toggle>
+		  </ion-menu-toggle>
+		  
+		  <!-- Manager -->
+          <div *ngIf="user_status === '3'">
+            <ion-list-header text-center color="dark">
+              <ion-label color="light"><b>Manager</b></ion-label>
+            </ion-list-header>
+            <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/edit-profile" color="primary">
+                  <ion-icon slot="start" name="list-box" color="light"></ion-icon>
+                  <ion-label>
+                    Zarządzanie lokalami
+                  </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+          </div>
 
-          <ion-list-header text-center color="dark">
-              <ion-label color="light"><b>Użytkownik</b></ion-label>
-          </ion-list-header>
-          <ion-menu-toggle auto-hide="false">
-              <ion-item routerLink="/edit-profile" color="primary">
-                <ion-icon slot="start" name="person" color="light"></ion-icon>
-                <ion-label>
-                  Profil
-                </ion-label>
-              </ion-item>
-          </ion-menu-toggle>
-          <!-- <ion-menu-toggle auto-hide="false">
-              <ion-item routerLink="/settings" color="primary">
-                <ion-icon slot="start" name="settings" color="light"></ion-icon>
-                <ion-label>
-                  Ustawienia
-                </ion-label>
-              </ion-item>
-          </ion-menu-toggle> -->
-          <ion-menu-toggle auto-hide="false">
-              <ion-item routerLink="/logout" color="primary">
-                <ion-icon slot="start" name="log-out" color="light"></ion-icon>
-                <ion-label>
-                  Wyloguj
-                </ion-label>
-              </ion-item>
-          </ion-menu-toggle>
+          <!-- Kelnerka i Manager -->
+          <div *ngIf="user_status === '2' || user_status === '3'">
+            <ion-list-header text-center color="dark">
+              <ion-label color="light"><b>Pracownik</b></ion-label>
+            </ion-list-header>
+            <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/edit-profile" color="primary">
+                  <ion-icon slot="start" name="barcode" color="light"></ion-icon>
+                  <ion-label>
+                    Zweryfikuj kupon
+                  </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+          </div>
+
+          <!-- Zarejestrowany użytkownik -->
+          <div *ngIf="user_status === '1' || user_status === '2' || user_status === '3'">
+            <ion-list-header text-center color="dark">
+                <ion-label color="light"><b>Użytkownik</b></ion-label>
+            </ion-list-header>
+            <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/edit-profile" color="primary">
+                  <ion-icon slot="start" name="person" color="light"></ion-icon>
+                  <ion-label>
+                    Profil
+                  </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/logout" color="primary">
+                  <ion-icon slot="start" name="log-out" color="light"></ion-icon>
+                  <ion-label>
+                    Wyloguj
+                  </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+		  </div>  
+		  
+		   <!-- Niezarejestrowany użytkownik -->
+		   <div *ngIf="user_status === '0'">
+            <ion-list-header text-center color="dark">
+                <ion-label color="light"><b>Użytkownik</b></ion-label>
+            </ion-list-header>
+            <ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/edit-profile" color="primary">
+                  <ion-icon slot="start" name="person-add" color="light"></ion-icon>
+                  <ion-label>
+                    Rejestracja
+                  </ion-label>
+                </ion-item>
+			</ion-menu-toggle>
+			<ion-menu-toggle auto-hide="false">
+                <ion-item routerLink="/edit-profile" color="primary">
+                  <ion-icon slot="start" name="person" color="light"></ion-icon>
+                  <ion-label>
+                    Logowanie
+                  </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+          </div>  
         </ion-list>
       </ion-content>
     </ion-menu>
