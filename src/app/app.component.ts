@@ -22,39 +22,60 @@ export class AppComponent {
     public navCtrl: NavController
   ) {
     this.appPages = [
-      {
-        title: 'Lokale',
-        url: '/home-results',
-        direct: 'root',
-        icon: 'home'
-      },
-      {
-        title: 'Kupony',
-        url: '/tickets',
-        direct: 'forward',
-        icon: 'barcode'
-      },
+      // {
+      //   title: 'Lokale',
+      //   url: '/home-results',
+      //   direct: 'root',
+      //   icon: 'home'
+      // },
+      // {
+      //   title: 'Kupony',
+      //   url: '/tickets',
+      //   direct: 'forward',
+      //   icon: 'barcode'
+      // },
+
+      // {
+      //   title: 'Ulubione',
+      //   url: '/favourites',
+      //   direct: 'forward',
+      //   icon: 'star'
+      // },
+
+      // {
+      //   title: 'Mapa',
+      //   url: '/map-card',
+      //   direct: 'forward',
+      //   icon: 'pin'
+      // },
+
+      // {
+      //   title: 'Strona powitalna',
+      //   url: '/welcome-page',
+      //   direct: 'forward',
+      //   icon: 'pin'
+      // }
 
       {
-        title: 'Ulubione',
-        url: '/favourites',
-        direct: 'forward',
-        icon: 'star'
-      },
-
-      {
-        title: 'Mapa',
-        url: '/map-card',
-        direct: 'forward',
-        icon: 'pin'
-      },
-
-      {
-        title: 'Strona powitalna',
+        title: 'Poleć aplikację',
         url: '/welcome-page',
         direct: 'forward',
-        icon: 'pin'
-      }
+        icon: 'share'
+      },
+
+      {
+        title: 'Prześlij uwagi',
+        url: '/welcome-page',
+        direct: 'forward',
+        icon: 'mail'
+      },
+
+      {
+        title: 'O Foodinim',
+        url: '/welcome-page',
+        direct: 'forward',
+        icon: 'information-circle'
+      },
     ];
 
     this.initializeApp();

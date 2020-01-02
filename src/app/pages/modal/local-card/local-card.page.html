@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" style="position:absolute">
         <ion-button color="primary" (click)="closeModal()">
             <ion-icon name="close" color="light"></ion-icon>
         </ion-button>
@@ -35,22 +35,28 @@
 						</div>
 					</ion-col>
 				</ion-row>
-				<ion-row margin text-center>
-					<ion-col [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br><span *ngIf="items.local_open_status === true">OTWARTE</span><span *ngIf="items.local_open_status === false">ZAMKNIĘTE</span></ion-col>
-					<ion-col [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br><span *ngIf="items.kitchen_open_status === true">OTWARTE</span><span *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
-					<ion-col [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br><span *ngIf="items.delivery_open_status === true">OTWARTE</span><span *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
+				<ion-row margin text-center style="font-size: 0.8rem;">
+					<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">LOKAL<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/lokal.png"><br><span *ngIf="items.local_open_status === true">OTWARTE</span><span *ngIf="items.local_open_status === false">ZAMKNIĘTE</span></ion-col>
+					<ion-col size="4" [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/kuchnia.png"><br><span *ngIf="items.kitchen_open_status === true">OTWARTE</span><span *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
+					<ion-col size="4" [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: auto;display: block;" src="assets/img/dowoz.png"><br><span *ngIf="items.delivery_open_status === true">OTWARTE</span><span *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
 				</ion-row>
 				<ion-row text-center>
-					<ion-col class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
-						<span *ngIf="item_hours.value.id_day === 1">PON<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+					<ion-col size="1.7" style="max-width: 100%;" class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
+						<span *ngIf="item_hours.value.id_day === 1">PN<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
 						<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
 						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 4">CZW<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 4">CZ<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
 						<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
 						<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
 						<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
 					</ion-col>
 					
+				</ion-row>
+				<ion-row text-center style="margin-top:20px;font-size: 0.4rem;">
+					<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:50px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
+					<ion-col size="3" [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:50px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
+					<ion-col size="3" [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:50px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
+					<ion-col size="3" [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:50px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
 				</ion-row>
 			</ion-grid>
 		</ion-card-content>
@@ -72,23 +78,17 @@
 				<ion-item>
 					<ion-icon name="call" color="primary" slot="start"></ion-icon>
 					<ion-label>
-						<a href="tel:664727097"><h2>664 727 097</h2></a>
+						<a href="tel:{{ items.phone_number }}"><h2>{{ items.phone_number }}</h2></a>
+					</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-icon name="information-circle" color="primary" slot="start"></ion-icon>
+					<ion-label style="white-space: normal; text-align: justify;">
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 					</ion-label>
 				</ion-item>
 			</ion-list>
-		<ion-card-content>
-			<ion-grid>
-				<ion-row text-center>
-					<ion-col [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:50px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
-					<ion-col [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:50px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
-					<ion-col [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:50px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
-					<ion-col [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:50px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
-				</ion-row>
-				<ion-row>
-					<ion-card-content>{{ items.description }}</ion-card-content>
-				</ion-row>
-			</ion-grid>
-		</ion-card-content>
 	</ion-card>
 	<ion-grid>
 		<ion-row class="cta">
