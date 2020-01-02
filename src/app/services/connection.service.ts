@@ -113,7 +113,9 @@ export class ConnectionService {
 	}
 
 	showError(message) {
-		console.log(message)
+		localStorage.clear();
+		console.log(message);
+		this.router.navigateByUrl('/welcome-page');
 	}
 }
 
