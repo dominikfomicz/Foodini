@@ -123,7 +123,7 @@
 		</ion-item>
 	</ion-card>
 </ion-content>
-<section style="position: sticky; bottom:0px; z-index:1000;">
+<!-- <section style="position: sticky; bottom:0px; z-index:1000;">
 	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
 		<ion-chip style="background-color: #6a2c86;float:left;border: solid #5c2873 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
 			<ion-icon name="radio-button-on"></ion-icon>
@@ -145,6 +145,31 @@
 			</div>
 		</div>
 	</div>	
-</section>
+</section> -->
+
+<ion-tabs>
+	<ion-tab-bar slot="bottom">
+	  <ion-tab-button tab="schedule">
+		<ion-icon name="home-empty"></ion-icon>
+		<ion-label>Strona główna</ion-label>
+		<!-- <ion-badge>6</ion-badge> -->
+	  </ion-tab-button>
+  
+	  <ion-tab-button tab="speakers">
+		<ion-icon name="ios-heart-empty"></ion-icon>
+		<ion-label>Ulubione</ion-label>
+	  </ion-tab-button>
+  
+	  <ion-tab-button tab="map">
+		<ion-icon name="pin"></ion-icon>
+		<ion-label>Mapa</ion-label>
+	  </ion-tab-button>
+  
+	  <ion-tab-button tab="about">
+		<ion-icon name="information-circle"></ion-icon>
+		<ion-label>Filtry</ion-label>
+	  </ion-tab-button>
+	</ion-tab-bar>
+  </ion-tabs>
 
 <!-- <popmenu></popmenu> -->
