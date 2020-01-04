@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header no-border *ngIf="show === true">
 	<ion-toolbar color="secondary">
 		<ion-buttons slot="start">
 			<!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
@@ -22,7 +22,7 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary">
+<ion-content color="secondary" *ngIf="show === true">
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
 		<ion-searchbar (ionInput)="getItems($event)" placeholder="Szukaj"></ion-searchbar>

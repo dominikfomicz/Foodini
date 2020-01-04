@@ -33,7 +33,7 @@
 		  </ion-menu-toggle>
 		  
 		  <!-- Manager -->
-          <div *ngIf="user_status === '3'">
+          <div *ngIf="user_type === '3'">
             <ion-list-header text-center color="dark">
               <ion-label color="light"><b>Manager</b></ion-label>
             </ion-list-header>
@@ -48,7 +48,7 @@
           </div>
 
           <!-- Kelnerka i Manager -->
-          <div *ngIf="user_status === '2' || user_status === '3'">
+          <div *ngIf="user_type === '2' || user_type === '3'">
             <ion-list-header text-center color="dark">
               <ion-label color="light"><b>Pracownik</b></ion-label>
             </ion-list-header>
@@ -63,7 +63,7 @@
           </div>
 
           <!-- Zarejestrowany użytkownik -->
-          <div *ngIf="user_status === '1' || user_status === '2' || user_status === '3'">
+          <div *ngIf="user_type === '1' || user_type === '2' || user_type === '3'">
             <ion-list-header text-center color="dark">
                 <ion-label color="light"><b>Użytkownik</b></ion-label>
             </ion-list-header>
@@ -86,7 +86,7 @@
 		  </div>  
 		  
 		   <!-- Niezarejestrowany użytkownik -->
-		   <div *ngIf="user_status === '0'">
+		   <div *ngIf="user_type != '1' && user_type !='2' && user_type !='3'">
             <ion-list-header text-center color="dark">
                 <ion-label color="light"><b>Użytkownik</b></ion-label>
             </ion-list-header>
@@ -97,8 +97,8 @@
                     Rejestracja
                   </ion-label>
                 </ion-item>
-			</ion-menu-toggle>
-			<ion-menu-toggle auto-hide="false">
+			      </ion-menu-toggle>
+			      <ion-menu-toggle auto-hide="false">
                 <ion-item routerLink="/edit-profile" color="primary">
                   <ion-icon slot="start" name="person" color="light"></ion-icon>
                   <ion-label>

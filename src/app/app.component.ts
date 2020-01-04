@@ -13,7 +13,7 @@ import { Pages } from './interfaces/pages';
 })
 export class AppComponent {
 
-  user_status: any;
+  user_type: any = '0';
 
   public appPages: Array<Pages>;
 
@@ -79,12 +79,14 @@ export class AppComponent {
         icon: 'information-circle'
       },
     ];
-
+    if(this.platform.pause){
+      localStorage.clear();
+    }
     this.initializeApp();
-    this.user_status = localStorage.getItem('user_type');
   }
 
   initializeApp() {
+    this.user_type = localStorage.getItem('user_type');
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

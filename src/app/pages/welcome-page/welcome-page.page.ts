@@ -23,13 +23,15 @@ export class WelcomePagePage implements OnInit {
 	}
 
 	async setup() {
-		await this.platform.ready();
-		this.message = this.device.uuid;
-		this.connection.registerStart(this.device.uuid).subscribe((data) => {
+		await this.platform.ready().then(a => {
+			this.message = this.device.uuid;
+			this.connection.registerStart(this.device.uuid).subscribe((data) => {
+					this.connection.login(this.device.uuid, this.device.uuid);
+			},
+			err => {
 				this.connection.login(this.device.uuid, this.device.uuid);
-		},
-		err => {
-			this.connection.login(this.device.uuid, this.device.uuid);
-		  });
+			});
+		});
+		
 	}
 }

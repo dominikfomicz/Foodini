@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header no-border *ngIf="show === true">
 	<ion-toolbar color="primary">
 		<ion-buttons slot="start" style="position: absolute;">
 		  <!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
@@ -19,7 +19,7 @@
   	</ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="show === true">
 	<ion-toolbar class="search">
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
 		<!-- <ion-buttons slot="end">

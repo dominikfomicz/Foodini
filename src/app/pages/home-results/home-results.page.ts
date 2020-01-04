@@ -42,8 +42,8 @@ export class HomeResultsPage implements OnInit {
 	items_coupons: any;
 	items_coupons_search: any;
 	viewList = 'locals';
-	searching: any = false;
 	favColor: any = 'light';
+	show: boolean = false;
 
 	constructor(
 		public navCtrl: NavController,
@@ -63,10 +63,6 @@ export class HomeResultsPage implements OnInit {
 		this.refreshLocalsList();
 	}
 
-	onSearchInput() {
-		this.searching = true;
-	}
-
 	ionViewWillEnter() {
 		this.menuCtrl.enable(true);
 	}
@@ -81,6 +77,7 @@ export class HomeResultsPage implements OnInit {
 				this.items_locals = data;
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}
@@ -91,6 +88,7 @@ export class HomeResultsPage implements OnInit {
 				this.items_coupons = data;
 				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}
@@ -101,6 +99,7 @@ export class HomeResultsPage implements OnInit {
 				this.items_locals = data;
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}
@@ -111,6 +110,7 @@ export class HomeResultsPage implements OnInit {
 				this.items_coupons = data;
 				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}

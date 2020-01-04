@@ -50,6 +50,7 @@ export class ConnectionService {
 	}
 
 	registerStart(uuid: string) {
+		localStorage.clear();
 		const post_data = new HttpParams()
 			.set('name', uuid)
 			.set('password', uuid)

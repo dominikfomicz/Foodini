@@ -15,6 +15,7 @@ export class LocalCouponsCardPage implements OnInit {
 	id_local_data_main: any;
 	local_name: any = '';
 	items: any;
+	show = false;
 
 	constructor(
 		public modalCtrl: ModalController,
@@ -35,6 +36,7 @@ export class LocalCouponsCardPage implements OnInit {
 				this.items = data;
 				console.log(data);
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}
