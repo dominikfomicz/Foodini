@@ -1,10 +1,10 @@
 <ion-header no-border>
 	<ion-toolbar color="primary">
 		<ion-buttons slot="start" style="position: absolute;">
-		  <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+		  <!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
 			<ion-icon name="notifications"></ion-icon>
 			<ion-badge color="dark" slot="end">2</ion-badge>
-		  </ion-button>
+		  </ion-button> -->
 		  <ion-back-button icon="arrow-back" text="" defaultHref=""></ion-back-button>
 		  <!-- <div class="titleicon">
 			  <img src="assets/img/small.png">
@@ -22,17 +22,17 @@
 <ion-content>
 	<ion-toolbar class="search">
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
-		<ion-buttons slot="end">
+		<!-- <ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
 			</ion-button>
-		</ion-buttons>
+		</ion-buttons> -->
 	</ion-toolbar>
 	<ion-card class="no-radius">
 		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id)">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
 			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
+				<img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png">
 			</ion-thumbnail>
 			<ion-grid>
 				<ion-badge style="position: absolute; bottom:15px; right: 0px; font-size: 20px;" class="ion-align-items-center" color="danger">x{{ item.coupon_left }}</ion-badge>

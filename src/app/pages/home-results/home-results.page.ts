@@ -38,7 +38,9 @@ export class HomeResultsPage implements OnInit {
 	searchControl: FormControl;
 	searchTerm = '';
 	items_locals: any;
+	items_locals_search: any;
 	items_coupons: any;
+	items_coupons_search: any;
 	viewList = 'locals';
 	searching: any = false;
 	favColor: any = 'light';
@@ -77,6 +79,7 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items_locals = data;
+				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
@@ -84,8 +87,9 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('coupons/getList/1').subscribe(data => {
+			this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
 				this.items_coupons = data;
+				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
@@ -95,6 +99,7 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getFavouriteList/1').subscribe(data => {
 				this.items_locals = data;
+				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
@@ -104,6 +109,7 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('coupons/getFavouriteList').subscribe(data => {
 				this.items_coupons = data;
+				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');
 			})
 		);
@@ -163,6 +169,40 @@ export class HomeResultsPage implements OnInit {
 
 	navigateToMapCard(){
 		this.navCtrl.navigateForward('map-card');
+	}
+
+	getItems(ev: any) {
+		this.items_locals_search = this.items_locals;
+		this.items_coupons_search = this.items_coupons;
+		const val = ev.target.value;
+		if (val && val.trim() != '') {
+
+			switch(this.viewList) {
+				case 'locals': {
+					this.items_locals_search = this.items_locals_search.filter((item) => {
+						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					});
+					break;
+				}
+				case 'locals_fav': {
+					this.items_locals_search = this.items_locals_search.filter((item) => {
+						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					});
+					break;
+				}
+				case 'coupons': {
+					this.items_coupons_search = this.items_coupons_search.filter((item) => {
+						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					});
+					break;
+				}
+				case 'coupons_fav': {
+					this.items_coupons_search = this.items_coupons_search.filter((item) => {
+						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					});
+				}
+			}
+		}
 	}
 
 	async alertLocation() {
