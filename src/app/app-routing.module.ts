@@ -16,6 +16,8 @@ const routes: Routes = [
 	{ path: 'filter-card', loadChildren: './pages/map-card/map-card.module#MapCardPageModule', canActivate: [AuthGuard] },
 	{ path: 'welcome-page', loadChildren: './pages/welcome-page/welcome-page.module#WelcomePagePageModule', canActivate: [NoAuthGuard]},
 	{ path: 'filter-card', loadChildren: './pages/modal/filter-card/filter-card.module#FilterCardPageModule', canActivate: [AuthGuard] },
+  	{ path: 'check-coupon', loadChildren: './pages/check-coupon/check-coupon.module#CheckCouponPageModule', canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({
