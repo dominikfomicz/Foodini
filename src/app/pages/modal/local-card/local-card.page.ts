@@ -12,6 +12,7 @@ export class LocalCardPage implements OnInit {
 	id_local_data_main;
 	items: any;
 	favColor: any;
+	show: boolean = false;
 
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
@@ -30,6 +31,7 @@ export class LocalCardPage implements OnInit {
 					this.favColor = 'light';
 				}
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}
@@ -52,9 +54,9 @@ export class LocalCardPage implements OnInit {
 		}
 	}
 
-	openCouponList(id_local_data_main){
+	openCouponList(id_local_data_main, local_name){
 		this.closeModal();
-		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main);
+		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main + '/' + local_name);
 	}
 
 	async presentLoading() {

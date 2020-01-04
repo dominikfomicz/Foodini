@@ -13,6 +13,7 @@ import { ConnectionService } from 'src/app/services/connection.service';
 export class LocalCouponsCardPage implements OnInit {
 
 	id_local_data_main: any;
+	local_name: any = '';
 	items: any;
 
 	constructor(
@@ -24,6 +25,7 @@ export class LocalCouponsCardPage implements OnInit {
 
 	ngOnInit() {
 		this.id_local_data_main = this.route.snapshot.params['id_local_data_main'];
+		this.local_name = this.route.snapshot.params['local_name'];
 		this.refreshCouponsList(this.id_local_data_main);
 	}
 

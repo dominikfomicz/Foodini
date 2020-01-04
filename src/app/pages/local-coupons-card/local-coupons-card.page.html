@@ -1,18 +1,18 @@
 <ion-header no-border>
 	<ion-toolbar color="primary">
 		<ion-buttons slot="start" style="position: absolute;">
-		  <!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
+		  <ion-button size="small" shape="round" color="medium" (click)="notifications()">
 			<ion-icon name="notifications"></ion-icon>
 			<ion-badge color="dark" slot="end">2</ion-badge>
-		  </ion-button> -->
+		  </ion-button>
 		  <ion-back-button icon="arrow-back" text="" defaultHref=""></ion-back-button>
-		  <div class="titleicon">
+		  <!-- <div class="titleicon">
 			  <img src="assets/img/small.png">
-		  </div>
+		  </div> -->
 		</ion-buttons>
 		<ion-title class="ion-text-center">
 			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="secondary" (click)="alertLocation()">
-				Pizza Hut
+				{{local_name}}
 				<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
 			</ion-button>
 		</ion-title>

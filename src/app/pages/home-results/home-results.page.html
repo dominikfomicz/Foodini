@@ -36,7 +36,7 @@
 	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
 		<ion-item lines="none" detail="false" *ngFor="let item of items_locals" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
-				<img src="assets/img/pizza-hut.png">
+				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
 			</ion-thumbnail>
 			<ion-grid>
 				<!-- <ion-badge style="position: absolute; top:0px; right: 0px; font-size: 20px;" align-items-center color="danger">55</ion-badge> -->

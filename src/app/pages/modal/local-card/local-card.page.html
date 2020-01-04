@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header *ngIf="show === true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start" style="position:absolute">
         <ion-button color="primary" (click)="closeModal()">
@@ -15,16 +15,16 @@
 	</ion-buttons>
   </ion-toolbar>
 </ion-header>
-<div class="bg-profile" text-center>
-	<ion-badge style="position: absolute; top:60px; right: 5px; font-size: 20px;" align-items-center color="danger">{{ items.coupons_count }}</ion-badge>
-	<img src="assets/img/pizza-hut-cover.jpg">
+<div class="bg-profile" text-center *ngIf="show === true">
+	<ion-badge style="position: absolute; top:60px; right: 5px; font-size: 20px;" align-items-center color="danger">{{ items.coupons_count }} kuponów</ion-badge>
+	<img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/background.png">
 </div>
-<div class="vertical-center">
+<div class="vertical-center" *ngIf="show === true">
 	<div class="center">
-		<img src="assets/img/pizza-hut.png" class="ion-align-self-end" style="background-color: #ffd500;border-radius: 40px;">
+		<img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" class="ion-align-self-end" style="background-color: #ffd500; border-radius: 20px; padding: 5px; border: solid 2px #0000001c;">
 	</div>
 </div>
-<ion-content padding>
+<ion-content padding *ngIf="show === true">
 	<ion-card class="bg-white" no-margin>
 		<ion-card-content>
 			<ion-grid>
@@ -100,7 +100,7 @@
 	<ion-grid>
 		<ion-row class="cta">
 			<ion-col size="6"><a href="tel:534290115"><ion-button expand="block" shape="round" size="default" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
-			<ion-col size="6"><ion-button expand="block" shape="round" size="default" color="primary" (click)="openCouponList(items.local_id)"><ion-icon color="secondary" slot="end" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
+			<ion-col size="6"><ion-button expand="block" shape="round" size="default" color="primary" (click)="openCouponList(items.local_id, items.name)"><ion-icon color="secondary" slot="end" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
 		</ion-row>
 	</ion-grid>
 
