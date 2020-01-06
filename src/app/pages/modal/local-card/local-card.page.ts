@@ -12,7 +12,7 @@ export class LocalCardPage implements OnInit {
 	id_local_data_main;
 	items: any;
 	favColor: any;
-	show: boolean = false;
+	show = false;
 
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,

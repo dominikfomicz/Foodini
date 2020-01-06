@@ -28,6 +28,7 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk" />
     <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk" />
+    <preference name="APP_ID" value="476781279900770" />
     <platform name="android">
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />

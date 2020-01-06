@@ -20,6 +20,7 @@ export class CheckCouponPage implements OnInit {
 			}else{
 				alert('kupon nie istnieje');
 			}
+			console.log(data);
 		});
 	}
 

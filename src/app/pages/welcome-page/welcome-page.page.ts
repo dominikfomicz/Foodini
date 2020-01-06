@@ -10,7 +10,7 @@ import { Platform } from '@ionic/angular';
 })
 export class WelcomePagePage implements OnInit {
 
-	message = "";
+	message = '';
 	
 	constructor(public connection: ConnectionService, private device: Device, private platform: Platform) {
 		// setTimeout(() => {
