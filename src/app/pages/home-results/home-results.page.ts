@@ -42,8 +42,9 @@ export class HomeResultsPage implements OnInit {
 	items_coupons: any;
 	items_coupons_search: any;
 	viewList = 'locals';
-	favColor: any = 'light';
-	show: boolean = false;
+	// favColor: any = 'light';
+	viewFav = false;
+	show = false;
 
 	constructor(
 		public navCtrl: NavController,
@@ -144,25 +145,25 @@ export class HomeResultsPage implements OnInit {
 			case 'locals': {
 				this.refreshLocalsFavList();
 				this.viewList = 'locals_fav';
-				this.favColor = 'secondary';
+				this.viewFav = true;
 				break;
 			}
 			case 'locals_fav': {
 				this.refreshLocalsList();
 				this.viewList = 'locals';
-				this.favColor = 'light';
+				this.viewFav = false;
 				break;
 			}
 			case 'coupons': {
 				this.refreshCouponsFavList();
 				this.viewList = 'coupons_fav';
-				this.favColor = 'secondary';
+				this.viewFav = true;
 				break;
 			}
 			case 'coupons_fav': {
 				this.refreshCouponsList();
 				this.viewList = 'coupons';
-				this.favColor = 'light';
+				this.viewFav = false;
 			}
 		}
 	}

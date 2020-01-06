@@ -146,30 +146,38 @@
 		</div>
 	</div>	
 </section> -->
-
-<ion-tabs>
+<section style="position: sticky; bottom:60px; z-index:1000;">
+	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
+		<ion-chip style="background-color: #6a2c86;float:left;border: solid #5c2873 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
+			<ion-icon name="radio-button-on"></ion-icon>
+			<ion-label>Lokale</ion-label>
+		</ion-chip>
+		<ion-chip style="bottom:0px;background-color: #ffd500;float:left;border: solid #e4bf03 3px;" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" color="primary" (click)="toggleSwitchButton()">
+			<ion-label>Kupony</ion-label>
+			<ion-icon name="radio-button-on"></ion-icon>
+		</ion-chip>
+	</div>
+</section>	
 <ion-tab-bar slot="bottom">
-	<ion-tab-button tab="schedule">
-		<ion-icon name="home-empty"></ion-icon>
-		<ion-label>Strona główna</ion-label>
-		<!-- <ion-badge>6</ion-badge> -->
-		</ion-tab-button>
+	<!-- <ion-tab-button >
+	<ion-icon name="home"></ion-icon>
+	<ion-label>Strona główna</ion-label>
+	<ion-badge>6</ion-badge>
+	</ion-tab-button> -->
 
-		<ion-tab-button tab="speakers">
-		<ion-icon name="ios-heart-empty"></ion-icon>
-		<ion-label>Ulubione</ion-label>
-		</ion-tab-button>
+	<ion-tab-button [ngClass]="{'active_tab': viewFav === true, '': viewFav === false }" (click)="toggleFav()">
+	<ion-icon name="star"></ion-icon>
+	<ion-label>Ulubione</ion-label>
+	</ion-tab-button>
 
-		<ion-tab-button tab="map">
-		<ion-icon name="pin"></ion-icon>
-		<ion-label>Mapa</ion-label>
-		</ion-tab-button>
+	<ion-tab-button (click)="navigateToMapCard()">
+	<ion-icon name="pin"></ion-icon>
+	<ion-label>Mapa</ion-label>
+	</ion-tab-button>
 
-		<ion-tab-button tab="about">
-		<ion-icon name="settings"></ion-icon>
-		<ion-label>Filtry</ion-label>
-		</ion-tab-button>
-	</ion-tab-bar>
-</ion-tabs>
-
+	<ion-tab-button (click)="searchFilter()">
+	<ion-icon name="options"></ion-icon>
+	<ion-label>Filtry</ion-label>
+	</ion-tab-button>
+</ion-tab-bar>
 <!-- <popmenu></popmenu> -->

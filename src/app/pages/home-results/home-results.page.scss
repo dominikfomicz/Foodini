@@ -106,16 +106,20 @@ ion-content {
     border-radius: 15px !important;
 }
 
-// ion-tab-bar {
-//     // border-top: solid 1px #ececec;
-//     width: 70%;
-//     margin-left: auto;
-//     margin-right: auto;
-//     height: 40px;
-//     border: solid 0px;
-// }
+ion-tab-bar {
+    // // border-top: solid 1px #ececec;
+    // width: 70%;
+    // margin-left: auto;
+    // margin-right: auto;
+    // height: 40px;
+    // border: solid 0px;
+}
 
 ion-tab-button {
-    color:#6a2c86;
+    color: #a0a0a0;
+}
+
+.active_tab {
+    color: #6a2c86;
 }
 

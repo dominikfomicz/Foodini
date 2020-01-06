@@ -74,14 +74,14 @@ export class AppComponent {
 
       {
         title: 'O Foodinim',
-        url: '/welcome-page',
+        url: '/about',
         direct: 'forward',
         icon: 'information-circle'
       },
     ];
-    if(this.platform.pause){
-      localStorage.clear();
-    }
+    // if(this.platform.pause){
+    //   localStorage.clear();
+    // }
     this.initializeApp();
   }
 
