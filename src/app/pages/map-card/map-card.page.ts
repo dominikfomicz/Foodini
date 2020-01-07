@@ -11,6 +11,7 @@ import {
   } from '@ionic-native/google-maps';
 import { ModalController } from '@ionic/angular';
 import { LocalCardPage } from '../modal/local-card/local-card.page';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
 selector: 'app-map-card',
@@ -19,11 +20,14 @@ styleUrls: ['./map-card.page.scss'],
 })
 export class MapCardPage implements OnInit {
 	map: GoogleMap;
-	constructor(public modalCtrl: ModalController) {
+	items: any;
+
+	constructor(public modalCtrl: ModalController, public connection: ConnectionService) {
 	}
 
 	ngOnInit() {
-		this.loadMap();
+		// this.loadMap();
+		this.refreshLocalsList();
 	}
 
 	loadMap() {
@@ -45,6 +49,7 @@ export class MapCardPage implements OnInit {
 
 		this.map = GoogleMaps.create('map_canvas', mapOptions);
 		var id_local_data_main = 47;
+		
 		const marker_1: Marker = this.map.addMarkerSync({
 			title: 'Pizza Hut',
 			icon: {url: 'assets/icon/pizza-hut.png'},
@@ -70,6 +75,13 @@ export class MapCardPage implements OnInit {
 		marker_2.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
 			this.openLocationCard(id_local_data_main);
 		});
+	}
+
+	refreshLocalsList(){
+		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
+			this.items = data;
+			console.log(Object.keys(this.items).length);
+		})
 	}
 
 	async openLocationCard (id_local_data_main) {
