@@ -11,7 +11,7 @@ import { Platform } from '@ionic/angular';
 export class WelcomePagePage implements OnInit {
 
 	message = '';
-	
+
 	constructor(public connection: ConnectionService, private device: Device, private platform: Platform) {
 		// setTimeout(() => {
 		// 	window.location.reload();
@@ -32,6 +32,5 @@ export class WelcomePagePage implements OnInit {
 				this.connection.login(this.device.uuid, this.device.uuid);
 			});
 		});
-		
 	}
 }

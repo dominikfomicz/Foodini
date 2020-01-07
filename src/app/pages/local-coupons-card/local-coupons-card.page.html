@@ -5,7 +5,7 @@
 			<ion-icon name="notifications"></ion-icon>
 			<ion-badge color="dark" slot="end">2</ion-badge>
 		  </ion-button> -->
-		  <ion-back-button icon="arrow-back" text="" defaultHref=""></ion-back-button>
+		  <ion-back-button icon="ios-arrow-back" text="" defaultHref=""></ion-back-button>
 		  <!-- <div class="titleicon">
 			  <img src="assets/img/small.png">
 		  </div> -->
@@ -20,14 +20,9 @@
 </ion-header>
 
 <ion-content *ngIf="show === true">
-	<ion-toolbar class="search">
+	<!-- <ion-toolbar class="search">
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
-		<!-- <ion-buttons slot="end">
-			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
-				<ion-icon name="options"></ion-icon>
-			</ion-button>
-		</ion-buttons> -->
-	</ion-toolbar>
+	</ion-toolbar> -->
 	<ion-card class="no-radius">
 		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id)">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
@@ -79,3 +74,11 @@
 		</ion-item>
 	</ion-card>
 </ion-content>
+<ion-footer padding *ngIf="show === true">
+	<ion-grid>
+		<ion-row class="cta">
+			<ion-col size="6"><a href="tel:{{ phone_number }}"><ion-button expand="block" shape="round" size="default" color="secondary"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
+			<ion-col size="6"><ion-button disabled expand="block" shape="round" size="default" color="primary" (click)="openMenuImage(id_local_data_main)"><ion-icon color="secondary" slot="end" name="bookmark"></ion-icon><span style="color: #ffd500">Pokaż menu</span></ion-button></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>

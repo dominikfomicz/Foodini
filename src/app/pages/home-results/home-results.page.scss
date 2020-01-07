@@ -48,7 +48,7 @@ ion-content {
                         justify-content: flex-start;
                         ion-icon {
                             padding: 6px;
-                            color: #c5c5c5;
+                            color: #e2e1e1;
                             &.active {
                                 color: #000;
                             }
@@ -73,6 +73,7 @@ ion-content {
         // left: 25px;
         // top: 1px;
         bottom: 0;
+        margin-left: 10px;
         text-align:center;
     }
 

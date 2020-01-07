@@ -257,17 +257,15 @@ export class HomeResultsPage implements OnInit {
 		return await modal.present();
 	}
 
-	async searchFilter (foo, bar) {
+	async searchFilter () {
 		const modal = await this.modalCtrl.create({
 		component: FilterCardPage,
 		componentProps: {
-			foo: foo,
-			bar: bar
 		}
 		});
 		return await modal.present();
 	}
-	
+
 	async presentLoading() {
 		const loading = await this.loadingCtrl.create({
 			message: 'Ładowanie',

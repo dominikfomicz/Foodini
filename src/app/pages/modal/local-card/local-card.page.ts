@@ -54,8 +54,8 @@ export class LocalCardPage implements OnInit {
 		}
 	}
 
-	openCouponList(id_local_data_main, local_name){
-		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main + '/' + local_name);
+	openCouponList(id_local_data_main, local_name, phone_number){
+		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main + '/' + local_name + '/' + phone_number);
 		this.closeModal();
 	}
 

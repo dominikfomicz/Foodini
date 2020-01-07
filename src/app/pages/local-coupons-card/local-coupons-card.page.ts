@@ -41,6 +41,10 @@ export class LocalCouponsCardPage implements OnInit {
 		);
 	}
 
+	openMenuImage(id_local_data_main){
+		console.log(id_local_data_main);
+	}
+
 	async openCouponCard (id_coupon_data_main) {
 		const modal = await this.modalCtrl.create({
 		component: CouponCardPage,
