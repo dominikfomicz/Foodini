@@ -26,15 +26,16 @@ export class MapCardPage implements OnInit {
 	}
 
 	ngOnInit() {
-		// this.loadMap();
-		this.refreshLocalsList();
+		this.refreshLocalsList().then(a=>{
+			this.loadMap();
+		});
 	}
 
 	loadMap() {
 		Environment.setEnv({
 			'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
 			'API_KEY_FOR_BROWSER_DEBUG': ''
-		});;
+		});
 
 		let mapOptions: GoogleMapOptions = {
 			camera: {
@@ -48,39 +49,55 @@ export class MapCardPage implements OnInit {
 		};
 
 		this.map = GoogleMaps.create('map_canvas', mapOptions);
-		var id_local_data_main = 47;
-		
-		const marker_1: Marker = this.map.addMarkerSync({
-			title: 'Pizza Hut',
-			icon: {url: 'assets/icon/pizza-hut.png'},
-			animation: 'DROP',
-			position: {
-			lat: 50.6745737,
-			lng: 17.9372723
-			}
-		});
-		marker_1.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-			this.openLocationCard(id_local_data_main);
+		// var id_local_data_main = 47;
+
+		this.items.forEach(function(item){
+			// console.log(item)
+
+			const marker: Marker = this.map.addMarkerSync({
+				icon: {url: 'http://repo.foodini.net.pl/storage/locals/'+ item.local_id +'/logo.png'},
+				animation: 'DROP',
+				position: {
+				lat: item.latitude,
+				lng: item.longitude
+				}
+			});
+			marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+				this.openLocationCard(item.local_id);
+			});
 		});
 
-		const marker_2: Marker = this.map.addMarkerSync({
-			title: 'Zdrowa Krowa',
-			icon: {url: 'assets/icon/zdrowa-krowa.png'},
-			animation: 'DROP',
-			position: {
-			lat: 50.6712784,
-			lng: 17.9344813
-			}
-		});
-		marker_2.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-			this.openLocationCard(id_local_data_main);
-		});
+		// const marker_1: Marker = this.map.addMarkerSync({
+		// 	title: 'Pizza Hut',
+		// 	icon: {url: 'assets/icon/pizza-hut.png'},
+		// 	animation: 'DROP',
+		// 	position: {
+		// 	lat: 50.6745737,
+		// 	lng: 17.9372723
+		// 	}
+		// });
+		// marker_1.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+		// 	this.openLocationCard(id_local_data_main);
+		// });
+
+		// const marker_2: Marker = this.map.addMarkerSync({
+		// 	title: 'Zdrowa Krowa',
+		// 	icon: {url: 'assets/icon/zdrowa-krowa.png'},
+		// 	animation: 'DROP',
+		// 	position: {
+		// 	lat: 50.6712784,
+		// 	lng: 17.9344813
+		// 	}
+		// });
+		// marker_2.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+		// 	this.openLocationCard(id_local_data_main);
+		// });
 	}
 
-	refreshLocalsList(){
+	async refreshLocalsList(){
 		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
 			this.items = data;
-			console.log(Object.keys(this.items).length);
+			// console.log(Object.keys(this.items).length);
 		})
 	}
 

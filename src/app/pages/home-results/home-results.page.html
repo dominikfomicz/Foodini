@@ -1,13 +1,13 @@
 <ion-header no-border *ngIf="show === true">
-	<ion-toolbar color="secondary">
+	<ion-toolbar style="background-color:white">
 		<ion-buttons slot="start">
-			<!-- <ion-back-button icon="arrow-back" text="" defaultHref=""></ion-back-button> -->
+			<ion-back-button icon="ios-arrow-back" text="" defaultHref=""></ion-back-button>
 			<div class="titleicon">
 				<img src="assets/img/small.png">
 			</div>
 		</ion-buttons>
 		<ion-title text-center>
-			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary" (click)="alertLocation()">
+			<ion-button shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary" (click)="alertLocation()">
 				Opole
 				<ion-icon style="margin-left:10px" name="pin"></ion-icon>
 			</ion-button>
@@ -18,10 +18,10 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary" *ngIf="show === true">
+<ion-content color="light" *ngIf="show === true">
 	<ion-toolbar class="search">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
-		<ion-searchbar (ionInput)="getItems($event)" placeholder="Szukaj"></ion-searchbar>
+		<ion-searchbar style="background-color:whitesmoke" (ionInput)="getItems($event)" placeholder="Szukaj"></ion-searchbar>
 		<!-- <ion-buttons slot="end">
 			<ion-button size="small" shape="round" color="medium" (click)="searchFilter()">
 				<ion-icon name="options"></ion-icon>
@@ -29,7 +29,7 @@
 		</ion-buttons> -->
 	</ion-toolbar>
 	<!-- Lokale -->
-	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
+	<ion-card class="no-radius" style="background-color:whitesmoke" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
 		<ion-item lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
@@ -44,7 +44,7 @@
 						</ion-row>
 						<ion-row class="tags">
 							<ion-col *ngFor="let tag of item.tags | keyvalue">
-								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:8px; font-size:10px;">
 								{{tag.value.name}}
 								</div>
 							</ion-col>
@@ -144,7 +144,7 @@
 </section> -->
 <section style="position: sticky; bottom:60px; z-index:1000;">
 	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
-		<ion-chip style="background-color: #6a2c86;float:left;border: solid #5c2873 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
+		<ion-chip size="large" style="bottom:0px;background-color: rgb(106, 44, 134);float:left;border: solid rgb(98, 40, 124) 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
 			<ion-icon name="radio-button-on"></ion-icon>
 			<ion-label>Lokale</ion-label>
 		</ion-chip>

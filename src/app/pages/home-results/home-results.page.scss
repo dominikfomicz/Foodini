@@ -66,15 +66,14 @@ ion-content {
     }
 
     .titleicon {
-        // position: absolute;
-        // width: 100%;
-        width: 2.5rem;
+        width: 2.0rem;
         height: 100%;
-        // left: 25px;
-        // top: 1px;
         bottom: 0;
         margin-left: 10px;
-        text-align:center;
+        text-align: center;
+        position: absolute;
+        left: 30px;
+        top: 8px;
     }
 
     ion-thumbnail {
