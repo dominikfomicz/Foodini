@@ -1,18 +1,19 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
+<ion-header align-title=”center”>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" style="position: absolute;">
         <ion-button color="primary" (click)="closeModal()">
-            <ion-icon name="ios-arrow-back" color="light"></ion-icon>
+            <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
         </ion-button>
     </ion-buttons>
-    <!-- <ion-title>
-    	Dwie pizze w cenie jednej!
-	</ion-title> -->
-	<ion-buttons slot="primary">
+    <ion-title text-center>
+    	<img src="assets/img/small.png" style="width: 2.5rem;">
+	</ion-title>
+	<!-- <ion-buttons slot="primary">
 		<ion-button (click)="changeFavColor(id_coupon_data_main)">
 			<ion-icon slot="icon-only" [color]="favColor" name="star"></ion-icon>
 		</ion-button>
-	</ion-buttons>
+	</ion-buttons> -->
+
   </ion-toolbar>
 </ion-header>
 <!-- <div class="bg-profile" text-center>
@@ -21,13 +22,34 @@
 </div> -->
 <ion-content fullscreen>
 	<ion-card>
-		<img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 200px;"/>
-		<ion-card-header>
+		<ion-grid>
+			<ion-row style="position: relative">
+				<ion-col><img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 100px;"/></ion-col>
+				<div style="position: absolute; right:0px;"><ion-icon style="margin-top: 3.5rem; font-size:3rem" (click)="changeFavColor(id_coupon_data_main)" [color]="favColor" name="ios-star"></ion-icon></div>
+			</ion-row>
+		</ion-grid>
+		<!-- <img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 100px;"/> -->
+		<ion-card-header text-center>
 			<!-- <ion-card-subtitle>{{ item.name }}</ion-card-subtitle> -->
 			<ion-card-title>{{ items.name }}</ion-card-title>
 		</ion-card-header>
-		<ion-card-content>
+		<ion-card-content text-center>
 			{{ items.description }}
+			<br>Dostępność kuponu:
+			<ion-grid>
+				<ion-row class="ion-text-center">
+					<ion-col size="1.7" style="max-width: 100%;" class="hours_table" *ngFor="let item_hours of items.available_hours | keyvalue">
+						<span *ngIf="item_hours.value.id_day === 1">PN<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 4">CZ<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+						<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.hour_from }}<br>-<br>{{ item_hours.value.hour_to }}</div></span>
+					</ion-col>
+					
+				</ion-row>
+			</ion-grid>
 		</ion-card-content>
 	</ion-card>
 	<ion-card *ngIf="code != null">
@@ -45,7 +67,7 @@
 	<ion-grid>
 		<ion-row class="cta">
 				<!-- <ion-col size="6"><a href="tel:534290115"><ion-button expand="block" shape="round" size="large" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col> -->
-				<ion-col><ion-button expand="block" shape="round" size="default" color="primary" (click)="generateCode(items.coupon_id)" [disabled]="!button ? 'disabled': null"><span style="color: #ffd500">Odbierz kupon</span></ion-button></ion-col>
+				<ion-col><ion-button expand="block" shape="square" size="default" color="primary" (click)="generateCode(items.coupon_id)" [disabled]="!button ? 'disabled': null"><span style="color: #ffd500">Odbierz kupon</span></ion-button></ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-footer>

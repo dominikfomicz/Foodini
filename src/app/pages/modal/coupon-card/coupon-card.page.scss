@@ -69,4 +69,9 @@ ion-content {
 ion-title {
 	font-weight: 400;
 	font-size: 1rem;
+
+}
+
+ion-header::after {
+    background-image: none !important;
 }

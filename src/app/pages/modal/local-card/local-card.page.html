@@ -15,53 +15,53 @@
 	</ion-buttons> -->
   </ion-toolbar>
 </ion-header>
-<div class="ion-text-center" style="position: relative;" *ngIf="show === true">
-	<ion-badge style="position: absolute; bottom:10px; right: 5px; font-size: 20px;" align-items-center color="danger">Kupony: {{ items.coupons_count }}</ion-badge>
-	<img width="100%" src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/background.png">
-</div>
 <!-- <div class="vertical-center" *ngIf="show === true">
 	<div class="center">
 		<img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" class="ion-align-self-end" style="background-color: #ffd500; border-radius: 20px; padding: 5px; border: solid 2px #0000001c;">
 	</div>
 </div> -->
 <ion-content *ngIf="show === true">
-			<ion-grid>
-				<ion-row class="ion-text-center" style="font-size: 25px;color:black">
-					<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 7rem;"></ion-col>
-					<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
-					<ion-col size="2"><ion-icon style="margin-top: 1.5rem; font-size:2rem" (click)="changeFavColor(items.local_id)" [color]="favColor" name="ios-star"></ion-icon></ion-col>
-				</ion-row>
-				<ion-row class="ion-text-center">
-					<ion-col style="margin-top:20px;" *ngFor="let tag of items.main_tags | keyvalue">
-						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-						{{ tag.value.name }}
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
-					<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">LOKAL<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.local_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.local_open_status === false">ZAMKNIĘTE</span></ion-col>
-					<ion-col size="4" [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/kuchnia.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.kitchen_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
-					<ion-col size="4" [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/dowoz.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.delivery_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
-				</ion-row>
-				<ion-row class="ion-text-center">
-					<ion-col size="1.7" style="max-width: 100%;" class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
-						<span *ngIf="item_hours.value.id_day === 1">PN<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 4">CZ<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-						<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}</div></span>
-					</ion-col>
-					
-				</ion-row>
-				<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
-					<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:40px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
-					<ion-col size="3" [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:40px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
-					<ion-col size="3" [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:40px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
-					<ion-col size="3" [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:40px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
-				</ion-row>
-			</ion-grid>
+	<div class="ion-text-center" style="position: relative;" *ngIf="show === true">
+		<ion-badge style="position: absolute; bottom:10px; right: 5px; font-size: 20px;" align-items-center color="danger">Kupony: {{ items.coupons_count }}</ion-badge>
+		<img width="100%" src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/background.png">
+	</div>
+	<ion-grid>
+		<ion-row class="ion-text-center" style="font-size: 25px;color:black">
+			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 7rem;"></ion-col>
+			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
+			<ion-col size="2"><ion-icon style="margin-top: 1.5rem; font-size:2rem" (click)="changeFavColor(items.local_id)" [color]="favColor" name="ios-star"></ion-icon></ion-col>
+		</ion-row>
+		<ion-row class="ion-text-center">
+			<ion-col style="margin-top:20px;" *ngFor="let tag of items.main_tags | keyvalue">
+				<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+				{{ tag.value.name }}
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
+			<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">LOKAL<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.local_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.local_open_status === false">ZAMKNIĘTE</span></ion-col>
+			<ion-col size="4" [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">KUCHNIA<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/kuchnia.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.kitchen_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.kitchen_open_status === false">ZAMKNIĘTE</span></ion-col>
+			<ion-col size="4" [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">DOWÓZ<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/dowoz.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.delivery_open_status === true">OTWARTE</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.delivery_open_status === false">ZAMKNIĘTE</span></ion-col>
+		</ion-row>
+		<ion-row class="ion-text-center">
+			<ion-col size="1.7" style="max-width: 100%;" class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
+				<span *ngIf="item_hours.value.id_day === 1">PN<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 4">CZ<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+				<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+			</ion-col>
+			
+		</ion-row>
+		<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
+			<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:40px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
+			<ion-col size="3" [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:40px; width: auto;margin: auto;display: block;"><br>KARTA</ion-col>
+			<ion-col size="3" [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:40px; width: auto;margin: auto;display: block;"><br>BLIK</ion-col>
+			<ion-col size="3" [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:40px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
+		</ion-row>
+	</ion-grid>
 		
 	<br>
 	<ion-card class="bg-white" no-margin style="margin-top:10px;">
