@@ -20,7 +20,7 @@
 	<ion-badge style="position: absolute; top:60px; right: 0px; font-size: 20px;" align-items-center color="danger">55 kuponów</ion-badge>
 	<img src="assets/img/pizza-hut-cover.jpg">
 </div> -->
-<ion-content fullscreen>
+<ion-content fullscreen #content>
 	<ion-card>
 		<ion-grid>
 			<ion-row style="position: relative">
@@ -35,6 +35,13 @@
 		</ion-card-header>
 		<ion-card-content class="ion-text-center">
 			{{ items.description }}
+			<ion-item *ngIf="code != null" style="margin-top:20px;background-color: #f3f3f3;padding: 10px;border-radius: 10px;">
+				<ion-label text-center>
+					<h1>Pokaż kupon obsłudze</h1>
+					<!-- <img src="assets/img/qr-code.png"> --> 
+					<span style="font-size: 50px;">{{ code }}</span>
+				</ion-label>
+			</ion-item>
 			<ion-grid style="margin-top:20px">
 				<ion-row class="ion-text-center"><ion-col>Dostępność kuponu:</ion-col></ion-row>
 				<ion-row class="ion-text-center">
@@ -49,9 +56,9 @@
 					</ion-col>
 				</ion-row>
 				<ion-row margin-top class="ion-text-center">
-					<ion-col size="4"><img src="/assets/img/na-wynos-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na wynos</ion-col>
-					<ion-col size="4"><img src="/assets/img/na-miejscu-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na miejscu</ion-col>
-					<ion-col size="4"><img src="/assets/img/na-dowoz-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na dowóz</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.eat_in_local === true, 'closed': items.eat_in_local === false }"><img src="/assets/img/na-miejscu-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na miejscu</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.pick_up_local === true, 'closed': items.pick_up_local === false }"><img src="/assets/img/na-wynos-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na wynos</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.delivery === true, 'closed': items.delivery === false }"><img src="/assets/img/na-dowoz-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na dowóz</ion-col>
 				</ion-row>
 				<ion-row margin-top class="ion-text-center">
 					<ion-col>Do wykorzystania: raz na 24 godziny</ion-col>
@@ -60,13 +67,6 @@
 					<ion-col>Pamiętaj, po odebraniu kuponu masz 5 minut na pokazanie go obsłudze.</ion-col>
 				</ion-row>
 			</ion-grid>
-			<ion-item *ngIf="code != null" style="margin-bottom: 50px;">
-				<ion-label text-center>
-					<h1>Pokaż kupon obsłudze</h1>
-					<!-- <img src="assets/img/qr-code.png"> --> 
-					<span style="font-size: 50px;">{{ code }}</span>
-				</ion-label>
-			</ion-item>
 		</ion-card-content>
 	</ion-card>
 	<!-- <ion-card *ngIf="code != null">

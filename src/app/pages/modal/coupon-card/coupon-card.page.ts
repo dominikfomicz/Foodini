@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalController, NavController, LoadingController, IonContent } from '@ionic/angular';
+import { ModalController, NavController, LoadingController } from '@ionic/angular';
 import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { ConnectionService } from 'src/app/services/connection.service';
 	styleUrls: ['./coupon-card.page.scss'],
 })
 export class CouponCardPage implements OnInit {
-	@ViewChild(IonContent) content: IonContent;
+	@ViewChild('content') private content: any;
 	public radiusmiles = 1;
 	public minmaxprice = {
 		upper: 500,
@@ -66,7 +66,7 @@ export class CouponCardPage implements OnInit {
 			// console.log(data);
 		});
 		this.button = false;
-		this.content.scrollToBottom(100);
+		// this.content.scrollToBottom(300);
 	}
 
 	async presentLoading() {
