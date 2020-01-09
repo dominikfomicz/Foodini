@@ -27,7 +27,8 @@
 		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id)">
 			<!-- <div style="width:100%;height:100%"><ion-spinner *ngIf="searching" class="spinner-container"></ion-spinner></div> -->
 			<ion-thumbnail slot="start">
-				<img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png">
+				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
+				<!-- <img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png"> -->
 			</ion-thumbnail>
 			<ion-grid>
 				<ion-badge style="position: absolute; bottom:15px; right: 0px; font-size: 20px;" class="ion-align-items-center" color="danger">x{{ item.coupon_left }}</ion-badge>
