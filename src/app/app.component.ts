@@ -88,7 +88,7 @@ export class AppComponent {
   initializeApp() {
     this.user_type = localStorage.getItem('user_type');
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
     }).catch(() => {});
   }

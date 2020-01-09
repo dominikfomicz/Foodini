@@ -1,5 +1,5 @@
 <ion-header no-border *ngIf="show === true">
-	<ion-toolbar color="primary">
+	<ion-toolbar style="background-color:white">
 		<ion-buttons slot="start" style="position: absolute;">
 		  <!-- <ion-button size="small" shape="round" color="medium" (click)="notifications()">
 			<ion-icon name="notifications"></ion-icon>
@@ -11,7 +11,7 @@
 		  </div> -->
 		</ion-buttons>
 		<ion-title class="ion-text-center">
-			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="secondary" (click)="alertLocation()">
+			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary" (click)="alertLocation()">
 				{{local_name}}
 				<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
 			</ion-button>
@@ -19,11 +19,11 @@
   	</ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="show === true">
+<ion-content *ngIf="show === true" style="background-color:whitesmoke">
 	<!-- <ion-toolbar class="search">
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
 	</ion-toolbar> -->
-	<ion-card class="no-radius">
+	<ion-card class="no-radius" style="background-color:whitesmoke">
 		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id)" style="position: relative">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
