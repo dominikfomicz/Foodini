@@ -115,5 +115,5 @@
     </platform>
     <engine name="android" spec="~8.1.0" />
     <allow-navigation href="http://localhost:8101" sessionid="4ae74bce" />
-    <allow-navigation href="http://localhost:8100" sessionid="70cc3195" />
+    <allow-navigation href="http://localhost:8100" sessionid="dd20c59a" />
 </widget>

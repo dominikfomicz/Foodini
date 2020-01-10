@@ -18,8 +18,8 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content color="light" *ngIf="show === true">
-	<ion-toolbar class="search">
+<ion-content style="background-color:whitesmoke" *ngIf="show === true">
+	<ion-toolbar style="background-color:whitesmoke">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
 		<ion-searchbar style="background-color:whitesmoke" (ionInput)="getItems($event)" placeholder="Szukaj"></ion-searchbar>
 		<!-- <ion-buttons slot="end">
@@ -43,10 +43,16 @@
 							<h5><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
-							<ion-col *ngFor="let tag of item.tags | keyvalue">
-								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:8px; font-size:10px;">
+							<ion-col *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
+								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;">
 								{{tag.value.name}}
 								</div>
+								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;">
+									{{tag.value.name}}
+								</div>
+								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;">
+									{{tag.value.name}}
+								</div>	
 							</ion-col>
 						</ion-row>
 						<ion-row class="info">

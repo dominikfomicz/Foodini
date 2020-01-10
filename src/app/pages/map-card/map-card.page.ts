@@ -20,85 +20,57 @@ styleUrls: ['./map-card.page.scss'],
 })
 export class MapCardPage implements OnInit {
 	map: GoogleMap;
-	items: any;
+	public items: any;
 
 	constructor(public modalCtrl: ModalController, public connection: ConnectionService) {
 	}
 
 	ngOnInit() {
-		this.refreshLocalsList().then(a=>{
-			this.loadMap();
-		});
+		this.loadMap();
 	}
 
 	loadMap() {
-		Environment.setEnv({
-			'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
-			'API_KEY_FOR_BROWSER_DEBUG': ''
-		});
-
-		let mapOptions: GoogleMapOptions = {
-			camera: {
-				target: {
-					lat: 50.6745737,
-					lng: 17.9372723
-				},
-				zoom: 15,
-				tilt: 30
-			}
-		};
-
-		this.map = GoogleMaps.create('map_canvas', mapOptions);
-		// var id_local_data_main = 47;
-
-		this.items.forEach(function(item){
-			// console.log(item)
-
-			const marker: Marker = this.map.addMarkerSync({
-				icon: {url: 'http://repo.foodini.net.pl/storage/locals/'+ item.local_id +'/logo.png'},
-				animation: 'DROP',
-				position: {
-				lat: item.latitude,
-				lng: item.longitude
+		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
+			Environment.setEnv({
+				'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
+				'API_KEY_FOR_BROWSER_DEBUG': ''
+			});
+	
+			let mapOptions: GoogleMapOptions = {
+				camera: {
+					target: {
+						lat: 50.6745737,
+						lng: 17.9372723
+					},
+					zoom: 15,
+					tilt: 30
 				}
-			});
-			marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-				this.openLocationCard(item.local_id);
-			});
+			};
+
+			this.map = GoogleMaps.create('map_canvas', mapOptions);
+
+			for(let i = 0; i <= Object.keys(data).length; i++){
+				// console.log(data[i]);
+				const marker: Marker = this.map.addMarkerSync({
+					icon: {url: 'http://repo.foodini.net.pl/storage/locals/'+ data[i].local_id +'/logo.png'},
+					animation: 'DROP',
+					position: {
+					lat: data[i].latitude,
+					lng: data[i].longitude
+					}
+				});
+				marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+					this.openLocationCard(data[i].local_id);
+				});
+			}
 		});
-
-		// const marker_1: Marker = this.map.addMarkerSync({
-		// 	title: 'Pizza Hut',
-		// 	icon: {url: 'assets/icon/pizza-hut.png'},
-		// 	animation: 'DROP',
-		// 	position: {
-		// 	lat: 50.6745737,
-		// 	lng: 17.9372723
-		// 	}
-		// });
-		// marker_1.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-		// 	this.openLocationCard(id_local_data_main);
-		// });
-
-		// const marker_2: Marker = this.map.addMarkerSync({
-		// 	title: 'Zdrowa Krowa',
-		// 	icon: {url: 'assets/icon/zdrowa-krowa.png'},
-		// 	animation: 'DROP',
-		// 	position: {
-		// 	lat: 50.6712784,
-		// 	lng: 17.9344813
-		// 	}
-		// });
-		// marker_2.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-		// 	this.openLocationCard(id_local_data_main);
-		// });
 	}
 
-	async refreshLocalsList(){
+	refreshLocalsList(){
 		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
 			this.items = data;
-			// console.log(Object.keys(this.items).length);
-		})
+			console.log(this.items);
+		});
 	}
 
 	async openLocationCard (id_local_data_main) {
