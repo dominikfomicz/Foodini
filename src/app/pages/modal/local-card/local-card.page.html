@@ -1,12 +1,15 @@
 <ion-header *ngIf="show === true">
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-        <ion-button color="primary" (click)="closeModal()">
-            <ion-icon name="ios-arrow-back" color="light"></ion-icon>
+  <ion-toolbar style="background-color:white">
+    <ion-buttons slot="start" style="position: absolute;">
+        <ion-button (click)="closeModal()">
+            <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
         </ion-button>
     </ion-buttons>
-    <ion-title>
-    	{{ items.name }}
+    <ion-title class="ion-text-center">
+		<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary">
+			{{items.name}}
+			<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
+		</ion-button>
 	</ion-title>
 	<!-- <ion-buttons slot="primary">
 		<ion-button (click)="changeFavColor(items.local_id)">
@@ -64,7 +67,7 @@
 	</ion-grid>
 
 	<br>
-	<ion-card class="bg-white" no-margin style="margin-top:10px;">
+	<ion-card no-margin style="margin-top:10px;">
 			<ion-list>
 				<ion-list-header>
 					Informacje
@@ -92,6 +95,13 @@
 				</ion-item>
 			</ion-list>
 			<ion-grid>
+				<ion-row (click)="expandTags()">
+					<ion-col>
+						<div>
+							Informacje dodatkowe <ion-icon name="arrow-dropdown"></ion-icon>
+						</div>
+					</ion-col>
+				</ion-row>
 				<ion-row text-center class="tags" [class.active]="showTags">
 					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue">
 						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
@@ -99,12 +109,10 @@
 						</div>
 					</ion-col>
 				</ion-row>
-				<ion-row (click)="expandTags()">
-					<ion-col>
-						<div>
-							\/
-						</div>
-					</ion-col>
+				<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
+					<ion-col class="social" size="4"><a href="{{ items.facebook_url }}"><ion-icon name="logo-facebook" style="font-size: 4rem;"></ion-icon><br>FACEBOOK</a></ion-col>
+					<ion-col class="social" size="4"><a href="{{ items.instagram_url }}"><ion-icon name="logo-instagram" style="font-size: 4rem;"></ion-icon><br>INSTAGRAM</a></ion-col>
+					<ion-col class="social" size="4"><a href=""><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu-2.png"><br>MENU</a></ion-col>
 				</ion-row>
 			</ion-grid>
 	</ion-card>

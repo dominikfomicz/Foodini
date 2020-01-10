@@ -15,22 +15,37 @@ ion-content {
 
     ion-card {
         margin: 0;
-        --background: whitesmoke !important;
         box-shadow: none;
-        // margin: 0;
-        // box-shadow: none;
-        // --background: #fefefe;
-        // &.no-radius {
-        //     border-radius: 0;
-        // }
+        --background: #fdfdfd;
         &.no-radius {
             border-radius: 0;
+        }
+        * {
+            font-family: 'Josefin Sans', sans-serif;
         }
         ion-item {
             margin: 0 1rem;
             ion-row {
                 text-align: left;
-                &.tags {
+                ion-col {
+                    &.coupon-image {
+                        display: flex;
+                        align-items: flex-end;
+                    }
+                }
+                &.title-company {
+                    h4 {
+                        margin-bottom: 0.1rem;
+                    }
+                }
+                &.title-offer {
+                    h4 {
+                        color: var(--ion-color-primary);
+                        margin-top: 0.1rem;
+                    }
+                }
+                &.coupons_tags {
+                    height: 25px;
                     ion-col {
                         &:first-child {
                             padding-left: 0;
@@ -48,7 +63,7 @@ ion-content {
                         justify-content: flex-start;
                         ion-icon {
                             padding: 6px;
-                            color: #e2e1e1;
+                            color: #c5c5c5;
                             &.active {
                                 color: #000;
                             }
@@ -56,10 +71,9 @@ ion-content {
                     }
                 }
             }
-
         }
 
-    }
+        }
 
     ion-searchbar{
         .searchbar-input-container{
@@ -189,4 +203,8 @@ ion-tab-button {
   100% {
       right: 0 !important;
   }
+}
+
+.closed {
+    opacity: 0.2;
 }

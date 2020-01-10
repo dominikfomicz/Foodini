@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactPage implements OnInit {
 
-  constructor() { }
+  constructor(public alertCtrl: AlertController) { }
 
   ngOnInit() {
   }
 
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Dziękujemy!',
+      subHeader: 'Twoja wiadomość została wysłana',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }

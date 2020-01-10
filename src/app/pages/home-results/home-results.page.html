@@ -61,9 +61,9 @@
 									{{ item.open_from }} - {{ item.open_to }}
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<img class="icon" src="/assets/img/first.png" [ngClass]="{'active': item.delivery == true, '': item.delivery == false }">
-									<img class="icon" src="/assets/img/second.png" [ngClass]="{'active': item.eat_in_local == true, '': item.eat_in_local == false }" >
-									<img class="icon" src="/assets/img/third.png" [ngClass]="{'active': item.pick_up_local == true, '': item.pick_up_local == false }">
+									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }" >
+									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }">
 								</div>
 							</ion-col>
 						</ion-row>
@@ -91,7 +91,7 @@
 						<ion-row class="title-offer">
 							<h4 color="primary"><b>{{ item.coupon_name }}</b></h4>
 						</ion-row>
-						<ion-row class="tags">
+						<ion-row class="coupons_tags">
 							<ion-col *ngFor="let tag of item.tags | keyvalue">
 								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
 									{{tag.value.name}}
@@ -113,9 +113,9 @@
 									Aktywny
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<ion-icon name="car" [ngClass]="{'active': item.delivery == true, '': item.delivery == false }"></ion-icon>
-									<ion-icon name="restaurant" [ngClass]="{'active': item.eat_in_local == true, '': item.eat_in_local == false }" ></ion-icon>
-									<ion-icon name="swap" [ngClass]="{'active': item.pick_up_local == true, '': item.pick_up_local == false }"></ion-icon>
+									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }" >
+									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }">
 								</div>
 							</ion-col>
 						</ion-row>
