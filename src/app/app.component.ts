@@ -58,16 +58,16 @@ export class AppComponent {
       //   icon: 'pin'
       // }
 
-      {
-        title: 'Poleć aplikację',
-        url: '/welcome-page',
-        direct: 'forward',
-        icon: 'share'
-      },
+      // {
+      //   title: 'Poleć aplikację',
+      //   url: 'https://www.facebook.com/Foodiniapp/',
+      //   direct: 'forward',
+      //   icon: 'share'
+      // },
 
       {
         title: 'Prześlij uwagi',
-        url: '/welcome-page',
+        url: '/contact',
         direct: 'forward',
         icon: 'mail'
       },

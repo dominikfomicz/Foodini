@@ -5,18 +5,20 @@
     </ion-buttons>
     <ion-title>
       <ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary">
-        Weryfikacja kuponu
+        Zaproponuj zmiany
       </ion-button>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding style="background-color:whitesmoke">
   <ion-item>
-    <ion-label position="floating">Wpisz kod kuponu</ion-label>
+    <ion-label position="floating">Imie</ion-label>
     <ion-input [(ngModel)]="unique_number" name="unique_number"></ion-input>
   </ion-item>
-  <br>
-  <ion-button expand="block" type="submit" class="ion-no-margin">Zeskanuj kod QR</ion-button>
+  <ion-item>
+    <ion-label position="floating">Wiadomość</ion-label>
+    <ion-textarea rows="6" cols="20"></ion-textarea>
+  </ion-item>
   
 </ion-content>
-<ion-footer padding><ion-button expand="block" shape="square" size="default" color="primary" (click)="checkCoupon()">Zweryfikuj kupon</ion-button></ion-footer>
+<ion-footer padding><ion-button expand="block" shape="square" size="default" color="primary" (click)="checkCoupon()">Wyślij</ion-button></ion-footer>

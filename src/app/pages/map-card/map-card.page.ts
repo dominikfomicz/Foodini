@@ -35,7 +35,7 @@ export class MapCardPage implements OnInit {
 				'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
 				'API_KEY_FOR_BROWSER_DEBUG': ''
 			});
-	
+
 			let mapOptions: GoogleMapOptions = {
 				camera: {
 					target: {
