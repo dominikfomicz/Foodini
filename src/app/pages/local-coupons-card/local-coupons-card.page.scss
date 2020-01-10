@@ -43,6 +43,7 @@
                     }
                 }
                 &.tags {
+                    height: 0;
                     ion-col {
                         &:first-child {
                             padding-left: 0;
@@ -72,6 +73,10 @@
         }
     }
 
+    ion-button {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
 
     .titleicon {
@@ -111,6 +116,6 @@
     .closed {
         opacity: 0.3;
     }
-    
-    a { text-decoration: none }      
+
+    a { text-decoration: none }
 }

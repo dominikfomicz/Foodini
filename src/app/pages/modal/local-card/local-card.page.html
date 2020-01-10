@@ -53,7 +53,7 @@
 				<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
 				<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
 			</ion-col>
-			
+
 		</ion-row>
 		<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
 			<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:40px; width: auto;margin: auto;display: block;"><br>GOTÓWKA</ion-col>
@@ -62,7 +62,7 @@
 			<ion-col size="3" [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:40px; width: auto;margin: auto;display: block;"><br>ZBLIŻENIOWO</ion-col>
 		</ion-row>
 	</ion-grid>
-		
+
 	<br>
 	<ion-card class="bg-white" no-margin style="margin-top:10px;">
 			<ion-list>
@@ -92,10 +92,17 @@
 				</ion-item>
 			</ion-list>
 			<ion-grid>
-				<ion-row text-center>
+				<ion-row text-center class="tags" [class.active]="showTags">
 					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue">
 						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
 						{{tag.value.name}}
+						</div>
+					</ion-col>
+				</ion-row>
+				<ion-row (click)="expandTags()">
+					<ion-col>
+						<div>
+							\/
 						</div>
 					</ion-col>
 				</ion-row>

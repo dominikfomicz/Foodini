@@ -13,7 +13,7 @@ export class LocalCardPage implements OnInit {
 	items: any;
 	favColor: any;
 	show = false;
-
+	showTags = false;
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
 				public loadingCtrl: LoadingController,
@@ -64,5 +64,9 @@ export class LocalCardPage implements OnInit {
 			message: 'Ładowanie',
 		});
 		await loading.present();
+	}
+
+	expandTags() {
+		this.showTags = !this.showTags;
 	}
 }

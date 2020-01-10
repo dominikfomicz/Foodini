@@ -36,3 +36,12 @@ ion-title {
 	font-weight: 400;
     font-size: 1rem;
 }
+
+.tags {
+	height: 0;
+	opacity: 0;
+	&.active {
+		height: 100%;
+	opacity: 1;
+	}
+}

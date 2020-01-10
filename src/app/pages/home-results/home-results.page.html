@@ -140,20 +140,28 @@
 				<ion-button (click)="toggleFav()"><ion-icon slot="icon-only" [color]="favColor" name="star"></ion-icon></ion-button>
 			</div>
 		</div>
-	</div>	
+	</div>
 </section> -->
 <section style="position: sticky; bottom:60px; z-index:1000;">
 	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
-		<ion-chip size="large" style="bottom:0px;background-color: rgb(106, 44, 134);float:left;border: solid rgb(98, 40, 124) 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
+		<!-- <ion-chip size="large" style="bottom:0px;background-color: rgb(106, 44, 134);float:left;border: solid rgb(98, 40, 124) 3px;"  *ngIf="viewList === 'locals' || viewList === 'locals_fav'" color="secondary" (click)="toggleSwitchButton()">
 			<ion-icon name="radio-button-on"></ion-icon>
 			<ion-label>Lokale</ion-label>
 		</ion-chip>
 		<ion-chip style="bottom:0px;background-color: #ffd500;float:left;border: solid #e4bf03 3px;" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" color="primary" (click)="toggleSwitchButton()">
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
-		</ion-chip>
+		</ion-chip> -->
+		<div class="toggler_screen" style="position: relative; bottom:0px;background-color: #fff;float:left;border: solid #e3e3e3 3px; padding: 10px; border-radius: 25px;" (click)="toggleSwitchButton()" >
+			<ion-label class="locals active" style="color: rgb(106, 44, 134);" [class.active]="viewList === 'locals'">Lokale</ion-label>
+			<ion-label class="coupons" [class.active]="viewList === 'coupons'">Kupony</ion-label>
+			<div class="slider" [ngClass]="{
+				'switch-right': switchState,
+				'switch-left': !switchState
+			}"></div>
+		</div>
 	</div>
-</section>	
+</section>
 <ion-tab-bar slot="bottom">
 	<!-- <ion-tab-button >
 	<ion-icon name="home"></ion-icon>

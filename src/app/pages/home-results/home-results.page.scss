@@ -122,4 +122,61 @@ ion-tab-button {
 .active_tab {
     color: #6a2c86;
 }
+.toggler_screen {
+    ion-label {
+        &.locals {
+            padding: 10px; z-index: 1; position: relative;
+            &.active {
+                color: #fff !important;
+            }
+        }
+        &.coupons {
+            color: rgb(106, 44, 134);
+            padding: 10px; z-index: 1; position: relative;
+        //     &.active {
 
+        //     }
+        }
+    }
+    .slider {
+        margin-top: 1%;
+        margin-left: 2%;
+        margin-right: 2%;
+        background-color: rgb(106, 44, 134); width: 50%; height: 90%; padding: 10px; border-radius: 25px; position: absolute; z-index: 0; top: 0;
+        left: 0;
+        right: unset;
+        &.switch-left {
+
+        }
+        &.switch-right {
+            right: 0;
+            left: unset !important;
+            background-color: #ffd500;
+        }
+        // &.switch-left {
+        //     animation-duration: .5s;
+        //     animation-name: slidein;
+        // }
+    }
+}
+
+
+@keyframes slidein {
+  0% {
+        left: 0 !important;
+  }
+
+  50% {
+        left: 50% !important;
+  }
+
+  100% {
+        right: 0;
+        left: unset !important;
+  }
+}
+@keyframes slideout {
+  100% {
+      right: 0 !important;
+  }
+}

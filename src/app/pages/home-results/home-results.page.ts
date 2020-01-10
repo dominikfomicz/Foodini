@@ -45,7 +45,7 @@ export class HomeResultsPage implements OnInit {
 	// favColor: any = 'light';
 	viewFav = false;
 	show = false;
-
+	switchState = false;
 	constructor(
 		public navCtrl: NavController,
 		public menuCtrl: MenuController,
@@ -117,10 +117,14 @@ export class HomeResultsPage implements OnInit {
 	}
 
 	toggleSwitchButton(){
+		this.switchState = !this.switchState;
 		switch(this.viewList) {
 			case 'locals': {
 				this.refreshCouponsList();
 				this.viewList = 'coupons';
+				// document.querySelector('.slider').classList.add('switch-right');
+				// alert(document.querySelector('.slider').classList)
+				// document.querySelector('.slider').classList.remove('switch-left');
 				break;
 			}
 			case 'locals_fav': {
@@ -131,6 +135,9 @@ export class HomeResultsPage implements OnInit {
 			case 'coupons': {
 				this.refreshLocalsList();
 				this.viewList = 'locals';
+				// alert(document.querySelector('.slider').classList)
+				// document.querySelector('.slider').classList.add('switch-left');
+				// document.querySelector('.slider').classList.remove('switch-right');
 				break;
 			}
 			case 'coupons_fav': {
