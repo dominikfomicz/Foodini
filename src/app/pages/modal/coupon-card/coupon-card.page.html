@@ -1,4 +1,4 @@
-<ion-header align-title=”center”>
+<ion-header align-title=”center” *ngIf="show === true">
   <ion-toolbar color="light">
     <ion-buttons slot="start" style="position: absolute;">
         <ion-button color="primary" (click)="closeModal()">
@@ -20,7 +20,7 @@
 	<ion-badge style="position: absolute; top:60px; right: 0px; font-size: 20px;" align-items-center color="danger">55 kuponów</ion-badge>
 	<img src="assets/img/pizza-hut-cover.jpg">
 </div> -->
-<ion-content fullscreen #content>
+<ion-content fullscreen #content *ngIf="show === true">
 	<ion-card>
 		<ion-grid>
 			<ion-row style="position: relative">
@@ -80,7 +80,7 @@
 		</ion-item>
 	</ion-card> -->
 </ion-content>
-<ion-footer>
+<ion-footer *ngIf="show === true">
 	<ion-grid>
 		<ion-row class="cta">
 				<!-- <ion-col size="6"><a href="tel:534290115"><ion-button expand="block" shape="round" size="large" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col> -->

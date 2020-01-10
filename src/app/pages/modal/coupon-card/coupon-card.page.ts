@@ -20,6 +20,7 @@ export class CouponCardPage implements OnInit {
 	button = true;
 	items: any;
 	favColor: any;
+	show = false;
 
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
@@ -27,17 +28,16 @@ export class CouponCardPage implements OnInit {
 				public connection: ConnectionService) { }
 
 	ngOnInit() {
-		console.log(this.id_coupon_data_main)
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('coupons/getDetails/'+ this.id_coupon_data_main).subscribe(data => {
 				this.items = data;
-				console.log(data);
 				if(this.items.is_favouirite === true){
 					this.favColor = 'secondary';
 				} else {
 					this.favColor = 'light';
 				}
 				this.loadingCtrl.dismiss('loading');
+				this.show = true;
 			})
 		);
 	}

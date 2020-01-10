@@ -4,7 +4,7 @@ ion-content {
 
 :host {
     ion-content {
-        --background: var(--ion-color-secondary);
+        --background: whitesmoke;
     }
 
     ion-item {
@@ -137,9 +137,9 @@ ion-tab-button {
         &.coupons {
             color: rgb(106, 44, 134);
             padding: 10px; z-index: 1; position: relative;
-        //     &.active {
-
-        //     }
+            &.active {
+                color: #fff !important;
+            }
         }
     }
     .slider {
@@ -155,7 +155,7 @@ ion-tab-button {
         &.switch-right {
             right: 0;
             left: unset !important;
-            background-color: #ffd500;
+            background-color: rgb(106, 44, 134);
         }
         // &.switch-left {
         //     animation-duration: .5s;
