@@ -17,14 +17,16 @@
 	</ion-card>
 </ion-content> -->
 <ion-header>
-	<ion-toolbar color="primary">
+	<ion-toolbar style="background-color:white">
 		<ion-buttons slot="start">
-			<ion-button color="primary" (click)="closeModal()">
-				<ion-icon name="close" color="light"></ion-icon>
+			<ion-button (click)="closeModal()">
+				<ion-icon name="ios-arrow-back" color="primary"></ion-icon>
 			</ion-button>
 		</ion-buttons>
 		<ion-title>
-			Filtry
+			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary">
+				Filtry
+			</ion-button>
 		</ion-title>
 	</ion-toolbar>
 </ion-header>
