@@ -8,7 +8,6 @@ import { ConnectionService } from 'src/app/services/connection.service';
 	styleUrls: ['./coupon-card.page.scss'],
 })
 export class CouponCardPage implements OnInit {
-	@ViewChild('content') private content: any;
 	public radiusmiles = 1;
 	public minmaxprice = {
 		upper: 500,
