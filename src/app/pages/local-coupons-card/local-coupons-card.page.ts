@@ -15,6 +15,7 @@ export class LocalCouponsCardPage implements OnInit {
 	id_local_data_main: any;
 	local_name: any = '';
 	items: any;
+	phone_number: any;
 	show = false;
 
 	constructor(
@@ -27,6 +28,7 @@ export class LocalCouponsCardPage implements OnInit {
 	ngOnInit() {
 		this.id_local_data_main = this.route.snapshot.params['id_local_data_main'];
 		this.local_name = this.route.snapshot.params['local_name'];
+		this.phone_number = this.route.snapshot.params['phone_number']
 		this.refreshCouponsList(this.id_local_data_main);
 	}
 

@@ -29,7 +29,7 @@
 		</ion-buttons> -->
 	</ion-toolbar>
 	<!-- Lokale -->
-	<ion-card class="no-radius" style="background-color:whitesmoke" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
+	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
 		<ion-item lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
@@ -47,10 +47,10 @@
 								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;text-align: center;">
 								{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;">
+								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;text-align: center;">
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;">
+								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;text-align: center;">
 									{{tag.value.name}}
 								</div>	
 							</ion-col>
@@ -158,7 +158,7 @@
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
 		</ion-chip> -->
-		<div class="toggler_screen" style="position: relative; bottom:0px;background-color: #fff;float:left;border: solid #e3e3e3 3px; padding: 13px; border-radius: 25px; font-size: 1.2rem;" (click)="toggleSwitchButton()" >
+		<div class="toggler_screen" style="position: relative; bottom:0px;background-color: #fff;float:left;border: solid #e3e3e3 3px; padding: 13px; border-radius: 25px; font-size: 1.1rem;" (click)="toggleSwitchButton()" >
 			<ion-label class="locals active" style="color: rgb(106, 44, 134);" [class.active]="viewList === 'locals' || viewList === 'locals_fav'">Lokale</ion-label>
 			<ion-label class="coupons" [class.active]="viewList === 'coupons' || viewList === 'coupons_fav'">Kupony</ion-label>
 			<div class="slider" [ngClass]="{
@@ -168,7 +168,7 @@
 		</div>
 	</div>
 </section>
-<ion-tab-bar slot="bottom">
+<ion-tab-bar slot="bottom" style="border-top: solid 2px #e6e6e6;">
 	<!-- <ion-tab-button >
 	<ion-icon name="home"></ion-icon>
 	<ion-label>Strona główna</ion-label>
