@@ -2,4 +2,8 @@
     ion-content {
         --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
     }
+    .social a {
+        color:black;
+        text-decoration: none;
+    }
 }

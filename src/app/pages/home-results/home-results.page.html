@@ -40,11 +40,11 @@
 				<ion-row>
 					<ion-col text-center size="12">
 						<ion-row class="title">
-							<h5><b>{{ item.name }}</b></h5>
+							<h5 style="margin-left:5px"><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
 							<ion-col *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
-								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;">
+								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;text-align: center;">
 								{{tag.value.name}}
 								</div>
 								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;">

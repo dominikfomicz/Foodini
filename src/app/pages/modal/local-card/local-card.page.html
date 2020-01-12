@@ -25,7 +25,7 @@
 </div> -->
 <ion-content *ngIf="show === true">
 	<div class="ion-text-center" style="position: relative;" *ngIf="show === true">
-		<ion-badge style="position: absolute; bottom:10px; right: 5px; font-size: 20px;" align-items-center color="danger">Kupony: {{ items.coupons_count }}</ion-badge>
+		<div style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">Kupony: {{ items.coupons_count }}</div>
 		<img width="100%" src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/background.png">
 	</div>
 	<ion-grid>
@@ -35,10 +35,16 @@
 			<ion-col size="2"><ion-icon style="margin-top: 1.5rem; font-size:2rem" (click)="changeFavColor(items.local_id)" [color]="favColor" name="ios-star"></ion-icon></ion-col>
 		</ion-row>
 		<ion-row class="ion-text-center">
-			<ion-col style="margin-top:20px;" *ngFor="let tag of items.main_tags | keyvalue">
-				<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
-				{{ tag.value.name }}
+			<ion-col style="margin-top:20px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
+				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;">
+					{{tag.value.name}}
 				</div>
+				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;">
+					{{tag.value.name}}
+				</div>
+				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;">
+					{{tag.value.name}}
+				</div>	
 			</ion-col>
 		</ion-row>
 		<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
@@ -103,7 +109,7 @@
 					</ion-col>
 				</ion-row>
 				<ion-row text-center class="tags" [class.active]="showTags">
-					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue">
+					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue;">
 						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
 						{{tag.value.name}}
 						</div>

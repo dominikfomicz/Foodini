@@ -1,35 +1,35 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+<ion-header no-border>
+  <ion-toolbar style="background-color:white">
+    <ion-buttons slot="start" style="position:absolute">
+      <ion-back-button color="primary" icon="ios-arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>O Foodini:</ion-title>
+    <ion-title text-center>
+			<ion-button shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary" (click)="alertLocation()">
+				O Foodinim
+			</ion-button>
+		</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <div class="bg-profile" text-center padding>
-    <img src="assets/img/small.png">
-  </div>
-
-  <ion-card class="bg-white" no-margin>
-    <ion-card-content>
-      <h1 margin-bottom>
-        <ion-text color="primary"><strong>123</strong></ion-text>
-      </h1>
+  <ion-card padding style="background-color: white;">
+    <ion-card-content style="background-color: white;">
+      <div text-center margin-bottom>
+        <img src="assets/img/big.png" style="max-height: 100px; width: auto; margin:auto">
+      </div>
       
       <p margin-bottom>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
-        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,
-        dolore?
+        Podróżuj bez ograniczeń po gastronomicznej mapie swojego miasta, znajduj wyjątkowe, wcześniej nie odkryte miejsca oraz atrakcyjne kupony. To proste, korzystaj z apki, polecaj ją znajomym i bierz udział w niesamowitch konkursach i losowaniach atrakcyjnych nagród razem z Foodinim. #wieszcozjesz
       </p>
-      
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum odio placeat incidunt nesciunt atque ratione
-        quisquam, fugit omnis maxime adipisci excepturi dignissimos aliquam asperiores itaque unde sequi? Minus, quia,
-        dolore?
-      </p>
+
+      <ion-grid>
+        <ion-row text-center>
+          <ion-col class="social" size="4"><a href="https://www.facebook.com/Foodiniapp/"><ion-icon name="logo-facebook" style="font-size: 4rem;"></ion-icon><br>FACEBOOK</a></ion-col>
+					<ion-col class="social" size="4"><a href="https://www.instagram.com/foodiniapp.pl/?hl=pl"><ion-icon name="logo-instagram" style="font-size: 4rem;"></ion-icon><br>INSTAGRAM</a></ion-col>
+					<ion-col class="social" size="4"><a href="https://foodiniapp.pl"><ion-icon name="color-wand" style="font-size: 4rem;"></ion-icon><br>WWW</a></ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 

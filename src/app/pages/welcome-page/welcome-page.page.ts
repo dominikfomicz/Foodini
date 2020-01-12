@@ -28,11 +28,9 @@ export class WelcomePagePage implements OnInit {
 		await this.platform.ready().then(a => {
 			this.message = this.device.uuid;
 			this.connection.registerStart(this.device.uuid).subscribe((data) => {
-					alert('zarejestrowano');
 					this.connection.login(this.device.uuid, this.device.uuid);
 			},
 			err => {
-				alert('err w funkcji');
 				this.connection.login(this.device.uuid, this.device.uuid);
 			});
 		});
