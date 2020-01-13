@@ -107,6 +107,10 @@
           </ion-menu-toggle> -->
         </ion-list> 
       </ion-content>
+      <div text-center margin-bottom *ngIf="email != null">
+        Twój indetyfikator: <br><br> 
+        {{ email }}
+      </div>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

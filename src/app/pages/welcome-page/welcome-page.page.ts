@@ -10,23 +10,18 @@ import { Platform } from '@ionic/angular';
 })
 export class WelcomePagePage implements OnInit {
 
-	message = '';
 
 	constructor(public connection: ConnectionService, private device: Device, private platform: Platform) {
-		// setTimeout(() => {
-		// 	window.location.reload();
-		// }, 6000);
 	}
 
 	ngOnInit() {
-		this.setup().catch(err => {			
+		this.setup().catch(err => {
 			this.connection.login(this.device.uuid, this.device.uuid);
 		});
 	}
 
 	async setup() {
 		await this.platform.ready().then(a => {
-			this.message = this.device.uuid;
 			this.connection.registerStart(this.device.uuid).subscribe((data) => {
 					this.connection.login(this.device.uuid, this.device.uuid);
 			},
