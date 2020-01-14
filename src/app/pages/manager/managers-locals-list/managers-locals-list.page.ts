@@ -24,7 +24,7 @@ export class ManagersLocalsListPage implements OnInit {
 
 	async presentActionSheet(id_local_data_main) {
 		const actionSheet = await this.actionSheetCtrl.create({
-			header: 'Albums',
+			header: 'Zarządzanie',
 			buttons: [{
 				text: 'Dodaj kelnera',
 				icon: 'add',
@@ -34,11 +34,10 @@ export class ManagersLocalsListPage implements OnInit {
 					}
 				},
 				{
-				text: 'Cancel',
+				text: 'Anuluj',
 				icon: 'close',
 				role: 'cancel',
 				handler: () => {
-					console.log('Cancel clicked');
 				}
 			}]
 		});

@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>managers-locals-list</ion-title>
+  <ion-toolbar style="background-color:white">
+    <ion-title text-center color="primary">Zarządzanie lokalami</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
   <ion-list>
     <ion-list-header>
-      Twóje lokale:
+      Twoje lokale:
     </ion-list-header>
     <ion-item *ngFor="let item of items" (click)="presentActionSheet(item.local_id)">
       <ion-avatar slot="start">

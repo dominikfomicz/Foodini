@@ -61,9 +61,9 @@
 									{{ item.open_from }} - {{ item.open_to }}
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
-									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }" >
-									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }">
+									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
+									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
+									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
 								</div>
 							</ion-col>
 						</ion-row>
