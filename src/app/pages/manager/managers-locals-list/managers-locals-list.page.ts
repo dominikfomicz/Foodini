@@ -72,7 +72,6 @@ export class ManagersLocalsListPage implements OnInit {
 			]
 		});
 		(await prompt).present();
-	
-	  }
+	}
 
 	}

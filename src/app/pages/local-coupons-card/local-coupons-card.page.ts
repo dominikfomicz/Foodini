@@ -4,6 +4,7 @@ import { ModalController, LoadingController } from '@ionic/angular';
 import { FilterCardPage } from '../modal/filter-card/filter-card.page';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 @Component({
 	selector: 'app-local-coupons-card',
@@ -22,7 +23,8 @@ export class LocalCouponsCardPage implements OnInit {
 		public modalCtrl: ModalController,
 		public route: ActivatedRoute,
 		public connection: ConnectionService,
-		public loadingCtrl: LoadingController
+		public loadingCtrl: LoadingController,
+		public viewer: PhotoViewer
 	) { }
 
 	ngOnInit() {
@@ -45,6 +47,17 @@ export class LocalCouponsCardPage implements OnInit {
 
 	openMenuImage(id_local_data_main){
 		console.log(id_local_data_main);
+	}
+
+	showMenu(){
+		const menuURL = 'http://repo.foodini.net.pl/storage/locals/' + this.id_local_data_main + '/menu.png';
+		const title = '';
+		const options = {
+			share: true,
+
+		};
+		this.viewer.show(menuURL, title, options);
+
 	}
 
 	async openCouponCard (id_coupon_data_main) {
