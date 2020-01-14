@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Device } from '@ionic-native/device/ngx';
 import { Pages } from './interfaces/pages';
 
 @Component({
@@ -17,12 +17,14 @@ export class AppComponent {
   email: any;
 
   public appPages: Array<Pages>;
-
+  httpOptions = {};
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public device: Device,
+    private http: HttpClient
   ) {
     this.appPages = [
       // {
@@ -87,11 +89,19 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.user_type = localStorage.getItem('user_type');
-    this.email = localStorage.getItem('email');
+    // this.user_type = localStorage.getItem('user_type');
+    this.email = this.device.uuid;
     this.platform.ready().then(() => {
       this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();
+      this.email = this.device.uuid;
+      const post_data = new HttpParams()
+			.set('uuid', this.device.uuid);
+
+		return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data=>{
+      this.user_type = data;
+    });
+
     }).catch(() => {});
   }
 

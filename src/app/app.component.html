@@ -20,7 +20,7 @@
 		  </ion-menu-toggle>
 		  
 		  <!-- Manager -->
-          <div *ngIf="user_type === '3'">
+          <div *ngIf="user_type === 3">
             <ion-list-header text-center color="light">
               <ion-label color="primary"><b>Manager</b></ion-label>
             </ion-list-header>
@@ -35,7 +35,7 @@
           </div>
 
           <!-- Kelnerka i Manager -->
-          <div *ngIf="user_type === '2' || user_type === '3'">
+          <div *ngIf="user_type === 2 || user_type === 3">
             <ion-list-header text-center color="light">
               <ion-label color="primary"><b>Pracownik</b></ion-label>
             </ion-list-header>
