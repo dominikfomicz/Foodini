@@ -48,7 +48,7 @@
 			</ion-col>
 		</ion-row>
 		<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
-			<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">Loka<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.local_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.local_open_status === false">Zamknięte</span></ion-col>
+			<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">Lokal<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.local_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.local_open_status === false">Zamknięte</span></ion-col>
 			<ion-col size="4" [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">Kuchnia<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/kuchnia.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.kitchen_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.kitchen_open_status === false">Zamknięte</span></ion-col>
 			<ion-col size="4" [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">Dowóz<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/dowoz.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.delivery_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.delivery_open_status === false">Zamknięte</span></ion-col>
 		</ion-row>
@@ -118,7 +118,7 @@
 				<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
 					<ion-col class="social" size="4"><a href="{{ items.facebook_url }}"><ion-icon name="logo-facebook" style="font-size: 4rem;"></ion-icon><br>FACEBOOK</a></ion-col>
 					<ion-col class="social" size="4"><a href="{{ items.instagram_url }}"><ion-icon name="logo-instagram" style="font-size: 4rem;"></ion-icon><br>INSTAGRAM</a></ion-col>
-					<ion-col class="social" style="opacity: 0.2;" size="4" (click)="showMenu()"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu-2.png"><br>MENU</ion-col>
+					<ion-col class="social" size="4" (click)="showMenu()"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu-2.png"><br>MENU</ion-col>
 				</ion-row>
 			</ion-grid>
 	</ion-card>

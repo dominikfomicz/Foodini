@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
-import { Device } from '@ionic-native/device/ngx';
 
 @Component({
   selector: 'app-root',
@@ -16,14 +15,14 @@ export class AppComponent {
 
   user_type: any = '0';
   email: any;
+
   public appPages: Array<Pages>;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController,
-    public device: Device
+    public navCtrl: NavController
   ) {
     this.appPages = [
       // {
@@ -88,9 +87,8 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.email = localStorage.getItem('user_email');
-    console.log(this.device.uuid);
     this.user_type = localStorage.getItem('user_type');
+    this.email = localStorage.getItem('email');
     this.platform.ready().then(() => {
       this.statusBar.styleBlackTranslucent();
       this.splashScreen.hide();

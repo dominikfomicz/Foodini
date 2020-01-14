@@ -76,6 +76,7 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items_locals = data;
+				console.log(this.items_locals);
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;

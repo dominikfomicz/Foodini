@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>managers-locals-list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-list>
+    <ion-list-header>
+      Twóje lokale:
+    </ion-list-header>
+    <ion-item *ngFor="let item of items" (click)="presentActionSheet(item.local_id)">
+      <ion-avatar slot="start">
+        <img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

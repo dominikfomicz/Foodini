@@ -17,7 +17,9 @@ const routes: Routes = [
 	{ path: 'welcome-page', loadChildren: './pages/welcome-page/welcome-page.module#WelcomePagePageModule', canActivate: [NoAuthGuard]},
 	{ path: 'filter-card', loadChildren: './pages/modal/filter-card/filter-card.module#FilterCardPageModule', canActivate: [AuthGuard] },
 	{ path: 'check-coupon', loadChildren: './pages/check-coupon/check-coupon.module#CheckCouponPageModule', canActivate: [AuthGuard] },
-	{ path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },  { path: 'contact', loadChildren: './pages/contact/contact.module#ContactPageModule' }
+	{ path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+	{ path: 'contact', loadChildren: './pages/contact/contact.module#ContactPageModule', canActivate: [AuthGuard] },
+	{ path: 'managers-locals-list', loadChildren: './pages/manager/managers-locals-list/managers-locals-list.module#ManagersLocalsListPageModule', canActivate: [AuthGuard] }
 
 
 ];
