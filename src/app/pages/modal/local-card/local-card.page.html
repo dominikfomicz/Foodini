@@ -1,5 +1,5 @@
 <ion-header *ngIf="show === true">
-  <ion-toolbar style="background-color:white">
+  <ion-toolbar style="background-color:white; border-bottom: solid 1px #e6e6e6;">
     <ion-buttons slot="start" style="position: absolute;">
         <ion-button (click)="closeModal()">
             <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
@@ -30,19 +30,19 @@
 	</div>
 	<ion-grid>
 		<ion-row class="ion-text-center" style="font-size: 25px;color:black">
-			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 7rem;"></ion-col>
+			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 6rem;"></ion-col>
 			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
 			<ion-col size="2"><ion-icon style="margin-top: 1.5rem; font-size:2rem" (click)="changeFavColor(items.local_id)" [color]="favColor" name="ios-star"></ion-icon></ion-col>
 		</ion-row>
 		<ion-row class="ion-text-center">
-			<ion-col style="margin-top:20px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
-				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;">
+			<ion-col style="margin-top:10px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
+				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;">
+				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;">
+				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>	
 			</ion-col>
@@ -110,7 +110,7 @@
 				</ion-row>
 				<ion-row text-center class="tags" [class.active]="showTags">
 					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue;">
-						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:14px; font-size:15px; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
 						{{tag.value.name}}
 						</div>
 					</ion-col>

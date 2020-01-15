@@ -52,8 +52,7 @@ export class MapCardPage implements OnInit {
 			for(let i = 0; i <= Object.keys(data).length; i++){
 				// console.log(data[i]);
 				const marker: Marker = this.map.addMarkerSync({
-					icon: {url: 'http://repo.foodini.net.pl/storage/locals/'+ data[i].local_id +'/logo.png'},
-					animation: 'DROP',
+					icon: 'http://repo.foodini.net.pl/storage/locals/' + data[i].local_id + '/map.png',
 					position: {
 					lat: data[i].latitude,
 					lng: data[i].longitude

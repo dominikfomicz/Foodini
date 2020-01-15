@@ -1,5 +1,5 @@
 <ion-header no-border *ngIf="show === true">
-	<ion-toolbar style="background-color:white" style="border-bottom: solid 1px #e6e6e6;">
+	<ion-toolbar style="background-color:white; border-bottom: solid 1px #e6e6e6;">
 		<ion-buttons slot="start">
 			<ion-back-button icon="ios-arrow-back" text="" defaultHref=""></ion-back-button>
 			<div class="titleicon">
@@ -29,7 +29,7 @@
 		</ion-buttons> -->
 	</ion-toolbar>
 	<!-- Lokale -->
-	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'">
+	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px;">
 		<ion-item lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
@@ -43,14 +43,14 @@
 							<h5 style="margin-left:5px"><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
-							<ion-col *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
-								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:8px; font-size:10px;text-align: center;">
+							<ion-col size="4" *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
+								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 								{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:8px; font-size:10px;text-align: center;">
+								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:8px; font-size:10px;text-align: center;">
+								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
 								</div>	
 							</ion-col>
@@ -74,14 +74,15 @@
 	</ion-card>
 
 	<!-- Kupony -->
-	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'">
+	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;">
 		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id)">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
 			</ion-thumbnail>
 			<ion-grid>
-				<ion-badge style="position: absolute; bottom:15px; right: 0px; font-size: 20px;" class="ion-align-items-center" color="danger">x{{ item.coupon_left }}</ion-badge>
+				<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; position: absolute; bottom:15px; right: 5px; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
+				<div *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
 					<ion-col class="ion-text-center" size="12">
@@ -89,11 +90,17 @@
 							<h4><b>{{ item.local_name }}</b></h4>
 						</ion-row>
 						<ion-row class="title-offer">
-							<h4 color="primary"><b>{{ item.coupon_name }}</b></h4>
+							<h4 style="font-size: 15px;" color="primary"><b>{{ item.coupon_name }}</b></h4>
 						</ion-row>
 						<ion-row class="coupons_tags">
-							<ion-col *ngFor="let tag of item.tags | keyvalue">
-								<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:6px; font-size:10px;">
+							<ion-col size="4" *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
+								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+									{{tag.value.name}}
+								</div>
+								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+									{{tag.value.name}}
+								</div>
+								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
 								</div>
 							</ion-col>
@@ -109,7 +116,7 @@
 					<ion-col>
 						<ion-row class="info">
 							<ion-col>
-								<div style="color: green; font-size: 15px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+								<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3">
 									Aktywny
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">

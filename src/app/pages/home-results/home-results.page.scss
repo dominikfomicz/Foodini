@@ -36,7 +36,10 @@ ion-content {
                 &.title-company {
                     h4 {
                         margin-bottom: 0.1rem;
+                        font-size: 10px;
                     }
+
+                    
                 }
                 &.title-offer {
                     h4 {
@@ -112,11 +115,11 @@ ion-content {
     }
 
     .open_hours {
-        color: green; font-size:15px; padding-right: 6px; border-right: 1px solid #e3e3e3
+        color: green; font-size:9px; padding-right: 6px; border-right: 1px solid #e3e3e3
     }
 
     .close_hours {
-        color: red; font-size:15px; padding-right: 6px; border-right: 1px solid #e3e3e3
+        color: red; font-size:9px; padding-right: 6px; border-right: 1px solid #e3e3e3
     }
 }
 
