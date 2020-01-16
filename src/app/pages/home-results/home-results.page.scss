@@ -1,5 +1,5 @@
-ion-content {
-    // --background: #ffd500;
+* {
+    font-family: 'Josefin Sans', sans-serif !important;
 }
 
 :host {
@@ -91,10 +91,9 @@ ion-content {
         width: 2.0rem;
         height: 100%;
         bottom: 0;
-        margin-left: 10px;
         text-align: center;
         position: absolute;
-        left: 30px;
+        left: 10px;
         top: 8px;
     }
 
@@ -142,7 +141,7 @@ ion-tab-button {
 }
 
 .active_tab {
-    color: #6a2c86;
+    color: #ffd904;
 }
 .toggler_screen {
     ion-label {
@@ -212,3 +211,4 @@ ion-tab-button {
 .closed {
     opacity: 0.2;
 }
+

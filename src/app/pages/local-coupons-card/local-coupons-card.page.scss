@@ -116,8 +116,14 @@
       }
 
     .closed {
-        opacity: 0.3;
+        opacity: 0.2;
     }
 
     a { text-decoration: none }
+    
+    .icon {
+        max-height: 13px;
+        width: auto;
+        margin: 0px 5px;
+    }
 }

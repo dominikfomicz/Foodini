@@ -18,8 +18,8 @@
 	</ion-toolbar>
 </ion-header>
 
-<ion-content style="background-color:whitesmoke" *ngIf="show === true">
-	<ion-toolbar style="background-color:whitesmoke">
+<ion-content style="background-color:white" *ngIf="show === true">
+	<ion-toolbar style="background-color:white">
 		<!-- <ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź restauracje"></ion-searchbar> -->
 		<ion-searchbar style="background-color:whitesmoke" (ionInput)="getItems($event)" placeholder="Szukaj"></ion-searchbar>
 		<!-- <ion-buttons slot="end">
@@ -55,8 +55,11 @@
 						</ion-row>
 						<ion-row class="info">
 							<ion-col size="13">
-								<div [ngClass]="{'open_hours': item.is_closed == 1, 'close_hours': item.is_closed == 0 }">
+								<div class="open_hours" *ngIf="item.is_open_now === true">
 									{{ item.open_from }} - {{ item.open_to }}
+								</div>
+								<div class="close_hours" *ngIf="item.is_open_now === false">
+									Zamknięte
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
 									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
@@ -73,7 +76,7 @@
 
 	<!-- Kupony -->
 	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;">
-		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id)">
+		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
@@ -114,8 +117,11 @@
 					<ion-col>
 						<ion-row class="info">
 							<ion-col>
-								<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3">
+								<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === true">
 									Aktywny
+								</div>
+								<div style="color: red; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === false">
+									Nieaktywny
 								</div>
 								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
 									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
@@ -190,7 +196,8 @@
 	<ion-label>Mapa</ion-label>
 	</ion-tab-button>
 
-	<ion-tab-button (click)="searchFilter()">
+	<!-- <ion-tab-button (click)="searchFilter()"> -->
+	<ion-tab-button disabled>
 	<ion-icon name="options"></ion-icon>
 	<ion-label>Filtry</ion-label>
 	</ion-tab-button>
