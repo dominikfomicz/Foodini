@@ -1,9 +1,9 @@
 :host {
 
-    // ion-content {
-    //     --background: var(--ion-color-primary);
-    // }
-
+    * {
+        font-family: 'Josefin Sans', sans-serif !important;
+    }
+    
     ion-item {
         border-radius: 0;
         border-bottom: 1px dotted var(--ion-color-medium);
@@ -125,5 +125,9 @@
         max-height: 13px;
         width: auto;
         margin: 0px 5px;
+    }
+
+    .no-padding{
+        padding:0!important;
     }
 }

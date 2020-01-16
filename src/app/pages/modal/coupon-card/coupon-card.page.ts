@@ -30,10 +30,14 @@ export class CouponCardPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('coupons/getDetails/'+ this.id_coupon_data_main).subscribe(data => {
 				this.items = data;
+				console.log(data);
 				if(this.items.is_favouirite === true){
 					this.favColor = 'secondary';
 				} else {
 					this.favColor = 'light';
+				}
+				if(this.items.is_available === false){
+					this.button = false;
 				}
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;

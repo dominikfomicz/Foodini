@@ -123,11 +123,11 @@
 			</ion-grid>
 	</ion-card>
 </ion-content>
-<ion-footer *ngIf="show === true">
-	<ion-grid>
-		<ion-row class="cta">
-			<ion-col size="6"><a href="tel:{{ items.phone_number }}"><ion-button expand="block" size="default" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
-			<ion-col size="6"><ion-button expand="block" size="default" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)"><ion-icon color="secondary" slot="start" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
+<ion-footer no-padding *ngIf="show === true">
+	<ion-grid no-padding>
+		<ion-row no-padding>
+			<ion-col no-padding size="6"><a href="tel:{{ items.phone_number }}"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
+			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon color="secondary" slot="start" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-footer>

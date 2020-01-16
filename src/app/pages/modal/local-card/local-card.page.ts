@@ -15,6 +15,8 @@ export class LocalCardPage implements OnInit {
 	favColor: any;
 	show = false;
 	showTags = false;
+	coupons_button = true;
+
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
 				public loadingCtrl: LoadingController,
@@ -32,6 +34,10 @@ export class LocalCardPage implements OnInit {
 					this.favColor = 'secondary';
 				} else {
 					this.favColor = 'light';
+				}
+
+				if(this.items.coupons_count === 0){
+					this.coupons_button = false;
 				}
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;

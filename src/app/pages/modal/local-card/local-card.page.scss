@@ -14,11 +14,11 @@
 
 a { text-decoration: none }
 
-.cta {
-	ion-button {
-		height: 3em;
-	}
+ion-button {
+	margin: 0 !important;
+	padding: 0 !important;
 }
+
 
 .closed img{
 	opacity: 0.1;
@@ -52,4 +52,8 @@ ion-title {
 
 .social a {
 	color:black;
+}
+
+.no-padding{
+	padding:0!important;
 }
