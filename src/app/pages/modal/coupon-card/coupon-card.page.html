@@ -1,5 +1,5 @@
 <ion-header align-title=”center” *ngIf="show === true">
-  <ion-toolbar color="light">
+  <ion-toolbar style="background-color:white;border-bottom: soild 1px gray">
     <ion-buttons slot="start" style="position: absolute;">
         <ion-button color="primary" (click)="closeModal()">
             <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
@@ -21,7 +21,7 @@
 	<img src="assets/img/pizza-hut-cover.jpg">
 </div> -->
 <ion-content fullscreen #content *ngIf="show === true">
-	<ion-card>
+	<ion-card style="background-color:white;"> 
 		<ion-grid>
 			<ion-row style="position: relative">
 				<ion-col><img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 100px;"/></ion-col>

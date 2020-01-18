@@ -29,7 +29,7 @@
 		</ion-buttons> -->
 	</ion-toolbar>
 	<!-- Lokale -->
-	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px;">
+	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px; background-color:white;">
 		<ion-item lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
@@ -75,7 +75,7 @@
 	</ion-card>
 
 	<!-- Kupony -->
-	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;">
+	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;background-color:white;">
 		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
