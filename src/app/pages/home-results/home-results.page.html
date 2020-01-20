@@ -76,7 +76,7 @@
 
 	<!-- Kupony -->
 	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;background-color:white;">
-		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
+		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">

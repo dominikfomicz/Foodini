@@ -15,6 +15,7 @@ export class CouponCardPage implements OnInit {
 	};
 
 	id_coupon_data_main;
+	id_local_data_main;
 	code;
 	button = true;
 	items: any;
@@ -32,9 +33,9 @@ export class CouponCardPage implements OnInit {
 				this.items = data;
 				console.log(data);
 				if(this.items.is_favouirite === true){
-					this.favColor = 'secondary';
+					this.favColor = '/assets/img/star_color.svg';
 				} else {
-					this.favColor = 'light';
+					this.favColor = '/assets/img/star.svg';
 				}
 				if(this.items.is_available === false){
 					this.button = false;
@@ -50,13 +51,15 @@ export class CouponCardPage implements OnInit {
 	}
 
 	changeFavColor(id_coupon_data_main){
-		if (this.favColor === 'light') {
-			this.favColor = 'secondary';
+		if (this.favColor === '/assets/img/star.svg') {
+			this.favColor = '/assets/img/star_color.svg';
+			this.items.favourite_count = this.items.favourite_count + 1;
 			this.connection.getDataByPost('coupons/addCouponToFavourite', {id_coupon_data_main : id_coupon_data_main }).subscribe(data => {
 				console.log(data);
 			});
 		} else {
-			this.favColor = 'light';
+			this.favColor = '/assets/img/star.svg';
+			this.items.favourite_count = this.items.favourite_count - 1;
 			this.connection.getDataByPost('coupons/removeFromFavourite', {id_coupon_data_main : id_coupon_data_main }).subscribe(data => {
 				console.log(data);
 			});
