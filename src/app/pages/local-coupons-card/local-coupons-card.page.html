@@ -30,7 +30,7 @@
 				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
 			</ion-thumbnail>
 			<ion-grid>
-				<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; position: absolute; bottom:15px; right: 5px; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
+				<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
 				<div *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
 				<ion-row>
 					<ion-col class="ion-text-center" size="12">
