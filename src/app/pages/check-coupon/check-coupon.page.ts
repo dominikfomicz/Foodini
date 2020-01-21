@@ -16,9 +16,9 @@ export class CheckCouponPage implements OnInit {
 	checkCoupon(){
 		this.connection.getDataByPost('coupons/checkCoupon', {unique_number: this.unique_number}).subscribe(data=>{
 			if(data === 1){
-				alert('zrealizowano kupon');
+				alert('Zrealizowano kupon');
 			}else{
-				alert('kupon nie istnieje');
+				alert('Kupon nie istnieje');
 			}
 			console.log(data);
 		});
