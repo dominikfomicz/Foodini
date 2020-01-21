@@ -102,6 +102,7 @@ export class HomeResultsPage implements OnInit {
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;
+				console.log(data);
 			})
 		);
 	}

@@ -31,9 +31,9 @@ export class LocalCardPage implements OnInit {
 				this.items = data;
 				console.log(data);
 				if(this.items.is_favouirite === true){
-					this.favColor = 'secondary';
+					this.favColor = '/assets/img/star_color.svg';
 				} else {
-					this.favColor = 'light';
+					this.favColor = '/assets/img/star.svg';
 				}
 
 				if(this.items.coupons_count === 0){
@@ -50,13 +50,15 @@ export class LocalCardPage implements OnInit {
 	}
 
 	changeFavColor(id_local_data_main){
-		if (this.favColor === 'light') {
-			this.favColor = 'secondary';
+		if (this.favColor === '/assets/img/star.svg') {
+			this.favColor = '/assets/img/star_color.svg';
+			this.items.favourite_count = this.items.favourite_count + 1;
 			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
 				console.log(data);
 			});
 		} else {
-			this.favColor = 'light';
+			this.favColor = '/assets/img/star.svg';
+			this.items.favourite_count = this.items.favourite_count - 1;
 			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
 				console.log(data);
 			});
