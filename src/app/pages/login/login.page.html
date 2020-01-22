@@ -1,100 +1,72 @@
-<ion-content padding class="animated fadeIn login auth-page">
-  <div class="theme-bg"></div>
-  <div class="auth-content">
+<ion-content padding color="light">
+  
 
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
-      <div class="logo"></div>
-      <h4 no-margin>
-        <ion-text color="light" class="fw700">
-          Ionic 4 Start Theme
-        </ion-text>
-      </h4>
+      <img src="./assets/img/logo_color.png">
     </div>
 
     <!-- Login form -->
     <form [formGroup]="onLoginForm" class="list-form">
       <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
+        <ion-label position="floating" color="primary">
           <ion-icon name="mail" item-start></ion-icon>
           Email
         </ion-label>
-        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+        <ion-input color="primary" type="email" formControlName="email"></ion-input>
       </ion-item>
-      <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
-        <ion-text color="warning">
-          Required Field
+      <p ion-text color="primary" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+        <ion-text color="primary">
+          Pole wymagane
         </ion-text>
       </p>
 
       <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
+        <ion-label position="floating" color="primary">
           <ion-icon name="lock" item-start></ion-icon>
-          Password
+          Hasło
         </ion-label>
-        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+        <ion-input color="primary" type="password" formControlName="password"></ion-input>
       </ion-item>
-      <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
-        <ion-text color="warning">
-          Required Field
+      <p ion-text color="primary" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
+        <ion-text color="primary">
+          Pole wymagane
         </ion-text>
         </p>
     </form>
 
-    <p text-right tappable (click)="forgotPass()" class="paz">
-      <ion-text color="light">
+    <!-- <p text-right tappable (click)="forgotPass()" class="paz">
+      <ion-text color="primary">
         <strong>Forgot Pass?</strong>
       </ion-text>
-    </p>
+    </p> -->
 
-    <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToHome()" [disabled]="!onLoginForm.valid" tappable>
-        <ion-icon name="log-in"></ion-icon>
-        Signin
+    <div margin-top>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="loginClick()" [disabled]="!onLoginForm.valid" tappable>
+         <span>Zaloguj się</span>
       </ion-button>
 
-      <p text-center>
+      <!-- <p text-center>
         <ion-text color="light">
           Or Signin with:
         </ion-text>
-      </p>
+      </p> -->
 
-      <ion-grid class="btn-group">
-        <ion-row>
-          <ion-col>
-            <ion-button shape="round" expand="full" color="light" (click)='loginWithFacebook()'>
-              <ion-icon color="primary" slot="icon-only" name="logo-facebook"></ion-icon>
+      <ion-grid no-padding>
+        <ion-row no-padding>
+          <ion-col text-center size="12">
+            lub
+          </ion-col>
+          <ion-col size="12" text-center no-padding>
+            <ion-button size="big" expand="full" shape="round" color="facebook" (click)="loginClick()" tappable>
+                <span>Zaloguj się przez Facebook</span>
             </ion-button>
           </ion-col>
-          <!-- <ion-col size="4">
-            <ion-button shape="round" expand="full" color="secondary">
-              <ion-icon slot="icon-only" name="logo-googleplus"></ion-icon>
-            </ion-button>
-          </ion-col> -->
+          <ion-col size="12" text-center margin-top>
+              Zaloguj jako gość
+          </ion-col>
         </ion-row>
       </ion-grid>
 
     </div>
-
-    <!-- Other links -->
-    <div text-center margin-top>
-      <span (click)="goToRegister()" class="paz" tappable>
-        <ion-text color="light">
-          New here? <strong>Sign Up</strong>
-        </ion-text>
-      </span>
-    </div>
-    <div text-center margin-top *ngIf='userData'>
-      <ion-card>
-        <ion-card-header>{{ userData.username }}</ion-card-header>
-        <img [src]="userData.picture" />
-        <ion-card-content>
-          <p>Email: {{ userData.email }}</p>
-          <p>First Name: {{ userData.first_name }}</p>
-          <p>Unique ID: {{ userData.id }}</p>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-  </div>
 </ion-content>

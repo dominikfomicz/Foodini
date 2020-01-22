@@ -1,10 +1,31 @@
 :host {
     ion-content {
-        --background: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+        --background: white;
     }
 }
 
 .paz {
     position: relative;
     z-index: 10;
+}
+
+.no-padding{
+    padding: 0!important;
+}
+
+* {
+    font-family: 'Josefin Sans', sans-serif !important;
+}
+
+ion-button {
+    height: 60px;
+}
+
+ion-button span {
+    margin-top: 3px;
+}
+
+.list-form {
+    margin-bottom: 10vh;
+    margin-top: 3vh;
 }
