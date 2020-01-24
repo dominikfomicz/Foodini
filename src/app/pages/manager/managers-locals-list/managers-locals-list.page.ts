@@ -63,24 +63,15 @@ export class ManagersLocalsListPage implements OnInit {
 			{
 				text: 'Dodaj',
 				handler: input => {
-				// console.log(input.uuid);
+				console.log(input.uuid);
 					this.connection.getDataByPost('manager/registerWorker', {id_local_data_main: id_local_data_main, uuid: input.uuid}).subscribe(data => {
-						this.presentAlert();
+						console.log(data);
 					});
 				}
 			}
 			]
 		});
 		(await prompt).present();
-	}
-
-	async presentAlert() {
-		const alert = await this.alertCtrl.create({
-		header: 'Sukces!',
-		subHeader: 'Kelner został dodany do lokalu',
-		buttons: ['OK']
-	});
-		await alert.present();
 	}
 
 	}
