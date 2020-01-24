@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
-import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
 selector: 'app-login',
@@ -20,8 +19,7 @@ export class LoginPage implements OnInit {
 	public alertCtrl: AlertController,
 	public loadingCtrl: LoadingController,
 	private formBuilder: FormBuilder,
-	private facebook: Facebook,
-	public connection: ConnectionService
+	private facebook: Facebook
 	) { }
 
 	ionViewWillEnter() {
@@ -90,10 +88,8 @@ export class LoginPage implements OnInit {
 	this.navCtrl.navigateRoot('/register');
 	}
 
-	loginClick() {
-	// this.navCtrl.navigateRoot('/home-results');
-		console.log(this.onLoginForm.value.email);
-		this.connection.login(this.onLoginForm.value.email, this.onLoginForm.value.password);
+	goToHome() {
+	this.navCtrl.navigateRoot('/home-results');
 	}
 
 	loginWithFacebook(){

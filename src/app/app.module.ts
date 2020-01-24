@@ -28,7 +28,6 @@ import { NoAuthGuard } from './services/no-auth.guard';
 import { NoAuthService } from './services/no-auth.service';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
-import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -38,7 +37,6 @@ import { IonicStorageModule } from '@ionic/storage';
 		IonicModule.forRoot({
 			mode: 'md'
 		}),
-		IonicStorageModule.forRoot(),
 		AppRoutingModule,
 		HttpClientModule,
 		ImagePageModule,
