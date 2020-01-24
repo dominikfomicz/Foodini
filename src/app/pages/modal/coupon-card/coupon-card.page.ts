@@ -25,7 +25,7 @@ export class CouponCardPage implements OnInit {
 	constructor(private modalCtrl: ModalController,
 				public navCtrl: NavController,
 				public loadingCtrl: LoadingController,
-				public connection: ConnectionService) { }
+				public connection: ConnectionService) {  }
 
 	ngOnInit() {
 		this.presentLoading().then(a =>
