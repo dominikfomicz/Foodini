@@ -1,13 +1,22 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-button size="small" shape="round" (click)="closeModal()" color="tertiary">
-        <ion-icon slot="start" name="close"></ion-icon> Close
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
+
+<div style="position:absolute; top: 10px; left: 10px; z-index:1000;">
+  <ion-fab (click)="closeModal()">
+    <ion-fab-button size="small">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div>
 <ion-content>
-  <img [src]="value"> 
+  <ion-slides pager="true" zoom>
+    <ion-slide>
+        <img src="http://repo.foodini.net.pl/storage/locals/74/menu.png"> 
+    </ion-slide>
+    <ion-slide>
+        <img src="http://repo.foodini.net.pl/storage/locals/74/menu.png"> 
+    </ion-slide>
+    <ion-slide>
+        <img src="http://repo.foodini.net.pl/storage/locals/74/menu.png"> 
+    </ion-slide>
+  </ion-slides>
 </ion-content>

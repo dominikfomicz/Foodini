@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, LoadingController, Platform } from '@ionic/angular';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { ImagePage } from '../image/image.page';
 
 @Component({
 	selector: 'app-local-card',
@@ -81,17 +82,23 @@ export class LocalCardPage implements OnInit {
 		this.showTags = !this.showTags;
 	}
 
-	showMenu(){
-		var menuURL = 'http://repo.foodini.net.pl/storage/locals/' + this.id_local_data_main + '/menu.png';
-		var title = '';
-		var options = {
-			share: true,
+	async showMenu(){
+		// var menuURL = 'http://repo.foodini.net.pl/storage/locals/' + this.id_local_data_main + '/menu.png';
+		// var title = '';
+		// var options = {
+		// 	share: true,
 
-		};
-		if(this.platform.is('ios')) {
-			menuURL = decodeURIComponent(menuURL);
-		}
-		this.viewer.show(menuURL, title, options);
+		// };
+		// if(this.platform.is('ios')) {
+		// 	menuURL = decodeURIComponent(menuURL);
+		// }
+		// this.viewer.show(menuURL, title, options);
+			const modal = await this.modalCtrl.create({
+			component: ImagePage,
+			componentProps: {
+			}
+			});
+			return await modal.present();
 
 	}
 }

@@ -8,7 +8,6 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./image.page.scss'],
 })
 export class ImagePage implements OnInit {
-  @Input() value: any;
   public image: any;
 
   constructor(
@@ -18,7 +17,6 @@ export class ImagePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.image = this.sanitizer.bypassSecurityTrustStyle(this.value);
   }
 
   closeModal() {

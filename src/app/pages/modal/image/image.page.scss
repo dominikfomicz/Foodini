@@ -1,11 +1,16 @@
 :host {
   ion-content {
-    --background: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+    --background: black;
   }
 }
 
 ion-content {
+    background-color: black;
     img {
         object-fit: cover;
     }
+}
+
+ion-slides {
+  height: 100vh;
 }
