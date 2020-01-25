@@ -3,25 +3,24 @@ import { NavController, ModalController } from '@ionic/angular';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-image',
-  templateUrl: './image.page.html',
-  styleUrls: ['./image.page.scss'],
+	selector: 'app-image',
+	templateUrl: './image.page.html',
+	styleUrls: ['./image.page.scss'],
 })
 export class ImagePage implements OnInit {
-  public image: any;
-  id_local_data_main;
+	id_local_data_main;
 
-  constructor(
-    private nav: NavController,
-    private modalCtrl: ModalController,
-    private sanitizer: DomSanitizer
-  ) {}
+	constructor(
+		private nav: NavController,
+		private modalCtrl: ModalController,
+		private sanitizer: DomSanitizer
+	) {}
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  closeModal() {
-    this.modalCtrl.dismiss();
-  }
+	closeModal() {
+	this.modalCtrl.dismiss();
+	}
 
 }
