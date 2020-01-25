@@ -30,7 +30,7 @@
 	</ion-toolbar>
 
 	<!-- Lokale -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px; background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 0; background-color:white;">
 		<div *ngIf="items_locals_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
@@ -85,7 +85,7 @@
 	</div>
 
 	<!-- Kupony -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 0; background-color:white;">
 		<div *ngIf="items_coupons_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
