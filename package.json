@@ -35,13 +35,11 @@
     "@ionic/angular": "^4.11.5",
     "@ionic/pro": "2.0.4",
     "chai": "^4.2.0",
-    "com-sarriaroman-photoviewer": "^1.2.4",
     "cordova": "^9.0.0",
     "cordova-android": "8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-background-mode": "git+https://github.com/katzer/cordova-plugin-background-mode.git",
-    "cordova-plugin-disable-ios11-statusbar": "^1.0.0",
     "cordova-plugin-facebook4": "^6.2.0",
     "cordova-plugin-file": "^6.0.2",
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
@@ -110,9 +108,7 @@
       },
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-disable-ios11-statusbar": {},
       "cordova-plugin-statusbar": {},
-      "com-sarriaroman-photoviewer": {},
       "cordova-plugin-googlemaps": {}
     }
   }
