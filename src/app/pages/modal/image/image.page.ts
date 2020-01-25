@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ImagePage implements OnInit {
   public image: any;
+  id_local_data_main;
 
   constructor(
     private nav: NavController,

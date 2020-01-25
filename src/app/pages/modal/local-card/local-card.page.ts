@@ -96,6 +96,7 @@ export class LocalCardPage implements OnInit {
 			const modal = await this.modalCtrl.create({
 			component: ImagePage,
 			componentProps: {
+				id_local_data_main: this.id_local_data_main
 			}
 			});
 			return await modal.present();
