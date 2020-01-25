@@ -118,7 +118,7 @@ export class HomeResultsPage implements OnInit {
 		);
 	}
 
-	toggleSwitchButton(){
+	toggleSwitchButton() {
 		this.switchState = !this.switchState;
 		switch(this.viewList) {
 			case 'locals': {
@@ -145,6 +145,7 @@ export class HomeResultsPage implements OnInit {
 			case 'coupons_fav': {
 				this.refreshLocalsFavList();
 				this.viewList = 'locals_fav';
+				break;
 			}
 		}
 	}

@@ -10,7 +10,7 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-ion-item {
+ion-item, .ion-item {
 		--ion-item-background: transparent;
 }
 
@@ -138,7 +138,7 @@ ion-item {
 	}
 
 	// Android card shadow
-	ion-card {
+	ion-card, .ion-card {
 		&.sc-ion-card-md-h {
 			// &.no-radius {
 			// 	border-radius: 0;
@@ -192,7 +192,7 @@ ion-item {
 				padding: 0;
 				margin-bottom: 0;
 
-				ion-item {
+				ion-item, .ion-item {
 					background: none;
 					padding: 0;
 

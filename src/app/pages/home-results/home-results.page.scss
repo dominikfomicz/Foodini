@@ -7,47 +7,54 @@
         --background: whitesmoke;
     }
 
-    ion-item {
+    .ion-item {
+        margin: 0 1rem;
         border-radius: 0;
         // border-bottom: 1px dotted var(--ion-color-medium);
         border-bottom: 1px dotted #e4e5e9;
+        // width: 100%;
+        &.ion-item-content {
+            // display: none;
+            display: flex;
+        }
     }
 
-    ion-card {
-        margin: 0;
-        box-shadow: none;
-        --background: #fdfdfd;
-        &.no-radius {
+    // .ion-card {
+    //     margin: 0;
+    //     box-shadow: none;
+    //     --background: #fdfdfd;
+        .no-radius {
             border-radius: 0;
         }
         * {
             font-family: 'Josefin Sans', sans-serif;
         }
-        ion-item {
-            margin: 0 1rem;
-            ion-row {
-                text-align: left;
+        // ion-item {
+            // margin: 0 1rem;
+            // ion-row {
+                // text-align: left;
                 ion-col {
                     &.coupon-image {
                         display: flex;
                         align-items: flex-end;
                     }
                 }
-                &.title-company {
+                .title-company {
                     h4 {
                         margin-bottom: 0.1rem;
                         font-size: 10px;
                     }
 
-                    
+
                 }
-                &.title-offer {
+                .title-offer {
                     h4 {
+                        text-align: left;
                         color: var(--ion-color-primary);
                         margin-top: 0.1rem;
                     }
                 }
-                &.coupons_tags {
+                .coupons_tags {
                     height: 30px;
                     ion-col {
                         &:first-child {
@@ -58,9 +65,10 @@
                         }
                     }
                 }
-                &.info {
+                .info {
                     text-align: center;
                     margin-top: 15px;
+                    // visibility: hidden;
                     ion-col {
                         display: flex;
                         align-items: center;
@@ -74,10 +82,10 @@
                         }
                     }
                 }
-            }
-        }
+            // }
+        // }
 
-        }
+    // }
 
     ion-searchbar{
         .searchbar-input-container{

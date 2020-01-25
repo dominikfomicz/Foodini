@@ -30,18 +30,20 @@
 	</ion-toolbar>
 
 	<!-- Lokale -->
-	<ion-card class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px; background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 50px; background-color:white;">
 		<div *ngIf="items_locals_search.length === 0">
-			<ion-item>
+			<div class="ion-item">
 				<ion-label text-center>
 					Nie znalazłem lokali :(
 				</ion-label>
-			</ion-item>
+			</div>
 		</div>
-		<ion-item lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
-			<ion-thumbnail slot="start">
-				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
-			</ion-thumbnail>
+		<div class="ion-item ion-item-content" lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
+			<div class="ion-item" style="display: flex; align-items: center; justify-content: flex-center">
+				<ion-thumbnail slot="start">
+					<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
+				</ion-thumbnail>
+			</div>
 			<ion-grid>
 				<ion-row>
 					<ion-col text-center size="12">
@@ -58,13 +60,13 @@
 								</div>
 								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
-								</div>	
+								</div>
 							</ion-col>
 						</ion-row>
-						<ion-row class="info">
-							<ion-col size="13">
-								<div class="open_hours" *ngIf="item.is_open_now === true">
-									{{ item.open_from }} - {{ item.open_to }}
+						<ion-row class="info" style=" margin-top: 1rem !important; padding-left: 5px;">
+							<ion-col size="13" style=" display: flex; align-items: flex-center; margin: 0; padding: 0;">
+								<div class="open_hours" style="display: flex; align-items: center; justify-center: flex-start;" *ngIf="item.is_open_now === true">
+									<div style="display: flex; align-items: center; padding: 0; margin: 0;">{{ item.open_from }} - {{ item.open_to }}</div>
 								</div>
 								<div class="close_hours" *ngIf="item.is_open_now === false">
 									Zamknięte
@@ -79,23 +81,27 @@
 					</ion-col>
 				</ion-row>
 			</ion-grid>
-		</ion-item>
-	</ion-card>
+		</div>
+	</div>
 
 	<!-- Kupony -->
-	<ion-card class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 50px;background-color:white;">
 		<div *ngIf="items_coupons_search.length === 0">
-			<ion-item>
+			<div class="ion-item">
 				<ion-label text-center>
 					Nie znalazłem kuponów :(
 				</ion-label>
-			</ion-item>
+			</div>
 		</div>
-		<ion-item lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
-			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="width:30px"></div>
-			<ion-thumbnail slot="start">
-				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
-			</ion-thumbnail>
+		<div class="ion-item ion-item-content" style="position:relative;" lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
+			<div style="position: absolute; top:20px; right:0px">
+				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="position: relative; width: 30px;">
+			</div>
+			<div class="ion-item" style="display: flex; align-items: center; justify-content: flex-center">
+				<ion-thumbnail slot="start">
+					<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
+				</ion-thumbnail>
+			</div>
 			<ion-grid>
 				<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
 				<div *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
@@ -122,16 +128,11 @@
 							</ion-col>
 						</ion-row>
 					</ion-col>
-					<!-- <ion-col size="3" class="coupon-image">
-						<ion-row>
-							<img src="assets/img/icon.png">
-						</ion-row>
-					</ion-col> -->
 				</ion-row>
 				<ion-row>
 					<ion-col>
 						<ion-row class="info">
-							<ion-col>
+							<ion-col size="13" style="display: flex; align-items: flex-center;">
 								<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === true">
 									Aktywny
 								</div>
@@ -148,8 +149,8 @@
 					</ion-col>
 				</ion-row>
 			</ion-grid>
-		</ion-item>
-	</ion-card>
+		</div>
+	</div>
 </ion-content>
 <!-- <section style="position: sticky; bottom:0px; z-index:1000;">
 	<div style="position: absolute; bottom:0px; left: 50%;margin-right: -50%;transform: translate(-50%);">
