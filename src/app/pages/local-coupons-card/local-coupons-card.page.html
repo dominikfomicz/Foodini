@@ -86,7 +86,7 @@
 <ion-footer no-padding *ngIf="show === true">
 	<ion-grid no-padding>
 		<ion-row no-padding>
-			<ion-col no-padding size="6"><a href="tel:{{ phone_number }}"><ion-button style="height: 60px;" no-padding expand="block" shape="square" size="full" color="secondary"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
+			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" shape="square" size="full" color="secondary" (click)="openPhone(phone_number)"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></ion-col>
 			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" shape="square" size="full" color="primary" (click)="showMenu()"><ion-icon color="secondary" slot="start" name="bookmark"></ion-icon><span style="color: #ffd500">Pokaż menu</span></ion-button></ion-col>
 		</ion-row>
 	</ion-grid>

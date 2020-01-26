@@ -34,20 +34,20 @@
 			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
 			<ion-col size="2">
 				<div style="position: absolute; right:0px;">
-					<img [src]="favColor" style="height: 23px; width: auto; margin: 2vh 6vw 0 auto; display: block;" (click)="changeFavColor(items.local_id)">
+					<img [src]="favColor" style="height: 23px; width: auto; margin: 3vh 6vw 0 auto; display: block;" (click)="changeFavColor(items.local_id)">
 					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 6vw 0 auto; display: block; text-align: center; font-size: 2vh;">{{ items.favourite_count }}</p>
 				</div>
 			</ion-col>
 		</ion-row>
 		<ion-row class="ion-text-center">
 			<ion-col style="margin-top:10px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
-				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>	
 			</ion-col>
@@ -121,9 +121,9 @@
 					</ion-col>
 				</ion-row>
 				<ion-row text-center style="margin-top:20px;margin-bottom:20px;font-size: 0.6rem;">
-					<ion-col class="social" size="4"><a href="{{ items.facebook_url }}"><ion-icon name="logo-facebook" style="font-size: 4rem;"></ion-icon><br>FACEBOOK</a></ion-col>
-					<ion-col class="social" size="4"><a href="{{ items.instagram_url }}"><ion-icon name="logo-instagram" style="font-size: 4rem;"></ion-icon><br>INSTAGRAM</a></ion-col>
-					<ion-col class="social" size="4" (click)="showMenu()"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu-2.png"><br>MENU</ion-col>
+					<ion-col class="social" size="4" (click)="openFacebook(items.facebook_url)"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/facebook.svg"><br>FACEBOOK</ion-col>
+					<ion-col class="social" size="4" (click)="openInstagram(items.instagram_url)"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/instagram.svg"><br>INSTAGRAM</ion-col>
+					<ion-col class="social" size="4" (click)="showMenu()"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu.svg"><br>MENU</ion-col>
 				</ion-row>
 			</ion-grid>
 	</ion-card>
@@ -131,8 +131,9 @@
 <ion-footer no-padding *ngIf="show === true">
 	<ion-grid no-padding>
 		<ion-row no-padding>
-			<ion-col no-padding size="6"><a href="tel:{{ items.phone_number }}"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary" (click)="closeModal()"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></a></ion-col>
-			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon color="secondary" slot="start" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
+			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary"(click)="openPhone(items.phone_number)"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></ion-col>
+			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon src="/assets/img/kupon.svg" color="secondary" slot="start"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
+			<!-- <ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon color="secondary" slot="start" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col> -->
 		</ion-row>
 	</ion-grid>
 </ion-footer>

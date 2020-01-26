@@ -54,6 +54,9 @@
                         margin-top: 0.1rem;
                     }
                 }
+                .title {
+                    text-align: left;
+                }
                 .coupons_tags {
                     height: 30px;
                     ion-col {
@@ -154,6 +157,7 @@ ion-tab-button {
 .toggler_screen {
     ion-label {
         &.locals {
+            color: rgb(106, 44, 134);
             padding: 10px; z-index: 1; position: relative;
             &.active {
                 color: #fff !important;

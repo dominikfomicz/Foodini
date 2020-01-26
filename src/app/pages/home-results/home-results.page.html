@@ -30,7 +30,7 @@
 	</ion-toolbar>
 
 	<!-- Lokale -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 0; background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 0; background-color:white; margin-bottom: 50px;">
 		<div *ngIf="items_locals_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
@@ -48,17 +48,17 @@
 				<ion-row>
 					<ion-col text-center size="12">
 						<ion-row class="title">
-							<h5 style="margin-left:5px"><b>{{ item.name }}</b></h5>
+							<h5 style="margin-left:5px;"><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
 							<ion-col size="4" *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
-								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 								{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 									{{tag.value.name}}
 								</div>
 							</ion-col>
@@ -85,7 +85,7 @@
 	</div>
 
 	<!-- Kupony -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 0; background-color:white;">
+	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 0; background-color:white; margin-bottom: 50px;">
 		<div *ngIf="items_coupons_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
