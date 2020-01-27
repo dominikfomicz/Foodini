@@ -9,9 +9,9 @@
 </div>
 <ion-content>
   <!-- <ion-slides pager="true" zoom> -->
-  <ion-slides zoom> 
-    <ion-slide>
-        <img src="http://repo.foodini.net.pl/storage/locals/{{ id_local_data_main }}/menu.png"> 
+  <ion-slides pager="true" zoom> 
+    <ion-slide *ngFor="let image of images">
+        <img src="{{ image }}"> 
     </ion-slide>
   </ion-slides>
 </ion-content>

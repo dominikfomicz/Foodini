@@ -3,6 +3,7 @@ import { ModalController, NavController, LoadingController, Platform } from '@io
 import { ConnectionService } from 'src/app/services/connection.service';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ImagePage } from '../image/image.page';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-local-card',
@@ -40,8 +41,10 @@ export class LocalCardPage implements OnInit {
 				if(this.items.coupons_count === 0){
 					this.coupons_button = false;
 				}
-				this.loadingCtrl.dismiss('loading');
-				this.show = true;
+				this.platform.ready().then(a => {
+					this.loadingCtrl.dismiss('loading');
+					this.show = true;
+				});
 			})
 		);
 	}
@@ -82,24 +85,39 @@ export class LocalCardPage implements OnInit {
 		this.showTags = !this.showTags;
 	}
 
-	async showMenu(){
-		// var menuURL = 'http://repo.foodini.net.pl/storage/locals/' + this.id_local_data_main + '/menu.png';
-		// var title = '';
-		// var options = {
-		// 	share: true,
+	openFacebook(link) {
+		this.countStats('Facebook').then(a => {
+			window.open(link, '_self');
+		});
+	}
 
-		// };
-		// if(this.platform.is('ios')) {
-		// 	menuURL = decodeURIComponent(menuURL);
-		// }
-		// this.viewer.show(menuURL, title, options);
-			const modal = await this.modalCtrl.create({
+	openInstagram(link) {
+		this.countStats('Instagram').then(a => {
+			window.open(link, '_self');
+		});
+	}
+
+
+	openPhone(phone_number) {
+		this.countStats('Phonenumber').then(a => {
+			window.open('tel:' + phone_number + ' }}', '_self');
+		});
+	}
+
+	async countStats(name) {
+		this.connection.getDataByPost('locals/show' + name + 'Count', {id_local_data_main: this.id_local_data_main}).subscribe(data => {
+			console.log(data);
+		});
+	}
+
+	async showMenu(){
+		this.countStats('Menu');
+		const modal = await this.modalCtrl.create({
 			component: ImagePage,
 			componentProps: {
 				id_local_data_main: this.id_local_data_main
 			}
 			});
-			return await modal.present();
-
+		return await modal.present();
 	}
 }

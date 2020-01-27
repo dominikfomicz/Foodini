@@ -29,15 +29,18 @@ export class CouponCardPage implements OnInit {
 
 	ngOnInit() {
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('coupons/getDetails/'+ this.id_coupon_data_main).subscribe(data => {
+			this.connection.getDataByGet('coupons/getDetails/' + this.id_coupon_data_main).subscribe(data => {
 				this.items = data;
 				console.log(data);
-				if(this.items.is_favouirite === true){
+				if(this.items.is_favouirite === true) {
 					this.favColor = '/assets/img/star_color.svg';
 				} else {
 					this.favColor = '/assets/img/star.svg';
 				}
-				if(this.items.is_available === false){
+				if(this.items.is_available === false) {
+					this.button = false;
+				}
+				if(this.items.already_used === true) {
 					this.button = false;
 				}
 				this.loadingCtrl.dismiss('loading');
