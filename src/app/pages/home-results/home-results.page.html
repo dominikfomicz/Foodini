@@ -47,7 +47,7 @@
 			<ion-grid>
 				<ion-row>
 					<ion-col text-center size="12">
-						<ion-row class="title">
+						<ion-row class="title-company">
 							<h5 style="margin-left:5px"><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
@@ -63,19 +63,23 @@
 								</div>
 							</ion-col>
 						</ion-row>
-						<ion-row class="info" style=" margin-top: 1rem !important; padding-left: 5px;">
-							<ion-col size="13" style=" display: flex; align-items: flex-center; margin: 0; padding: 0;">
-								<div class="open_hours" style="display: flex; align-items: center; justify-center: flex-start;" *ngIf="item.is_open_now === true">
-									<div style="display: flex; align-items: center; padding: 0; margin: 0;">{{ item.open_from }} - {{ item.open_to }}</div>
-								</div>
-								<div class="close_hours" *ngIf="item.is_open_now === false">
-									Zamknięte
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
-									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
-									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
-								</div>
+						<ion-row>
+							<ion-col style=" margin: 0; padding: 0;">
+								<ion-row class="info">
+									<ion-col size="13" style="height: 100%; min-height: 21px; display: flex; align-items: flex-center; margin: 0; padding: 0;">
+										<div class="open_hours" style="display: flex; align-items: center; justify-center: flex-start;" *ngIf="item.is_open_now === true">
+											<div style="display: flex; align-items: center; padding: 0; margin: 0;">{{ item.open_from }} - {{ item.open_to }}</div>
+										</div>
+										<div class="close_hours" *ngIf="item.is_open_now === false">
+											Zamknięte
+										</div>
+										<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+											<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
+											<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
+											<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+										</div>
+									</ion-col>
+								</ion-row>
 							</ion-col>
 						</ion-row>
 					</ion-col>
@@ -103,8 +107,6 @@
 				</ion-thumbnail>
 			</div>
 			<ion-grid>
-				<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
-				<div *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
 				<!-- <ion-icon style="position: absolute; top:55px; right: 0px; font-size: 40px; color: #00000029" name="star" (click)="alert(123)"></ion-icon> -->
 				<ion-row>
 					<ion-col class="ion-text-center" size="12">
@@ -130,19 +132,25 @@
 					</ion-col>
 				</ion-row>
 				<ion-row>
-					<ion-col>
+					<ion-col style=" margin: 0; padding: 0;">
 						<ion-row class="info">
-							<ion-col size="13" style="display: flex; align-items: flex-center;">
-								<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === true">
-									Aktywny
+							<ion-col size="12" style="height: 100%; min-height: 18px; display: flex; justify-content: space-between; margin: 0; padding: 0;">
+								<div style=" display: flex; align-items: flex-center;">
+									<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === true">
+										Aktywny
+									</div>
+									<div style="color: red; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === false">
+										Nieaktywny
+									</div>
+									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
+										<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
+										<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
+										<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+									</div>
 								</div>
-								<div style="color: red; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === false">
-									Nieaktywny
-								</div>
-								<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-									<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
-									<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
-									<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+								<div>
+									<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
+									<div class="col" *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
 								</div>
 							</ion-col>
 						</ion-row>

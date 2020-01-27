@@ -72,9 +72,9 @@ export class HomeResultsPage implements OnInit {
 		this.navCtrl.navigateForward('settings');
 	}
 
-	refreshLocalsList(){
+	refreshLocalsList() {
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
+			this.connection.getDataByGet('locals/getList/-1').subscribe(data => {
 				this.items_locals = data;
 				console.log(this.items_locals);
 				this.items_locals_search = this.items_locals;
@@ -86,7 +86,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
+			this.connection.getDataByGet('coupons/getCouponsByCity/-1').subscribe(data => {
 				this.items_coupons = data;
 				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');

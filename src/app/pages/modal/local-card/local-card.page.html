@@ -32,7 +32,7 @@
 		<ion-row class="ion-text-center" style="font-size: 25px;color:black; position: relative">
 			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 6rem;"></ion-col>
 			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
-			<ion-col size="2">
+			<ion-col size="2" style="display: flex; align-items: center;">
 				<div style="position: absolute; right:0px;">
 					<img [src]="favColor" style="height: 23px; width: auto; margin: 2vh 6vw 0 auto; display: block;" (click)="changeFavColor(items.local_id)">
 					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 6vw 0 auto; display: block; text-align: center; font-size: 2vh;">{{ items.favourite_count }}</p>
@@ -49,7 +49,7 @@
 				</div>
 				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
-				</div>	
+				</div>
 			</ion-col>
 		</ion-row>
 		<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
