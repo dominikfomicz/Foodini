@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { Storage } from '@ionic/storage';
 
 @Component({
 selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginPage implements OnInit {
 	public alertCtrl: AlertController,
 	public loadingCtrl: LoadingController,
 	private formBuilder: FormBuilder,
-	private facebook: Facebook
+	private facebook: Facebook,
+	private storage: Storage
 	) { }
 
 	ionViewWillEnter() {
@@ -27,6 +29,10 @@ export class LoginPage implements OnInit {
 	}
 
 	ngOnInit() {
+		this.storage.set('email', 'test@wp.pl');
+		this.storage.get('email').then((result) => {
+			console.log(result);
+	});
 
 		this.onLoginForm = this.formBuilder.group({
 			'email': [null, Validators.compose([

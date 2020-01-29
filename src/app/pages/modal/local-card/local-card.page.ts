@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, LoadingController, Platform } from '@ionic/angular';
 import { ConnectionService } from 'src/app/services/connection.service';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ImagePage } from '../image/image.page';
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-local-card',
@@ -23,7 +21,6 @@ export class LocalCardPage implements OnInit {
 				public navCtrl: NavController,
 				public loadingCtrl: LoadingController,
 				public connection: ConnectionService,
-				public viewer: PhotoViewer,
 				public platform: Platform ) {
 	}
 

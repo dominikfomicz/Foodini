@@ -4,7 +4,6 @@ import { ModalController, LoadingController } from '@ionic/angular';
 import { FilterCardPage } from '../modal/filter-card/filter-card.page';
 import { ActivatedRoute } from '@angular/router';
 import { ConnectionService } from 'src/app/services/connection.service';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { Platform } from '@ionic/angular';
 import { ImagePage } from '../modal/image/image.page';
 
@@ -26,7 +25,6 @@ export class LocalCouponsCardPage implements OnInit {
 		public route: ActivatedRoute,
 		public connection: ConnectionService,
 		public loadingCtrl: LoadingController,
-		public viewer: PhotoViewer,
 		public platform: Platform
 	) { }
 

@@ -36,11 +36,11 @@ export class ConnectionService {
 			(data) => {
 				if (data && data['access_token']) {
 					this.setToken(data['access_token']);
-					this.getDataByGet('user').subscribe(user_data => {
-						localStorage.setItem('username', user_data['name']);
-						localStorage.setItem('user_email', user_data['email']);
-						localStorage.setItem('user_type', user_data['user_type']);
-					});
+					// this.getDataByGet('user').subscribe(user_data => {
+					// 	localStorage.setItem('username', user_data['name']);
+					// 	localStorage.setItem('user_email', user_data['email']);
+					// 	localStorage.setItem('user_type', user_data['user_type']);
+					// });
 				}
 				return this.router.navigateByUrl('home-results');
 			},
@@ -118,9 +118,9 @@ export class ConnectionService {
 	}
 
 	showError(message) {
-		localStorage.clear();
-		console.log(message);
-		this.router.navigateByUrl('/welcome-page');
+		// localStorage.clear();
+		// console.log(message);
+		// this.router.navigateByUrl('/welcome-page');
 	}
 }
 

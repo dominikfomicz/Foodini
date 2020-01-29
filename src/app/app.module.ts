@@ -24,10 +24,7 @@ import { MapCardPageModule } from './pages/map-card/map-card.module';
 import { Device } from '@ionic-native/device/ngx';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
-import { NoAuthGuard } from './services/no-auth.guard';
-import { NoAuthService } from './services/no-auth.service';
 import { Facebook } from '@ionic-native/facebook/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -54,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
 		Facebook,
 		AndroidPermissions,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		AuthService, AuthGuard, NoAuthGuard, NoAuthService, PhotoViewer
+		AuthService, AuthGuard
 	],
 	bootstrap: [AppComponent]
 })
