@@ -16,6 +16,7 @@ export class CouponCardPage implements OnInit {
 
 	id_coupon_data_main;
 	id_local_data_main;
+	local_name;
 	code;
 	button = true;
 	items: any;

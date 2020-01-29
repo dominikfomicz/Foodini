@@ -257,12 +257,13 @@ export class HomeResultsPage implements OnInit {
 		return await modal.present();
 	}
 
-	async openCouponCard (id_coupon_data_main, id_local_data_main) {
+	async openCouponCard (id_coupon_data_main, id_local_data_main, local_name) {
 		const modal = await this.modalCtrl.create({
 		component: CouponCardPage,
 		componentProps: {
 			id_coupon_data_main: id_coupon_data_main,
-			id_local_data_main: id_local_data_main
+			id_local_data_main: id_local_data_main,
+			local_name: local_name
 		}
 		});
 		return await modal.present();

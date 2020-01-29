@@ -24,7 +24,7 @@
 		<ion-searchbar color="light" [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()" placeholder="Znajdź kupon"></ion-searchbar>
 	</ion-toolbar> -->
 	<ion-card class="no-radius" style="background-color:white">
-		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id)" style="position: relative" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
+		<ion-item lines="none" *ngFor="let item of items" (click)="openCouponCard(item.coupon_id, item.local_name)" style="position: relative" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
 			<div style="position: absolute; top:20px; right:0px"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="width:30px"></div>
 			<ion-thumbnail slot="start">
 				<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
