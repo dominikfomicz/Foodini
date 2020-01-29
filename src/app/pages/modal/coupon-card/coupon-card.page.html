@@ -33,7 +33,11 @@
 					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 10vw 0 auto; display: block; text-align: center;">{{ items.favourite_count }}</p>
 				</div>
 				<div style="position: absolute; left:0px;">
-					<img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 40px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; border: solid 1px #6a2c86;">
+
+					<div (click)="showMenu()"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 40px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; border: none !important;"></div>
+					<!-- <ion-item (click)="openLocalCard()"> -->
+
+					<!-- </ion-item> -->
 				</div>
 			</ion-row>
 		</ion-grid>
