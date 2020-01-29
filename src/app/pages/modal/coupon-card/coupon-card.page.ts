@@ -86,8 +86,7 @@ export class CouponCardPage implements OnInit {
 		});
 		await loading.present();
 	}
-	async showMenu(){
-		// this.countStats('Menu');
+	async showLocal(){
 		const modal = await this.modalCtrl.create({
 			component: LocalCardPage,
 			componentProps: {
