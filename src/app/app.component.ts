@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Pages } from './interfaces/pages';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
 selector: 'app-root',
@@ -23,7 +26,10 @@ export class AppComponent {
 	private statusBar: StatusBar,
 	public navCtrl: NavController,
 	public device: Device,
-	private http: HttpClient
+	private http: HttpClient,
+	private auth: AuthService,
+	private router: Router,
+	private storage: Storage
 	) {
 		this.appPages = [
 		{
@@ -47,18 +53,36 @@ export class AppComponent {
 	}
 
 	initializeApp() {
-		// this.user_type = localStorage.getItem('user_type');
 		this.platform.ready().then(() => {
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
-			this.email = this.device.uuid;
-			const post_data = new HttpParams()
-			.set('uuid', this.device.uuid);
+			// this.email = this.device.uuid;
 
-			return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => { 
-				this.user_type = data;
+			this.auth.authenticationState.subscribe(state => {
+				if (state) {
+					this.router.navigate(['home-results']);
+				} else {
+					this.router.navigate(['']);
+				}
 			});
 
+			//załadowanie linków do zarządzania dla managerów i kelnerów w menu
+			// const post_data = new HttpParams().set('uuid', this.device.uuid);
+			// return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
+			// 	this.user_type = data;
+			// 	this.storage.get('email').then((val) => {
+			// 		if(val) {
+			// 			this.email = val;
+			// 		}
+			// 	});
+			// });
+
+
 		});
+	}
+
+	logout(){
+		this.auth.logout();
+		this.initializeApp();
 	}
 }

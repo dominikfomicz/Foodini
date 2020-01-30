@@ -15,19 +15,19 @@ export class WelcomePagePage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.setup().catch(err => {
-			this.connection.login(this.device.uuid, this.device.uuid);
-		});
+		// this.setup().catch(err => {
+		// 	// this.connection.login(this.device.uuid, this.device.uuid);
+		// });
 	}
 
-	async setup() {
-		await this.platform.ready().then(a => {
-			this.connection.registerStart(this.device.uuid).subscribe((data) => {
-					this.connection.login(this.device.uuid, this.device.uuid);
-			},
-			err => {
-				this.connection.login(this.device.uuid, this.device.uuid);
-			});
-		});
-	}
+	// async setup() {
+	// 	await this.platform.ready().then(a => {
+	// 		this.connection.registerStart(this.device.uuid).subscribe((data) => {
+	// 				// this.connection.login(this.device.uuid, this.device.uuid);
+	// 		},
+	// 		err => {
+	// 			// this.connection.login(this.device.uuid, this.device.uuid);
+	// 		});
+	// 	});
+	// }
 }

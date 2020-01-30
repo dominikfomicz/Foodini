@@ -33,7 +33,7 @@ import { IonicStorageModule } from '@ionic/storage';
 		BrowserModule,
 		BrowserAnimationsModule,
 		IonicModule.forRoot({
-			mode: 'md'
+			mode: 'md',
 		}),
 		IonicStorageModule.forRoot(),
 		AppRoutingModule,

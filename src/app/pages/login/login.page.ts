@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { Storage } from '@ionic/storage';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
 selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
 	public loadingCtrl: LoadingController,
 	private formBuilder: FormBuilder,
 	private facebook: Facebook,
-	private storage: Storage
+	private storage: Storage,
+	private auth: AuthService
 	) { }
 
 	ionViewWillEnter() {
@@ -29,11 +31,6 @@ export class LoginPage implements OnInit {
 	}
 
 	ngOnInit() {
-		this.storage.set('email', 'test@wp.pl');
-		this.storage.get('email').then((result) => {
-			console.log(result);
-	});
-
 		this.onLoginForm = this.formBuilder.group({
 			'email': [null, Validators.compose([
 				Validators.required
@@ -94,8 +91,9 @@ export class LoginPage implements OnInit {
 	this.navCtrl.navigateRoot('/register');
 	}
 
-	goToHome() {
-	this.navCtrl.navigateRoot('/home-results');
+	loginClick() {
+		console.log(this.onLoginForm.value.email);
+		this.auth.login(this.onLoginForm.value.email, this.onLoginForm.value.password);
 	}
 
 	loginWithFacebook(){

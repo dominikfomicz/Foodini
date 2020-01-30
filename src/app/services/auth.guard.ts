@@ -7,24 +7,10 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-	// add the service we need
-	constructor(
-		private auth: AuthService,
-		private router: Router
-	) {}
+	constructor(private auth: AuthService, private router: Router) {}
 
-	canActivate(
-		next: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
-			// handle any redirects if a user isn't authenticated
-			if (!this.auth.isLoggedIn) {
-				// redirect the user
-				this.router.navigateByUrl('/welcome-page');
-				return false;
-			}
-
-			return true;
+	canActivate(): boolean {
+		return this.auth.isAuthenticated();
 	}
 
 }
