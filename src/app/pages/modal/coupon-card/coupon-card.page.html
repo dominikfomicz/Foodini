@@ -5,8 +5,11 @@
             <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
         </ion-button>
     </ion-buttons>
-    <ion-title text-center>
-    	<img src="assets/img/small.png" style="width: 2.5rem;">
+	<ion-title class="ion-text-center">
+		<ion-button shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary">
+			{{local_name}}
+			<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
+		</ion-button>
 	</ion-title>
 	<!-- <ion-buttons slot="primary">
 		<ion-button (click)="changeFavColor(id_coupon_data_main)">
@@ -21,7 +24,7 @@
 	<img src="assets/img/pizza-hut-cover.jpg">
 </div> -->
 <ion-content fullscreen #content *ngIf="show === true">
-	<ion-card style="background-color:white;"> 
+	<ion-card style="background-color:white;">
 		<ion-grid>
 			<ion-row style="position: relative">
 				<ion-col><img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 100px;"/></ion-col>
@@ -30,7 +33,11 @@
 					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 10vw 0 auto; display: block; text-align: center;">{{ items.favourite_count }}</p>
 				</div>
 				<div style="position: absolute; left:0px;">
-					<img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 40px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; border: solid 1px #6a2c86;">
+
+					<div (click)="showLocal()"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 40px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; border: none !important;"></div>
+					<!-- <ion-item (click)="openLocalCard()"> -->
+
+					<!-- </ion-item> -->
 				</div>
 			</ion-row>
 		</ion-grid>
@@ -44,7 +51,7 @@
 			<ion-item *ngIf="code != null" style="margin-top:20px;background-color: #f3f3f3;padding: 10px;border-radius: 10px;">
 				<ion-label text-center>
 					<h1>Pokaż kupon obsłudze</h1>
-					<!-- <img src="assets/img/qr-code.png"> --> 
+					<!-- <img src="assets/img/qr-code.png"> -->
 					<span style="font-size: 50px;">{{ code }}</span>
 				</ion-label>
 			</ion-item>

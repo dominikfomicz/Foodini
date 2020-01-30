@@ -97,7 +97,7 @@
 				</ion-label>
 			</div>
 		</div>
-		<div class="ion-item ion-item-content" style="position:relative;" lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
+		<div class="ion-item ion-item-content" style="position:relative;" lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id, item.local_name)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
 			<div style="position: absolute; top:20px; right:0px">
 				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="position: relative; width: 30px;">
 			</div>

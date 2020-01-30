@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, NavController, LoadingController } from '@ionic/angular';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { LocalCardPage } from '../local-card/local-card.page';
 
 @Component({
 	selector: 'app-local-card',
@@ -16,6 +17,7 @@ export class CouponCardPage implements OnInit {
 
 	id_coupon_data_main;
 	id_local_data_main;
+	local_name;
 	code;
 	button = true;
 	items: any;
@@ -84,5 +86,13 @@ export class CouponCardPage implements OnInit {
 		});
 		await loading.present();
 	}
-
+	async showLocal(){
+		const modal = await this.modalCtrl.create({
+			component: LocalCardPage,
+			componentProps: {
+				id_local_data_main: this.id_local_data_main
+			}
+			});
+		return await modal.present();
+	}
 }
