@@ -57,7 +57,17 @@ export class AppComponent {
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
 			// this.email = this.device.uuid;
-
+			this.auth.userStatus.subscribe(status => {
+				if (status === 1) {
+					this.user_type = 1;
+				}
+				if (status === 2) {
+					this.user_type = 2;
+				}
+				if (status === 3) {
+					this.user_type = 3;
+				}
+			});
 			this.auth.authenticationState.subscribe(state => {
 				if (state) {
 					this.router.navigate(['home-results']);
@@ -78,6 +88,15 @@ export class AppComponent {
 			// });
 
 
+		});
+	}
+
+	addRoutesForWorker(){
+		this.appPages.push({
+			title: 'Test',
+			url: '/contact',
+			direct: 'forward',
+			icon: 'mail'
 		});
 	}
 

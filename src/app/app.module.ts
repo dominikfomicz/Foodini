@@ -20,7 +20,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
 import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
-import { MapCardPageModule } from './pages/map-card/map-card.module';
 import { Device } from '@ionic-native/device/ngx';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';

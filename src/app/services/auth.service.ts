@@ -9,6 +9,7 @@ const TOKEN_KEY = 'auth-token';
 @Injectable()
 export class AuthService {
 	authenticationState = new BehaviorSubject(false);
+	userStatus = new BehaviorSubject(0);
 	httpOptions = {};
 
 	constructor(private storage: Storage, private plt: Platform, private http: HttpClient) {
@@ -46,6 +47,19 @@ export class AuthService {
 						this.storage.set('password', password);
 						localStorage.setItem('token', data['access_token']); //nie dało się inaczej wkleić tokena do headera w requestach :P
 						this.authenticationState.next(true);
+						//załadowanie linków do zarządzania dla managerów i kelnerów w menu
+						const post_data = new HttpParams().set('uuid', username);
+						return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
+							if (data === 1) {
+								this.userStatus.next(1);
+							}
+							if (data === 2) {
+								this.userStatus.next(2);
+							}
+							if (data === 3) {
+								this.userStatus.next(3);
+							}
+						});
 					});
 				}
 			});
@@ -55,7 +69,6 @@ export class AuthService {
 		return this.storage.remove(TOKEN_KEY).then(() => {
 			return this.storage.remove('email').then(() => {
 				return this.storage.remove('password').then(() => {
-					// window.location.reload();
 					localStorage.removeItem('token');
 					this.authenticationState.next(false);
 				});

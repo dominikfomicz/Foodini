@@ -20,6 +20,7 @@ const routes: Routes = [
 	{ path: 'managers-locals-list', loadChildren: './pages/manager/managers-locals-list/managers-locals-list.module#ManagersLocalsListPageModule', canActivate: [AuthGuard] }
 
 
+
 ];
 
 @NgModule({
