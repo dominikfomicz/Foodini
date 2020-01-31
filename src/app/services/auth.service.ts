@@ -70,7 +70,7 @@ export class AuthService {
 			.set('name', username)
 			.set('email', email)
 			.set('password', facebook_id);
-		return this.http.post('http://repo.foodini.net.pl/auth-api/register', post_data, this.httpOptions).subscribe(
+		return this.http.post('http://repo.foodini.net.pl/auth-api/register', post_data, this.httpOptions);
 	}
 
 	logout() {

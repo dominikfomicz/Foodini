@@ -99,12 +99,23 @@ export class LoginPage implements OnInit {
 	loginWithFacebook(){
 		this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
 			this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-				
-				this.userData = {
-					username: profile['name'],
-					email: profile['email'],
-					id: profile['id']
-				};
+				this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
+					(data) => {
+						if (data === 0) {
+							alert('użytkownik stworzony przez fb');
+							console.log(data);
+						}
+						if (data === -1) {
+							alert('coś poszło nie tak');
+							console.log(data);
+						}
+				});
+
+				// this.userData = {
+				// 	username: profile['name'],
+				// 	email: profile['email'],
+				// 	id: profile['id']
+				// };
 			});
 		});
 	}
