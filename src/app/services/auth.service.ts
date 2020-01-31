@@ -65,6 +65,14 @@ export class AuthService {
 			});
 	}
 
+	registerFacebook(username, email, facebook_id) {
+		const post_data = new HttpParams()
+			.set('name', username)
+			.set('email', email)
+			.set('password', facebook_id);
+		return this.http.post('http://repo.foodini.net.pl/auth-api/register', post_data, this.httpOptions).subscribe(
+	}
+
 	logout() {
 		return this.storage.remove(TOKEN_KEY).then(() => {
 			return this.storage.remove('email').then(() => {

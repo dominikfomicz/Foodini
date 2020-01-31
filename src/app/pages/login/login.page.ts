@@ -43,8 +43,8 @@ export class LoginPage implements OnInit {
 
 	async forgotPass() {
 		const alert = await this.alertCtrl.create({
-			header: 'Forgot Password?',
-			message: 'Enter you email address to send a reset link password.',
+			header: 'Resetowanie hasła',
+			message: 'Wpisz swój adres email',
 			inputs: [
 			{
 			name: 'email',
@@ -54,14 +54,14 @@ export class LoginPage implements OnInit {
 			],
 			buttons: [
 			{
-			text: 'Cancel',
+			text: 'Anuluj',
 			role: 'cancel',
 			cssClass: 'secondary',
 			handler: () => {
 			console.log('Confirm Cancel');
 			}
 			}, {
-			text: 'Confirm',
+			text: 'Wyślij',
 			handler: async () => {
 				const loader = await this.loadingCtrl.create({
 				duration: 2000
@@ -71,7 +71,7 @@ export class LoginPage implements OnInit {
 				loader.onWillDismiss().then(async l => {
 					const toast = await this.toastCtrl.create({
 						showCloseButton: true,
-						message: 'Email was sended successfully.',
+						message: 'Sprawdź skrzynkę i postępuj zgodnie z instrukcjami',
 						duration: 3000,
 						position: 'bottom'
 					});
@@ -99,11 +99,10 @@ export class LoginPage implements OnInit {
 	loginWithFacebook(){
 		this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
 			this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+				
 				this.userData = {
-					email: profile['email'],
-					first_name: profile['first_name'],
-					picture: profile['picture_large']['data']['url'],
 					username: profile['name'],
+					email: profile['email'],
 					id: profile['id']
 				};
 			});
