@@ -4,13 +4,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ConnectionService {
 
-	constructor(private http: HttpClient, private router: Router, private auth: AuthService) { }
+	constructor(private http: HttpClient, private router: Router, private auth: AuthService, public loadingCtrl: LoadingController) { }
 
 	mainUrl = 'http://repo.foodini.net.pl/';
 
@@ -75,9 +76,8 @@ export class ConnectionService {
 	}
 
 	showError(message) {
-		// localStorage.clear();
-		// console.log(message);
-		// this.router.navigateByUrl('/welcome-page');
+		this.auth.logout();
+		this.loadingCtrl.dismiss('loading');
 	}
 }
 

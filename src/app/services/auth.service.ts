@@ -50,7 +50,10 @@ export class AuthService {
 						//załadowanie linków do zarządzania dla managerów i kelnerów w menu
 						const post_data = new HttpParams().set('uuid', username);
 						return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
-							if (data === 1) {
+							if (data === 0) {
+								this.userStatus.next(0);
+							}
+ 							if (data === 1) {
 								this.userStatus.next(1);
 							}
 							if (data === 2) {

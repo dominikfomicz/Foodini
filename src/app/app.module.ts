@@ -25,6 +25,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { NoAuthGuard } from './services/no-auth.guard';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -50,7 +51,7 @@ import { IonicStorageModule } from '@ionic/storage';
 		Facebook,
 		AndroidPermissions,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		AuthService, AuthGuard
+		AuthService, AuthGuard, NoAuthGuard
 	],
 	bootstrap: [AppComponent]
 })

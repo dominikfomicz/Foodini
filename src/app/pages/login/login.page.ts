@@ -4,6 +4,7 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { Storage } from '@ionic/storage';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 selector: 'app-login',
@@ -13,6 +14,7 @@ styleUrls: ['./login.page.scss'],
 export class LoginPage implements OnInit {
 	public onLoginForm: FormGroup;
 	userData = null;
+	show = false;
 
 	constructor(
 	public navCtrl: NavController,
@@ -23,8 +25,18 @@ export class LoginPage implements OnInit {
 	private formBuilder: FormBuilder,
 	private facebook: Facebook,
 	private storage: Storage,
-	private auth: AuthService
-	) { }
+	private auth: AuthService,
+	private router: Router
+	) {
+		this.auth.authenticationState.subscribe(state => {
+			if (state) {
+				this.show = false;
+			} else {
+				this.show = true;
+			}
+		});
+
+	}
 
 	ionViewWillEnter() {
 		this.menuCtrl.enable(false);
