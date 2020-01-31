@@ -102,12 +102,10 @@ export class LoginPage implements OnInit {
 				this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
 					(data) => {
 						if (data === 0) {
-							alert('użytkownik stworzony przez fb');
-							console.log(data);
+							this.auth.login(profile['email'], profile['id']);
 						}
 						if (data === -1) {
-							alert('coś poszło nie tak');
-							console.log(data);
+							this.auth.login(profile['email'], profile['id']);
 						}
 				});
 
