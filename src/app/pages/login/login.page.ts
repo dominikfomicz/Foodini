@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { NavController, MenuController, ToastController, AlertController, LoadingController, Platform } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { Storage } from '@ionic/storage';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Device } from '@ionic-native/device/ngx';
 
 @Component({
 selector: 'app-login',
@@ -26,7 +27,9 @@ export class LoginPage implements OnInit {
 	private facebook: Facebook,
 	private storage: Storage,
 	private auth: AuthService,
-	private router: Router
+	private router: Router,
+	private device: Device,
+	private platform: Platform
 	) {
 		this.auth.authenticationState.subscribe(state => {
 			if (state) {
@@ -108,7 +111,7 @@ export class LoginPage implements OnInit {
 		this.auth.login(this.onLoginForm.value.email, this.onLoginForm.value.password);
 	}
 
-	loginWithFacebook(){
+	loginWithFacebook() {
 		this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
 			this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
 				this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
@@ -128,6 +131,10 @@ export class LoginPage implements OnInit {
 				// };
 			});
 		});
+	}
+
+	loginAsGuest() {
+		alert(this.device.uuid);
 	}
 
 }
