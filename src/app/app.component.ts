@@ -58,6 +58,12 @@ export class AppComponent {
 			this.splashScreen.hide();
 			// this.email = this.device.uuid;
 			this.auth.userStatus.subscribe(status => {
+				if (status === -1) {
+					this.user_type = -1;
+				}
+				if (status === 0) {
+					this.user_type = 0;
+				}
 				if (status === 1) {
 					this.user_type = 1;
 				}

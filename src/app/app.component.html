@@ -51,7 +51,7 @@
 
           <!-- Zarejestrowany użytkownik -->
           <!-- <div *ngIf="user_type === '1' || user_type === '2' || user_type === '3'"> -->
-            <div>
+            <div *ngIf="user_type === 1 || user_type === 2 || user_type === 3 || user_type === -1">
             <ion-list-header text-center color="light">
                 <ion-label color="primary"><b>Użytkownik</b></ion-label>
             </ion-list-header>
@@ -79,16 +79,16 @@
                 <ion-label color="primary"><b>Użytkownik</b></ion-label>
             </ion-list-header>
             <ion-menu-toggle auto-hide="false">
-                <ion-item routerLink="/edit-profile" color="primary" lines="none">
-                  <ion-icon slot="start" name="person-add" color="light"></ion-icon>
+                <ion-item routerLink="/edit-profile" lines="none">
+                  <ion-icon slot="start" name="person-add" color="primary"></ion-icon>
                   <ion-label>
                     Rejestracja
                   </ion-label>
                 </ion-item>
 			      </ion-menu-toggle>
 			      <ion-menu-toggle auto-hide="false">
-                <ion-item (click)="logout()" color="primary" lines="none">
-                  <ion-icon slot="start" name="person" color="light"></ion-icon>
+                <ion-item (click)="logout()" lines="none">
+                  <ion-icon slot="start" name="person" color="primary"></ion-icon>
                   <ion-label>
                     Logowanie
                   </ion-label>
