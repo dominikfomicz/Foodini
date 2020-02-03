@@ -74,7 +74,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshCouponsList(){
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('coupons/getCouponsByCity/-1').subscribe(data => {
+			this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
 				this.items_coupons = data;
 				this.items_coupons_search = this.items_coupons;
 				this.loadingCtrl.dismiss('loading');
