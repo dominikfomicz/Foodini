@@ -56,58 +56,12 @@ export class LoginPage implements OnInit {
 		});
 	}
 
-	async forgotPass() {
-		const alert = await this.alertCtrl.create({
-			header: 'Resetowanie hasła',
-			message: 'Wpisz swój adres email',
-			inputs: [
-			{
-			name: 'email',
-			type: 'email',
-			placeholder: 'Email'
-			}
-			],
-			buttons: [
-			{
-			text: 'Anuluj',
-			role: 'cancel',
-			cssClass: 'secondary',
-			handler: () => {
-			console.log('Confirm Cancel');
-			}
-			}, {
-			text: 'Wyślij',
-			handler: async () => {
-				const loader = await this.loadingCtrl.create({
-				duration: 2000
-				});
-
-				loader.present();
-				loader.onWillDismiss().then(async l => {
-					const toast = await this.toastCtrl.create({
-						showCloseButton: true,
-						message: 'Sprawdź skrzynkę i postępuj zgodnie z instrukcjami',
-						duration: 3000,
-						position: 'bottom'
-					});
-
-					toast.present();
-				});
-			}
-			}
-			]
-		});
-
-		await alert.present();
-	}
-
-	// // //
 	goToRegister() {
-	this.navCtrl.navigateRoot('/register');
+	// this.navCtrl.navigateRoot('/register');
+		this.router.navigate(['/register'], {replaceUrl: true});
 	}
 
 	loginClick() {
-		console.log(this.onLoginForm.value.email);
 		this.auth.login(this.onLoginForm.value.email, this.onLoginForm.value.password);
 	}
 
@@ -134,7 +88,60 @@ export class LoginPage implements OnInit {
 	}
 
 	loginAsGuest() {
-		alert(this.device.uuid);
+		this.auth.registerUuid(this.device.uuid).subscribe(
+			(data) => {
+				if (data === 0) {
+					this.auth.login(this.device.uuid, this.device.uuid);
+				}
+				if (data === -1) {
+					this.auth.login(this.device.uuid, this.device.uuid);
+				}
+		});
+	}
+
+	async forgotPass() {
+		const alert = await this.alertCtrl.create({
+			header: 'Resetowanie hasła',
+			inputs: [
+			{
+			name: 'email',
+			type: 'email',
+			placeholder: 'Wpisz swój adres email'
+			}
+			],
+			buttons: [
+			{
+			text: 'Anuluj',
+			role: 'cancel',
+			cssClass: 'secondary',
+			handler: () => {
+			console.log('Confirm Cancel');
+			}
+			}, {
+			text: 'Wyślij',
+			handler: async input => {
+				this.auth.resetPassword(input.email);
+				const loader = await this.loadingCtrl.create({
+				duration: 2000
+				});
+
+				loader.present();
+				loader.onWillDismiss().then(async l => {
+					const toast = await this.toastCtrl.create({
+						showCloseButton: false,
+						message: 'Sprawdź skrzynkę i postępuj zgodnie z instrukcjami',
+						duration: 3000,
+						position: 'bottom'
+					});
+
+					toast.present();
+				});
+			}
+			}
+			]
+		});
+
+		await alert.present();
 	}
 
 }

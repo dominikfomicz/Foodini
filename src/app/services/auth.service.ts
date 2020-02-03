@@ -47,13 +47,17 @@ export class AuthService {
 						this.storage.set('password', password);
 						localStorage.setItem('token', data['access_token']); //nie dało się inaczej wkleić tokena do headera w requestach :P
 						this.authenticationState.next(true);
+
 						//załadowanie linków do zarządzania dla managerów i kelnerów w menu
 						const post_data = new HttpParams().set('uuid', username);
 						return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
+							if (data === -1) {
+								this.userStatus.next(-1);
+							}
 							if (data === 0) {
 								this.userStatus.next(0);
 							}
- 							if (data === 1) {
+							if (data === 1) {
 								this.userStatus.next(1);
 							}
 							if (data === 2) {
@@ -68,12 +72,34 @@ export class AuthService {
 			});
 	}
 
+	register(username, password) {
+		const post_data = new HttpParams()
+			.set('name', username)
+			.set('email', username)
+			.set('password', password);
+		return this.http.post('http://repo.foodini.net.pl/auth-api/registerEmail', post_data, this.httpOptions);
+	}
+
 	registerFacebook(username, email, facebook_id) {
 		const post_data = new HttpParams()
 			.set('name', username)
 			.set('email', email)
 			.set('password', facebook_id);
 		return this.http.post('http://repo.foodini.net.pl/auth-api/register', post_data, this.httpOptions);
+	}
+
+	registerUuid(uuid) {
+		const post_data = new HttpParams()
+			.set('uuid', uuid);
+		return this.http.post('http://repo.foodini.net.pl/auth-api/registerUuid', post_data, this.httpOptions);
+	}
+
+	resetPassword(email) {
+		const post_data = new HttpParams()
+			.set('email', email);
+		return this.http.post('http://repo.foodini.net.pl/password/email', post_data, this.httpOptions).subscribe(data => {
+			console.log(data);
+		});
 	}
 
 	logout() {

@@ -76,9 +76,9 @@ export class AppComponent {
 			});
 			this.auth.authenticationState.subscribe(state => {
 				if (state) {
-					this.router.navigate(['home-results']);
+					this.router.navigate(['home-results'], {replaceUrl: true});
 				} else {
-					this.router.navigate(['']);
+					this.router.navigate([''], {replaceUrl: true});
 				}
 			});
 

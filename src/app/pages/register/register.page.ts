@@ -1,53 +1,99 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, LoadingController } from '@ionic/angular';
+import { NavController, MenuController, ToastController, AlertController, LoadingController, Platform } from '@ionic/angular';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { Storage } from '@ionic/storage';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { Device } from '@ionic-native/device/ngx';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+selector: 'app-register',
+templateUrl: './register.page.html',
+styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  public onRegisterForm: FormGroup;
+	public onLoginForm: FormGroup;
+	userData = null;
+	show = false;
 
-  constructor(
-    public navCtrl: NavController,
-    public menuCtrl: MenuController,
-    public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
-  ) { }
+	constructor(
+	public navCtrl: NavController,
+	public menuCtrl: MenuController,
+	public toastCtrl: ToastController,
+	public alertCtrl: AlertController,
+	public loadingCtrl: LoadingController,
+	private formBuilder: FormBuilder,
+	private facebook: Facebook,
+	private storage: Storage,
+	private auth: AuthService,
+	private router: Router,
+	private device: Device,
+	private platform: Platform
+	) {
+		this.auth.authenticationState.subscribe(state => {
+			if (state) {
+				this.show = false;
+			} else {
+				this.show = true;
+			}
+		});
 
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
+	}
 
-  ngOnInit() {
-    this.onRegisterForm = this.formBuilder.group({
-      'fullName': [null, Validators.compose([
-        Validators.required
+	ionViewWillEnter() {
+		this.menuCtrl.enable(false);
+	}
+
+	ngOnInit() {
+		this.onLoginForm = this.formBuilder.group({
+			'email': [null, Validators.compose([
+				Validators.required
+			])],
+			'password': [null, Validators.compose([
+				Validators.required
       ])],
-      'email': [null, Validators.compose([
-        Validators.required
-      ])],
-      'password': [null, Validators.compose([
-        Validators.required
-      ])]
+      'check': [true, Validators.compose([
+				Validators.required
+			])]
+		});
+	}
+
+	goToLogin() {
+  // this.navCtrl.navigateRoot('');
+  this.router.navigate([''], {replaceUrl: true});
+	}
+
+	registerClick() {
+		this.auth.register(this.onLoginForm.value.email, this.onLoginForm.value.password).subscribe(
+      (data) => {
+				if (data === 0) {
+					this.presentSuccessAlert();
+				}
+				if (data === -1) {
+					this.presentErrorAlert();
+				}
+		});
+	}
+
+  async presentSuccessAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Dziękujemy!',
+      subHeader: 'Sprawdź swoją skrzynkę i potwierdź założenie konta',
+      buttons: ['OK']
     });
+
+    await alert.present();
   }
 
-  async signUp() {
-    const loader = await this.loadingCtrl.create({
-      duration: 2000
+  async presentErrorAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Błąd',
+      subHeader: 'Uzytkownik o podanym adresie email już istnieje',
+      buttons: ['OK']
     });
 
-    loader.present();
-    loader.onWillDismiss().then(() => {
-      this.navCtrl.navigateRoot('/home-results');
-    });
+    await alert.present();
   }
 
-  // // //
-  goToLogin() {
-    this.navCtrl.navigateRoot('/');
-  }
 }

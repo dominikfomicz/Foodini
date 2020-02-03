@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,13 +9,19 @@ import { AlertController } from '@ionic/angular';
 })
 export class ContactPage implements OnInit {
 
-  constructor(public alertCtrl: AlertController) { }
+  message;
+  name;
+
+  constructor(public alertCtrl: AlertController, public connection: ConnectionService) { }
 
   ngOnInit() {
   }
 
 
   async presentAlert() {
+    this.connection.getDataByPost('feedback/add', {message: this.message, name: this.name}).subscribe( data => {
+      console.log(data);
+    });
     const alert = await this.alertCtrl.create({
       header: 'Dziękujemy!',
       subHeader: 'Twoja wiadomość została wysłana',
