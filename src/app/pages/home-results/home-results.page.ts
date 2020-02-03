@@ -1,7 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
-import { Uid } from '@ionic-native/uid/ngx';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Component, OnInit } from '@angular/core';
 import {
 	NavController,
 	AlertController,
@@ -12,17 +9,10 @@ import {
 	LoadingController
 } from '@ionic/angular';
 
-// Modals
-import { ImagePage } from './../modal/image/image.page';
-// Call notifications test by Popover and Custom Component.
-import { NotificationsComponent } from './../../components/notifications/notifications.component';
-import { DataService } from 'src/app/services/data.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators';
 import { LocalCardPage } from '../modal/local-card/local-card.page';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { FilterCardPage } from '../modal/filter-card/filter-card.page';
-import { trigger, state, transition, style, animate } from '@angular/animations';
 import { CouponCardPage } from '../modal/coupon-card/coupon-card.page';
 
 @Component({
@@ -42,7 +32,6 @@ export class HomeResultsPage implements OnInit {
 	items_coupons: any;
 	items_coupons_search: any;
 	viewList = 'locals';
-	// favColor: any = 'light';
 	viewFav = false;
 	show = false;
 	switchState = false;
@@ -53,7 +42,6 @@ export class HomeResultsPage implements OnInit {
 		public alertCtrl: AlertController,
 		public modalCtrl: ModalController,
 		public toastCtrl: ToastController,
-		public dataService: DataService,
 		public connection: ConnectionService,
 		public loadingCtrl: LoadingController
 	) {
@@ -74,7 +62,7 @@ export class HomeResultsPage implements OnInit {
 
 	refreshLocalsList() {
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('locals/getList/-1').subscribe(data => {
+			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items_locals = data;
 				console.log(this.items_locals);
 				this.items_locals_search = this.items_locals;

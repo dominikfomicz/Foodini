@@ -20,14 +20,12 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { LocalCardPageModule } from './pages/modal/local-card/local-card.module';
 import { CouponCardPageModule } from './pages/modal/coupon-card/coupon-card.module';
 import { FilterCardPageModule } from './pages/modal/filter-card/filter-card.module';
-import { MapCardPageModule } from './pages/map-card/map-card.module';
 import { Device } from '@ionic-native/device/ngx';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth.guard';
-import { NoAuthGuard } from './services/no-auth.guard';
-import { NoAuthService } from './services/no-auth.service';
 import { Facebook } from '@ionic-native/facebook/ngx';
-import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { NoAuthGuard } from './services/no-auth.guard';
 
 @NgModule({
 	declarations: [AppComponent, NotificationsComponent],
@@ -35,8 +33,9 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 		BrowserModule,
 		BrowserAnimationsModule,
 		IonicModule.forRoot({
-			mode: 'md'
+			mode: 'md',
 		}),
+		IonicStorageModule.forRoot(),
 		AppRoutingModule,
 		HttpClientModule,
 		ImagePageModule,
@@ -52,7 +51,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 		Facebook,
 		AndroidPermissions,
 		{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-		AuthService, AuthGuard, NoAuthGuard, NoAuthService, PhotoViewer
+		AuthService, AuthGuard, NoAuthGuard
 	],
 	bootstrap: [AppComponent]
 })

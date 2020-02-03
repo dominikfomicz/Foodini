@@ -5,111 +5,109 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { Pages } from './interfaces/pages';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['./app.component.scss']
+selector: 'app-root',
+templateUrl: 'app.component.html',
+styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+	user_type: any = '0';
+	email: any;
+	public appPages: Array<Pages>;
+	httpOptions = {};
 
-  user_type: any = '0';
-  email: any;
+	constructor(
+	private platform: Platform,
+	private splashScreen: SplashScreen,
+	private statusBar: StatusBar,
+	public navCtrl: NavController,
+	public device: Device,
+	private http: HttpClient,
+	private auth: AuthService,
+	private router: Router,
+	private storage: Storage
+	) {
+		this.appPages = [
+		{
+			title: 'Prześlij uwagi',
+			url: '/contact',
+			direct: 'forward',
+			icon: 'mail'
+		},
 
-  public appPages: Array<Pages>;
-  httpOptions = {};
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-    public navCtrl: NavController,
-    public device: Device,
-    private http: HttpClient
-  ) {
-    this.appPages = [
-      // {
-      //   title: 'Lokale',
-      //   url: '/home-results',
-      //   direct: 'root',
-      //   icon: 'home'
-      // },
-      // {
-      //   title: 'Kupony',
-      //   url: '/tickets',
-      //   direct: 'forward',
-      //   icon: 'barcode'
-      // },
+		{
+			title: 'O Foodinim',
+			url: '/about',
+			direct: 'forward',
+			icon: 'information-circle'
+		},
+		];
+		// if(this.platform.pause){
+		//   localStorage.clear();
+		// }
+		this.initializeApp();
+	}
 
-      // {
-      //   title: 'Ulubione',
-      //   url: '/favourites',
-      //   direct: 'forward',
-      //   icon: 'star'
-      // },
+	initializeApp() {
+		this.platform.ready().then(() => {
+			this.statusBar.styleBlackTranslucent();
+			this.splashScreen.hide();
+			// this.email = this.device.uuid;
+			this.auth.userStatus.subscribe(status => {
+				if (status === -1) {
+					this.user_type = -1;
+				}
+				if (status === 0) {
+					this.user_type = 0;
+				}
+				if (status === 1) {
+					this.user_type = 1;
+				}
+				if (status === 2) {
+					this.user_type = 2;
+				}
+				if (status === 3) {
+					this.user_type = 3;
+				}
+			});
+			this.auth.authenticationState.subscribe(state => {
+				if (state) {
+					this.router.navigate(['home-results'], {replaceUrl: true});
+				} else {
+					this.router.navigate([''], {replaceUrl: true});
+				}
+			});
 
-      // {
-      //   title: 'Mapa',
-      //   url: '/map-card',
-      //   direct: 'forward',
-      //   icon: 'pin'
-      // },
+			//załadowanie linków do zarządzania dla managerów i kelnerów w menu
+			// const post_data = new HttpParams().set('uuid', this.device.uuid);
+			// return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
+			// 	this.user_type = data;
+			// 	this.storage.get('email').then((val) => {
+			// 		if(val) {
+			// 			this.email = val;
+			// 		}
+			// 	});
+			// });
 
-      // {
-      //   title: 'Strona powitalna',
-      //   url: '/welcome-page',
-      //   direct: 'forward',
-      //   icon: 'pin'
-      // }
 
-      // {
-      //   title: 'Poleć aplikację',
-      //   url: 'https://www.facebook.com/Foodiniapp/',
-      //   direct: 'forward',
-      //   icon: 'share'
-      // },
+		});
+	}
 
-      {
-        title: 'Prześlij uwagi',
-        url: '/contact',
-        direct: 'forward',
-        icon: 'mail'
-      },
+	addRoutesForWorker(){
+		this.appPages.push({
+			title: 'Test',
+			url: '/contact',
+			direct: 'forward',
+			icon: 'mail'
+		});
+	}
 
-      {
-        title: 'O Foodinim',
-        url: '/about',
-        direct: 'forward',
-        icon: 'information-circle'
-      },
-    ];
-    // if(this.platform.pause){
-    //   localStorage.clear();
-    // }
-    this.initializeApp();
-  }
-
-  initializeApp() {
-    // this.user_type = localStorage.getItem('user_type');
-    this.email = this.device.uuid;
-    this.platform.ready().then(() => {
-      this.statusBar.styleBlackTranslucent();
-      this.splashScreen.hide();
-      this.email = this.device.uuid;
-      const post_data = new HttpParams()
-			.set('uuid', this.device.uuid);
-
-		return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data=>{
-      this.user_type = data;
-    });
-
-    }).catch(() => {});
-  }
-
-  goToEditProgile() {
-    this.navCtrl.navigateForward('edit-profile');
-  }
-
-  logout() {
-    this.navCtrl.navigateRoot('/');
-  }
+	logout(){
+		this.auth.logout();
+		this.initializeApp();
+	}
 }

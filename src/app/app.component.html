@@ -20,7 +20,7 @@
 		  </ion-menu-toggle>
 		  
 		  <!-- Manager -->
-          <div *ngIf="user_type === 3">
+          <div *ngIf="user_type === 3 || user_type === -1">
             <ion-list-header text-center color="light">
               <ion-label color="primary"><b>Manager</b></ion-label>
             </ion-list-header>
@@ -35,7 +35,7 @@
           </div>
 
           <!-- Kelnerka i Manager -->
-          <div *ngIf="user_type === 2 || user_type === 3">
+          <div *ngIf="user_type === 2 || user_type === 3 || user_type === -1">
             <ion-list-header text-center color="light">
               <ion-label color="primary"><b>Pracownik</b></ion-label>
             </ion-list-header>
@@ -50,12 +50,13 @@
           </div>
 
           <!-- Zarejestrowany użytkownik -->
-          <!-- <div *ngIf="user_type === '1' || user_type === '2' || user_type === '3'">
+          <!-- <div *ngIf="user_type === '1' || user_type === '2' || user_type === '3'"> -->
+            <div *ngIf="user_type === 1 || user_type === 2 || user_type === 3 || user_type === -1">
             <ion-list-header text-center color="light">
                 <ion-label color="primary"><b>Użytkownik</b></ion-label>
             </ion-list-header>
-            <ion-menu-toggle auto-hide="false">
-                <ion-item routerLink="/edit-profile" lines="none">
+            <ion-menu-toggle auto-hide="false" disabled>
+                <ion-item disabled routerLink="/edit-profile" lines="none">
                   <ion-icon slot="start" name="person" color="primary"></ion-icon>
                   <ion-label>
                     Profil
@@ -63,37 +64,37 @@
                 </ion-item>
             </ion-menu-toggle>
             <ion-menu-toggle auto-hide="false">
-                <ion-item routerLink="/logout" lines="none">
+                <ion-item lines="none" (click)="logout()">
                   <ion-icon slot="start" name="log-out" color="primary"></ion-icon>
                   <ion-label>
                     Wyloguj
                   </ion-label>
                 </ion-item>
             </ion-menu-toggle>
-		      </div>   -->
+		      </div>  
 		  
 		   <!-- Niezarejestrowany użytkownik -->
-		   <!-- <div *ngIf="user_type != '1' && user_type !='2' && user_type !='3'">
-            <ion-list-header text-center color="dark">
-                <ion-label color="light"><b>Użytkownik</b></ion-label>
+		   <div *ngIf="user_type === 0">
+            <ion-list-header text-center color="light">
+                <ion-label color="primary"><b>Użytkownik</b></ion-label>
             </ion-list-header>
             <ion-menu-toggle auto-hide="false">
-                <ion-item routerLink="/edit-profile" color="primary" lines="none">
-                  <ion-icon slot="start" name="person-add" color="light"></ion-icon>
+                <ion-item routerLink="/register" lines="none">
+                  <ion-icon slot="start" name="person-add" color="primary"></ion-icon>
                   <ion-label>
                     Rejestracja
                   </ion-label>
                 </ion-item>
 			      </ion-menu-toggle>
 			      <ion-menu-toggle auto-hide="false">
-                <ion-item routerLink="/edit-profile" color="primary" lines="none">
-                  <ion-icon slot="start" name="person" color="light"></ion-icon>
+                <ion-item (click)="logout()" lines="none">
+                  <ion-icon slot="start" name="person" color="primary"></ion-icon>
                   <ion-label>
                     Logowanie
                   </ion-label>
                 </ion-item>
             </ion-menu-toggle>
-          </div>   -->
+          </div>  
           <!-- <ion-list-header text-center color="dark">
             <ion-label color="light"><b>Test</b></ion-label>
           </ion-list-header>
@@ -107,10 +108,6 @@
           </ion-menu-toggle> -->
         </ion-list> 
       </ion-content>
-      <div text-center margin-bottom>
-        Twój indetyfikator: <br><br> 
-        {{ email }}
-      </div>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
