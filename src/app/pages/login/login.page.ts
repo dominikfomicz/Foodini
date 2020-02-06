@@ -14,6 +14,7 @@ styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
 	public onLoginForm: FormGroup;
+	public onFacebook: FormGroup;
 	userData = null;
 	show = false;
 
@@ -53,6 +54,9 @@ export class LoginPage implements OnInit {
 			'password': [null, Validators.compose([
 				Validators.required
 			])]
+		});
+		this.onFacebook = this.formBuilder.group({
+			'check': [null, Validators.required]
 		});
 	}
 

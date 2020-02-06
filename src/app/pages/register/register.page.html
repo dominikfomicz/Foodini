@@ -4,7 +4,7 @@
       <div class="auth-content">
 
         <!-- Logo -->
-        <div padding-horizontal margin-bottom text-center class="animated fadeInDown">
+        <div padding-horizontal margin-bottom text-center class="animated fadeInDown" style="margin-bottom: 20px">
           <img src="assets/img/logo_napis.png" style="height: 160px">
         </div>
 
@@ -30,16 +30,16 @@
             </ion-label>
             <ion-input color="primary" type="password" formControlName="password"></ion-input>
           </ion-item>
-
-          <ion-item no-padding lines="none">
-            <ion-label color="primary"><span class="field">Akceptuję regulamin</span></ion-label>
-            <ion-checkbox color="primary" slot="start" formControlName="check"></ion-checkbox>
+          <br><br>
+          <ion-item no-padding lines="none" class="no-click">
+            <span class="rules">Akceptuję <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">regulamin aplikacji</a> oraz <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">politykę prywatności</a></span>
+            <ion-checkbox mode="ios" color="primary" slot="start" formControlName="check"></ion-checkbox>
           </ion-item>
         </form>
 
         <div margin-top margin-bottom style="margin-top: 40px;">
-          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="registerClick()" [disabled]="!onLoginForm.valid" tappable>
-            Zarejestruj się
+          <ion-button fill="outline" icon-left size="medium" expand="full" shape="round" color="primary" (click)="registerClick()" [disabled]="!onLoginForm.valid" tappable>
+            <span class="action_button">Załóż Konto</span>
           </ion-button>
 <!-- 
           <p text-center>
@@ -55,8 +55,8 @@
 
         <!-- Other links -->
         <div text-center margin-top style="margin-top:20px;">
-            <ion-text margin color="primary" (click)="goToLogin()" tappable>
-              Wróć do logowania
+            <ion-text margin text-center tappable (click)="goToLogin()" color="primary" style="border-bottom: solid #5c2383 2px; padding: 6px; font-size: 13px;">
+              <strong>Wróć do logowania</strong>
             </ion-text>
         </div>
 

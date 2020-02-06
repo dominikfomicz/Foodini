@@ -1,6 +1,10 @@
 :host {
+    * {
+        font-family: 'Josefin Sans', sans-serif !important;
+    }
+    
     ion-content {
-        --background: rgb(241, 241, 241);
+        --background: white;
     }
 }
 
@@ -18,7 +22,31 @@ ion-button {
 }
 
 .auth-content {
-    background-color: white;
+    // background-color: white;
     padding: 30px 30px;
-    border-radius: 10px;
+    // border-radius: 10px;
 }
+
+.action_button {
+    margin-top: 5px;
+    text-transform: initial;
+    font-weight: bold;
+}
+
+.rules {
+    color: var(--ion-color-primary);
+    font-size: 10px;
+    line-height: 13px;
+    text-align: justify;
+    z-index: 1000;
+}
+
+ion-checkbox {
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.activated {
+    // --ion-item-background: white;
+    // --ripple-color: white;
+  }
