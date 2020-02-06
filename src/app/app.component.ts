@@ -53,6 +53,21 @@ export class AppComponent {
 	}
 
 	initializeApp() {
+		if(localStorage.getItem('user_status') === '-1'){
+				this.user_type = -1;
+			}
+			if(localStorage.getItem('user_status') === '0'){
+				this.user_type = 0;
+			}
+			if(localStorage.getItem('user_status') === '1'){
+				this.user_type = 1;
+			}
+			if(localStorage.getItem('user_status') === '2'){
+				this.user_type = 2;
+			}
+			if(localStorage.getItem('user_status') === '3'){
+				this.user_type = 3;
+			}
 		this.platform.ready().then(() => {
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
@@ -74,6 +89,21 @@ export class AppComponent {
 					this.user_type = 3;
 				}
 			});
+			if(localStorage.getItem('user_status') === '-1'){
+				this.user_type = -1;
+			}
+			if(localStorage.getItem('user_status') === '0'){
+				this.user_type = 0;
+			}
+			if(localStorage.getItem('user_status') === '1'){
+				this.user_type = 1;
+			}
+			if(localStorage.getItem('user_status') === '2'){
+				this.user_type = 2;
+			}
+			if(localStorage.getItem('user_status') === '3'){
+				this.user_type = 3;
+			}
 			this.auth.authenticationState.subscribe(state => {
 				if (state) {
 					this.router.navigate(['home-results'], {replaceUrl: true});
