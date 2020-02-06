@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject } from 'rxjs';
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 const TOKEN_KEY = 'auth-token';
@@ -12,7 +12,7 @@ export class AuthService {
 	userStatus = new BehaviorSubject(0);
 	httpOptions = {};
 
-	constructor(private storage: Storage, private plt: Platform, private http: HttpClient) {
+	constructor(private storage: Storage, private plt: Platform, private http: HttpClient, public alertCtrl: AlertController) {
 		this.plt.ready().then(() => {
 			this.checkToken();
 		});
@@ -52,23 +52,31 @@ export class AuthService {
 						const post_data = new HttpParams().set('uuid', username);
 						return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
 							if (data === -1) {
+								localStorage.setItem('user_status', '-1');
 								this.userStatus.next(-1);
 							}
 							if (data === 0) {
+								localStorage.setItem('user_status', '0');
 								this.userStatus.next(0);
 							}
 							if (data === 1) {
+								localStorage.setItem('user_status', '1');
 								this.userStatus.next(1);
 							}
 							if (data === 2) {
+								localStorage.setItem('user_status', '2');
 								this.userStatus.next(2);
 							}
 							if (data === 3) {
+								localStorage.setItem('user_status', '3');
 								this.userStatus.next(3);
 							}
 						});
 					});
 				}
+			},
+			err => {
+				this.presentAlert('Błąd', 'Adres email, lub hasło jest niepoprawne.');
 			});
 	}
 
@@ -107,6 +115,7 @@ export class AuthService {
 			return this.storage.remove('email').then(() => {
 				return this.storage.remove('password').then(() => {
 					localStorage.removeItem('token');
+					localStorage.removeItem('user_status');
 					this.authenticationState.next(false);
 				});
 			});
@@ -117,4 +126,14 @@ export class AuthService {
 	isAuthenticated() {
 		return this.authenticationState.value;
 	}
+
+	async presentAlert(header, message) {
+		const alert = await this.alertCtrl.create({
+		  header: header,
+		  subHeader: message,
+		  buttons: ['OK']
+		});
+	
+		await alert.present();
+	  }
 }

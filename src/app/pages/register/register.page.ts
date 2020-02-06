@@ -53,9 +53,7 @@ export class RegisterPage implements OnInit {
 			'password': [null, Validators.compose([
 				Validators.required
       ])],
-      'check': [true, Validators.compose([
-				Validators.required
-			])]
+    		'check': [null, Validators.required]
 		});
 	}
 
@@ -73,13 +71,16 @@ export class RegisterPage implements OnInit {
 				if (data === -1) {
 					this.presentErrorAlert();
 				}
+		},
+		err => {
+			this.presentErrorAlert();
 		});
 	}
 
   async presentSuccessAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Dziękujemy!',
-      subHeader: 'Sprawdź swoją skrzynkę i potwierdź założenie konta',
+      subHeader: 'W ciągu 5 minut otrzymasz e-mail, w którym potwierdzisz założenie konta',
       buttons: ['OK']
     });
 

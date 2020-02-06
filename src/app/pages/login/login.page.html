@@ -1,11 +1,11 @@
-<ion-content padding class="animated fadeIn login auth-page" *ngIf="show === true">
+<ion-content padding class="animated fadeIn login auth-page">
   <ion-grid style="height: 100%">
     <ion-row justify-content-center align-items-center style="height: 100%">
       <div class="auth-content">
 
         <!-- Logo -->
-        <div padding-horizontal margin-bottom text-center class="animated fadeInDown">
-          <img src="assets/img/logo_napis.png" style="height: 200px">
+        <div padding-horizontal margin-bottom text-center class="animated fadeInDown" style="margin-bottom: 20px">
+          <img src="assets/img/logo_napis.png" style="height: 160px">
         </div>
 
         <!-- Login form -->
@@ -36,37 +36,41 @@
             </ion-text>
             </p> -->
         </form>
+        <form [formGroup]="onFacebook" class="list-form">
+          <div margin-top margin-bottom style="margin-top: 40px;">
+            <ion-button margin icon-left size="medium" expand="full" shape="round" fill="outline" color="primary" (click)="loginClick()" [disabled]="!onLoginForm.valid" tappable>
+              <span class="action_button">Zaloguj</span>
+            </ion-button>
 
-        <div margin-top margin-bottom style="margin-top: 40px;">
-          <ion-button icon-left size="medium" expand="full" shape="round" color="primary" (click)="loginClick()" [disabled]="!onLoginForm.valid" tappable>
-            Zaloguj
-          </ion-button>
+            <ion-button margin shape="round" expand="full" fill="outline" color="primary" (click)='loginWithFacebook()'  [disabled]="!onFacebook.valid">
+              <span class="action_button">Logowanie Facebook</span>
+            </ion-button>
 
-          <p text-center>
-            <ion-text color="primary">
-              lub
+            <ion-button margin shape="round" expand="full" fill="outline" color="primary" (click)='goToRegister()'>
+              <span class="action_button">Załóż Konto</span>
+            </ion-button>
+          </div>
+
+          <!-- Other links -->
+          <div text-center margin-top style="margin-top:20px;">
+            <ion-text margin text-center tappable (click)="loginAsGuest()" color="primary" style="border-bottom: solid #5c2383 2px; padding: 6px; font-size: 13px;">
+              <strong>Wejdź jako gość</strong>
             </ion-text>
-          </p>
-
-          <ion-button shape="round" expand="full" color="facebook" (click)='loginWithFacebook()'>
-            Zaloguj się przez Facebook
-          </ion-button>
-        </div>
-
-        <!-- Other links -->
-        <div text-center margin-top style="margin-top:20px;">
-            <ion-text margin color="primary" (click)="goToRegister()" tappable>
-              <strong>Zarejestruj się</strong>
-            </ion-text>
-            <ion-text  text-center tappable (click)="forgotPass()" color="primary">
-              <strong>Zapomniałem hasła</strong>
-            </ion-text>
-            <br><br>
-            <ion-text text-center tappable (click)="loginAsGuest()" color="primary">
-              Kontynuuj jako gość
-            </ion-text>
-        </div>
-
+            <br><br><br>
+            <!-- <ion-item no-padding lines="none">
+              <span class="rules">Oświadczam, że mam więcej niż 18 lat i akceptuje regulamin korzystania z ofert dla pełnoletnich</span>
+              <ion-checkbox mode="ios" color="primary" slot="start"></ion-checkbox>
+            </ion-item> -->
+            <ion-item no-padding lines="none" class="no-click">
+              <span class="rules">Akceptuję <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">regulamin aplikacji</a> oraz <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">politykę prywatności</a></span>
+              <ion-checkbox mode="ios" color="primary" slot="start" formControlName="check"></ion-checkbox>
+            </ion-item>
+            <br>
+              <ion-text margin text-center tappable (click)="forgotPass()" color="primary" style="font-size: 11px;">
+                <strong>Zapomniałem hasła</strong>
+              </ion-text>
+          </div>
+        </form>
         <!-- <div text-center margin-top *ngIf='userData'>
           <ion-card>
             <ion-card-header>{{ userData.username }}</ion-card-header>

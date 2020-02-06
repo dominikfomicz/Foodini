@@ -6,7 +6,7 @@
         </ion-button>
     </ion-buttons>
 	<ion-title class="ion-text-center">
-		<ion-button shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary">
+		<ion-button (click)="showLocal()" shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary">
 			{{local_name}}
 			<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
 		</ion-button>
@@ -34,7 +34,7 @@
 				</div>
 				<div style="position: absolute; left:0px;">
 
-					<div (click)="showLocal()"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 40px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; border: none !important;"></div>
+					<div (click)="showLocal()"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 45px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; padding: 5px; border: 1px solid #6a2c86 !important;"></div>
 					<!-- <ion-item (click)="openLocalCard()"> -->
 
 					<!-- </ion-item> -->
