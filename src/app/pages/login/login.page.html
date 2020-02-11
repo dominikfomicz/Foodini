@@ -42,7 +42,7 @@
               <span class="action_button">Zaloguj</span>
             </ion-button>
 
-            <ion-button margin shape="round" expand="full" fill="outline" color="primary" (click)='loginWithFacebook()'  [disabled]="!onFacebook.valid">
+            <ion-button margin shape="round" expand="full" fill="outline" color="primary" (click)='loginWithFacebook()'>
               <span class="action_button">Logowanie Facebook</span>
             </ion-button>
 
@@ -62,7 +62,7 @@
               <ion-checkbox mode="ios" color="primary" slot="start"></ion-checkbox>
             </ion-item> -->
             <ion-item no-padding lines="none" class="no-click">
-              <span class="rules">Akceptuję <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">regulamin aplikacji</a> oraz <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">politykę prywatności</a></span>
+              <span style="color: red; font-size:20px; margin-right: 3px">*</span><span class="rules">Akceptuję <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">regulamin aplikacji</a> oraz <a target="_blank" href="http://foodiniapp.pl/regulamin-i-polityka-prywatnosci/">politykę prywatności</a></span>
               <ion-checkbox mode="ios" color="primary" slot="start" formControlName="check"></ion-checkbox>
             </ion-item>
             <br>

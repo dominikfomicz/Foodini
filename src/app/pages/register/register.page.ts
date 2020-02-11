@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController, Platform } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { Storage } from '@ionic/storage';
@@ -47,15 +47,23 @@ export class RegisterPage implements OnInit {
 
 	ngOnInit() {
 		this.onLoginForm = this.formBuilder.group({
+			'check': [null, this.mustBeTruthy],
 			'email': [null, Validators.compose([
 				Validators.required,
 				Validators.email
 			])],
 			'password': [null, Validators.compose([
 				Validators.required
-      ])],
-    		'check': [null, Validators.required]
+      		])]
 		});
+	}
+
+	mustBeTruthy(c: AbstractControl): { [key: string]: boolean } {
+		let rv: { [key: string]: boolean } = {};
+		if (!c.value) {
+		  rv['notChecked'] = true;
+		}
+		return rv;
 	}
 
 	goToLogin() {

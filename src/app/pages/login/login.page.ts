@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController, Platform } from '@ionic/angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
 import { Storage } from '@ionic/storage';
@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
 			])]
 		});
 		this.onFacebook = this.formBuilder.group({
-			'check': [null, Validators.required]
+			'check': [false, Validators.required]
 		});
 	}
 
@@ -71,25 +71,24 @@ export class LoginPage implements OnInit {
 	}
 
 	loginWithFacebook() {
-		this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
-			this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-				this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
-					(data) => {
-						if (data === 0) {
-							this.auth.login(profile['email'], profile['id']);
-						}
-						if (data === -1) {
-							this.auth.login(profile['email'], profile['id']);
-						}
+		// console.log(this.onFacebook.value.check);
+		if(this.onFacebook.value.check === true){
+			this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
+				this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+					this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
+						(data) => {
+							if (data === 0) {
+								this.auth.login(profile['email'], profile['id']);
+							}
+							if (data === -1) {
+								this.auth.login(profile['email'], profile['id']);
+							}
+					});
 				});
-
-				// this.userData = {
-				// 	username: profile['name'],
-				// 	email: profile['email'],
-				// 	id: profile['id']
-				// };
 			});
-		});
+		} else {
+			this.presentAlert('Błąd', 'Musisz zaakceptować regulamin, oraz politykę prywatności!');
+		}
 	}
 
 	loginAsGuest() {
@@ -148,5 +147,15 @@ export class LoginPage implements OnInit {
 
 		await alert.present();
 	}
+
+	async presentAlert(header, message) {
+		const alert = await this.alertCtrl.create({
+		  header: header,
+		  subHeader: message,
+		  buttons: ['OK']
+		});
+	
+		await alert.present();
+	  }
 
 }
