@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpXhrBackend } from '@angular/common/http';
+import { NativeHttpModule, NativeHttpBackend, NativeHttpFallback } from 'ionic-native-http-connection-backend';
+import { Platform } from '@ionic/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -37,7 +39,7 @@ import { NoAuthGuard } from './services/no-auth.guard';
 		}),
 		IonicStorageModule.forRoot(),
 		AppRoutingModule,
-		HttpClientModule,
+		NativeHttpModule,
 		ImagePageModule,
 		LocalCardPageModule,
 		CouponCardPageModule,
@@ -45,6 +47,7 @@ import { NoAuthGuard } from './services/no-auth.guard';
 	],
 	entryComponents: [NotificationsComponent],
 	providers: [
+		{provide: HttpBackend, useClass: NativeHttpFallback, deps: [Platform, NativeHttpBackend, HttpXhrBackend]},
 		StatusBar,
 		SplashScreen,
 		Device,
