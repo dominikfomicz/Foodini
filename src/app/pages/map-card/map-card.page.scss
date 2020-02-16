@@ -1,4 +1,8 @@
 :host {
+    * {
+        font-family: 'Josefin Sans', sans-serif !important;
+    }
+    
     ion-content {
         // --background: #ffd500;
         // --background: var(--ion-color-light);

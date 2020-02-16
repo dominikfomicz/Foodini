@@ -11,6 +11,7 @@ export class ContactPage implements OnInit {
 
   message;
   name;
+  button = true;
 
   constructor(public alertCtrl: AlertController, public connection: ConnectionService) { }
 
@@ -19,6 +20,7 @@ export class ContactPage implements OnInit {
 
 
   async presentAlert() {
+    this.button = false;
     this.connection.getDataByPost('feedback/add', {message: this.message, name: this.name}).subscribe( data => {
       console.log(data);
     });

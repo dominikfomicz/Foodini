@@ -16,7 +16,8 @@ export class ImagePage implements OnInit {
 		private nav: NavController,
 		private modalCtrl: ModalController,
 		public connection: ConnectionService
-	) {}
+	) {
+	}
 
 	ngOnInit() {
 		this.connection.getDataByPost('locals/files/countMenuPhotos', {id_local_data_main: this.id_local_data_main}).subscribe(data => {
@@ -27,7 +28,6 @@ export class ImagePage implements OnInit {
 			}
 
 		});
-		console.log(this.images);
 	}
 
 	closeModal() {

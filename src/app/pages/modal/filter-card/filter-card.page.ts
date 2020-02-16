@@ -12,19 +12,24 @@ export class FilterCardPage implements OnInit {
 		upper: 500,
 		lower: 10
 	};
-	public sortWay = ['Najnowsze', 'Najpopularniejsze', 'Polecane', 'Alfabetycznie rosnąco', 'Alfabetycznie malejąco'];
-	foo;
-	bar;
+	public sortWay = {
+					'Najnowsze' : 1,
+					'Najpopularniejsze': 2,
+					'Polecane' : 3,
+					'Alfabetycznie rosnąco' : 4,
+					'Alfabetycznie malejąco' : 5
+				};
+	
 	public favColor = 'secondary';
-
+	public selectedFilter = 1;
 	constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }
 
 	ngOnInit() {
-		console.log(`${this.foo} ${this.bar}`);
 	}
 
 	closeModal() {
-		this.modalCtrl.dismiss();
+		console.log(this.sortWay);
+		this.modalCtrl.dismiss(this.sortWay);
 	}
 
 	changeFavColor() {

@@ -6,7 +6,8 @@ import {
 	ToastController,
 	PopoverController,
 	ModalController,
-	LoadingController
+	LoadingController,
+	ActionSheetController
 } from '@ionic/angular';
 
 import { FormControl } from '@angular/forms';
@@ -43,7 +44,8 @@ export class HomeResultsPage implements OnInit {
 		public modalCtrl: ModalController,
 		public toastCtrl: ToastController,
 		public connection: ConnectionService,
-		public loadingCtrl: LoadingController
+		public loadingCtrl: LoadingController,
+		public actionSheetCtrl: ActionSheetController
 	) {
 		this.searchControl = new FormControl();
 	}
@@ -64,7 +66,6 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items_locals = data;
-				console.log(this.items_locals);
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;
@@ -90,7 +91,6 @@ export class HomeResultsPage implements OnInit {
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;
-				console.log(data);
 			})
 		);
 	}
@@ -162,6 +162,7 @@ export class HomeResultsPage implements OnInit {
 				this.refreshCouponsList();
 				this.viewList = 'coupons';
 				this.viewFav = false;
+				break;
 			}
 		}
 	}
@@ -171,6 +172,7 @@ export class HomeResultsPage implements OnInit {
 	}
 
 	getItems(ev: any) {
+		this.show = false;
 		this.items_locals_search = this.items_locals;
 		this.items_coupons_search = this.items_coupons;
 		const val = ev.target.value;
@@ -181,25 +183,75 @@ export class HomeResultsPage implements OnInit {
 					this.items_locals_search = this.items_locals_search.filter((item) => {
 						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 					});
+					this.show = true;
 					break;
 				}
 				case 'locals_fav': {
 					this.items_locals_search = this.items_locals_search.filter((item) => {
 						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 					});
+					this.show = true;
 					break;
 				}
 				case 'coupons': {
 					this.items_coupons_search = this.items_coupons_search.filter((item) => {
 						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 					});
+					this.show = true;
 					break;
 				}
 				case 'coupons_fav': {
 					this.items_coupons_search = this.items_coupons_search.filter((item) => {
 						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
 					});
+					this.show = true;
+					break;
 				}
+			}
+		}
+	}
+
+	refreshDataSort(sort){
+		switch(this.viewList) {
+			case 'locals': {
+				this.presentLoading().then(a =>
+					this.connection.getDataByGet('locals/getList/1').subscribe(data => {
+						this.items_locals = data;
+						this.items_locals_search = this.items_locals;
+						this.loadingCtrl.dismiss('loading');
+					})
+				);
+				break;
+			}
+			case 'locals_fav': {
+				this.presentLoading().then(a =>
+					this.connection.getDataByGet('locals/getFavouriteList/1').subscribe(data => {
+						this.items_locals = data;
+						this.items_locals_search = this.items_locals;
+						this.loadingCtrl.dismiss('loading');
+					})
+				);
+				break;
+			}
+			case 'coupons': {
+				this.presentLoading().then(a =>
+					this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
+						this.items_coupons = data;
+						this.items_coupons_search = this.items_coupons;
+						this.loadingCtrl.dismiss('loading');
+					})
+				);
+				break;
+			}
+			case 'loccoupons_favals': {
+				this.presentLoading().then(a =>
+					this.connection.getDataByGet('coupons/getFavouriteList').subscribe(data => {
+						this.items_coupons = data;
+						this.items_coupons_search = this.items_coupons;
+						this.loadingCtrl.dismiss('loading');
+					})
+				);
+				break;
 			}
 		}
 	}
@@ -271,5 +323,38 @@ export class HomeResultsPage implements OnInit {
 			message: 'Ładowanie',
 		});
 		await loading.present();
+	}
+
+	async presentFilterActionSheet() {
+		const actionSheet = await this.actionSheetCtrl.create({
+			header: 'Sortuj',
+			buttons: [
+				{
+					text: 'Najbardziej popularne',
+					handler: () => {
+						this.refreshDataSort(1);
+					}
+				},
+				{
+					text: 'Najnowsze',
+					handler: () => {
+						this.refreshDataSort(2);
+					}
+				},
+				{
+					text: 'Tylko otwarte',
+					handler: () => {
+						this.refreshDataSort(3);
+					}
+				},
+				{
+				text: 'Anuluj',
+				icon: 'close',
+				role: 'cancel',
+				handler: () => {
+				}
+			}]
+		});
+	await actionSheet.present();
 	}
 }

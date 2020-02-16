@@ -21,4 +21,10 @@
   </ion-item>
   
 </ion-content>
-<ion-footer no-padding><ion-button no-padding expand="block" shape="square" size="default" color="primary" (click)="presentAlert()">Wyślij</ion-button></ion-footer>
+<ion-footer style="background-color:#6a2c86" no-padding>
+	<ion-grid no-padding>
+		<ion-row no-padding>
+				<ion-col no-padding size="12"><ion-button no-padding no-margin expand="block" shape="square" size="full" color="primary" (click)="presentAlert()" [disabled]="!button ? 'disabled': null" style="height: 60px;"><span style="color: #ffd500">Wyślij</span></ion-button></ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-footer>
