@@ -211,21 +211,23 @@ export class HomeResultsPage implements OnInit {
 		}
 	}
 
-	refreshDataSort(sort){
+	refreshDataSort(id_sort_const_type){
 		switch(this.viewList) {
 			case 'locals': {
 				this.presentLoading().then(a =>
-					this.connection.getDataByGet('locals/getList/1').subscribe(data => {
+					this.connection.getDataByGet('locals/getOrderedList/1/' + id_sort_const_type).subscribe(data => {
 						this.items_locals = data;
 						this.items_locals_search = this.items_locals;
 						this.loadingCtrl.dismiss('loading');
+						this.show = true;
+						console.log(data);
 					})
 				);
 				break;
 			}
 			case 'locals_fav': {
 				this.presentLoading().then(a =>
-					this.connection.getDataByGet('locals/getFavouriteList/1').subscribe(data => {
+					this.connection.getDataByGet('locals/getOrderedFavouriteList/1/' + id_sort_const_type).subscribe(data => {
 						this.items_locals = data;
 						this.items_locals_search = this.items_locals;
 						this.loadingCtrl.dismiss('loading');
@@ -235,7 +237,7 @@ export class HomeResultsPage implements OnInit {
 			}
 			case 'coupons': {
 				this.presentLoading().then(a =>
-					this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
+					this.connection.getDataByGet('coupons/getOrderedListByCity/1/' + id_sort_const_type).subscribe(data => {
 						this.items_coupons = data;
 						this.items_coupons_search = this.items_coupons;
 						this.loadingCtrl.dismiss('loading');
@@ -243,9 +245,9 @@ export class HomeResultsPage implements OnInit {
 				);
 				break;
 			}
-			case 'loccoupons_favals': {
+			case 'coupons_fav': {
 				this.presentLoading().then(a =>
-					this.connection.getDataByGet('coupons/getFavouriteList').subscribe(data => {
+					this.connection.getDataByGet('coupons/getOrderedFavouriteList/' + id_sort_const_type).subscribe(data => {
 						this.items_coupons = data;
 						this.items_coupons_search = this.items_coupons;
 						this.loadingCtrl.dismiss('loading');
@@ -326,7 +328,7 @@ export class HomeResultsPage implements OnInit {
 	}
 
 	async presentFilterActionSheet() {
-		const actionSheet = await this.actionSheetCtrl.create({
+		const localsActionSheet = await this.actionSheetCtrl.create({
 			header: 'Sortuj',
 			buttons: [
 				{
@@ -346,15 +348,39 @@ export class HomeResultsPage implements OnInit {
 					handler: () => {
 						this.refreshDataSort(3);
 					}
+				}]
+		});
+
+		const couponsActionSheet = await this.actionSheetCtrl.create({
+			header: 'Sortuj',
+			buttons: [
+				{
+					text: 'Najbardziej popularne',
+					handler: () => {
+						this.refreshDataSort(1);
+					}
 				},
 				{
-				text: 'Anuluj',
-				icon: 'close',
-				role: 'cancel',
-				handler: () => {
-				}
-			}]
+					text: 'Najnowsze',
+					handler: () => {
+						this.refreshDataSort(2);
+					}
+				},
+				{
+					text: 'Tylko aktywne',
+					handler: () => {
+						this.refreshDataSort(3);
+					}
+				}]
 		});
-	await actionSheet.present();
+
+		if(this.viewList === 'locals' || this.viewList === 'locals_fav') {
+			await localsActionSheet.present();
+		}
+
+		if(this.viewList === 'coupons' || this.viewList === 'coupons_fav') {
+			await couponsActionSheet.present();
+		}
+
 	}
 }

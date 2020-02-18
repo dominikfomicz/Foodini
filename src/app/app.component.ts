@@ -69,6 +69,7 @@ export class AppComponent {
 				this.user_type = 3;
 			}
 		this.platform.ready().then(() => {
+			this.statusBar.overlaysWebView(false);
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
 			// this.email = this.device.uuid;
