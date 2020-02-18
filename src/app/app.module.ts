@@ -35,7 +35,7 @@ import { NoAuthGuard } from './services/no-auth.guard';
 		BrowserModule,
 		BrowserAnimationsModule,
 		IonicModule.forRoot({
-			mode: 'md',
+			mode: 'md', 
 		}),
 		IonicStorageModule.forRoot(),
 		AppRoutingModule,
