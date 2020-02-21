@@ -8,6 +8,7 @@ import { Pages } from './interfaces/pages';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @Component({
 selector: 'app-root',
@@ -53,26 +54,29 @@ export class AppComponent {
 	}
 
 	initializeApp() {
+		//sprawdza ststus po wyjściu z appki
 		if(localStorage.getItem('user_status') === '-1'){
 				this.user_type = -1;
 			}
-			if(localStorage.getItem('user_status') === '0'){
-				this.user_type = 0;
-			}
-			if(localStorage.getItem('user_status') === '1'){
-				this.user_type = 1;
-			}
-			if(localStorage.getItem('user_status') === '2'){
-				this.user_type = 2;
-			}
-			if(localStorage.getItem('user_status') === '3'){
-				this.user_type = 3;
-			}
+		if(localStorage.getItem('user_status') === '0'){
+			this.user_type = 0;
+		}
+		if(localStorage.getItem('user_status') === '1'){
+			this.user_type = 1;
+		}
+		if(localStorage.getItem('user_status') === '2'){
+			this.user_type = 2;
+		}
+		if(localStorage.getItem('user_status') === '3'){
+			this.user_type = 3;
+		}
+
 		this.platform.ready().then(() => {
-			this.statusBar.overlaysWebView(false); 
+			this.statusBar.overlaysWebView(false);
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
-			// this.email = this.device.uuid;
+
+			//sprawdza status usera po logowaniu
 			this.auth.userStatus.subscribe(status => {
 				if (status === -1) {
 					this.user_type = -1;
@@ -90,6 +94,8 @@ export class AppComponent {
 					this.user_type = 3;
 				}
 			});
+
+			//sprawdza status usera po wyjściu z appki (podwójnie bo wywalało się na iphone)
 			if(localStorage.getItem('user_status') === '-1'){
 				this.user_type = -1;
 			}
@@ -105,6 +111,7 @@ export class AppComponent {
 			if(localStorage.getItem('user_status') === '3'){
 				this.user_type = 3;
 			}
+
 			this.auth.authenticationState.subscribe(state => {
 				if (state) {
 					this.router.navigate(['home-results'], {replaceUrl: true});
@@ -112,17 +119,6 @@ export class AppComponent {
 					this.router.navigate([''], {replaceUrl: true});
 				}
 			});
-
-			//załadowanie linków do zarządzania dla managerów i kelnerów w menu
-			// const post_data = new HttpParams().set('uuid', this.device.uuid);
-			// return this.http.post('http://repo.foodini.net.pl/auth-api/getUserStatus', post_data, this.httpOptions).subscribe(data => {
-			// 	this.user_type = data;
-			// 	this.storage.get('email').then((val) => {
-			// 		if(val) {
-			// 			this.email = val;
-			// 		}
-			// 	});
-			// });
 
 
 		});
