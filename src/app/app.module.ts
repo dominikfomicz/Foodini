@@ -36,7 +36,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 		BrowserModule,
 		BrowserAnimationsModule,
 		IonicModule.forRoot({
-			mode: 'md', 
+			mode: 'md', // :D
 		}),
 		IonicStorageModule.forRoot(),
 		AppRoutingModule,
