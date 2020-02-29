@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Device } from '@ionic-native/device/ngx';
@@ -30,7 +30,9 @@ export class AppComponent {
 	private http: HttpClient,
 	private auth: AuthService,
 	private router: Router,
-	private storage: Storage
+	private storage: Storage,
+	private oneSignal: OneSignal,
+	public alertCtrl: AlertController
 	) {
 		this.appPages = [
 		{
@@ -47,9 +49,6 @@ export class AppComponent {
 			icon: 'information-circle'
 		},
 		];
-		// if(this.platform.pause){
-		//   localStorage.clear();
-		// }
 		this.initializeApp();
 	}
 
@@ -75,6 +74,9 @@ export class AppComponent {
 			this.statusBar.overlaysWebView(false);
 			this.statusBar.styleBlackTranslucent();
 			this.splashScreen.hide();
+
+			//powiadomienia push
+			this.setupPush();
 
 			//sprawdza status usera po logowaniu
 			this.auth.userStatus.subscribe(status => {
@@ -124,17 +126,42 @@ export class AppComponent {
 		});
 	}
 
-	addRoutesForWorker(){
-		this.appPages.push({
-			title: 'Test',
-			url: '/contact',
-			direct: 'forward',
-			icon: 'mail'
+	setupPush() {
+		this.oneSignal.startInit('fe07882a-c768-457d-9b45-877a47c5c397', '478738418526');
+		this.oneSignal.sendTag('user', 'test');
+		this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+		//kiedy wejdziemy w powiadomienie z Androida/iOS
+		this.oneSignal.handleNotificationOpened().subscribe(data => {
+			let msg = data.notification.payload.body;
+			let title = data.notification.payload.title;
+			let additionnalData = data.notification.payload.additionalData;
+			this.presentAlert(title, msg);
 		});
+
+		//kiedy otrzymamy powiadomienie z włączoną appką
+		this.oneSignal.handleNotificationReceived().subscribe(data => {
+			let msg = data.payload.body;
+			let title = data.payload.title;
+			let additionnalData = data.payload.additionalData;
+
+			this.presentAlert(title, msg);
+		});
+		this.oneSignal.endInit();
 	}
 
 	logout(){
 		this.auth.logout();
 		this.initializeApp();
+	}
+
+	async presentAlert(header, message) {
+		const alert = await this.alertCtrl.create({
+		  header: header,
+		  subHeader: message,
+		  buttons: ['OK']
+		});
+	
+		await alert.present();
 	}
 }
