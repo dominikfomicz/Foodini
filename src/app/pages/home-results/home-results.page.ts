@@ -66,6 +66,7 @@ export class HomeResultsPage implements OnInit {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getList/1').subscribe(data => {
 				this.items_locals = data;
+				console.log(data);
 				this.items_locals_search = this.items_locals;
 				this.loadingCtrl.dismiss('loading');
 				this.show = true;
@@ -73,7 +74,7 @@ export class HomeResultsPage implements OnInit {
 		);
 	}
 
-	refreshCouponsList(){
+	refreshCouponsList() {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('coupons/getCouponsByCity/1').subscribe(data => {
 				this.items_coupons = data;
@@ -84,7 +85,7 @@ export class HomeResultsPage implements OnInit {
 		);
 	}
 
-	refreshLocalsFavList(){
+	refreshLocalsFavList() {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('locals/getFavouriteList/1').subscribe(data => {
 				this.items_locals = data;
@@ -95,7 +96,7 @@ export class HomeResultsPage implements OnInit {
 		);
 	}
 
-	refreshCouponsFavList(){
+	refreshCouponsFavList() {
 		this.presentLoading().then(a =>
 			this.connection.getDataByGet('coupons/getFavouriteList').subscribe(data => {
 				this.items_coupons = data;
@@ -108,13 +109,10 @@ export class HomeResultsPage implements OnInit {
 
 	toggleSwitchButton() {
 		this.switchState = !this.switchState;
-		switch(this.viewList) {
+		switch (this.viewList) {
 			case 'locals': {
 				this.refreshCouponsList();
 				this.viewList = 'coupons';
-				// document.querySelector('.slider').classList.add('switch-right');
-				// alert(document.querySelector('.slider').classList)
-				// document.querySelector('.slider').classList.remove('switch-left');
 				break;
 			}
 			case 'locals_fav': {
@@ -125,9 +123,6 @@ export class HomeResultsPage implements OnInit {
 			case 'coupons': {
 				this.refreshLocalsList();
 				this.viewList = 'locals';
-				// alert(document.querySelector('.slider').classList)
-				// document.querySelector('.slider').classList.add('switch-left');
-				// document.querySelector('.slider').classList.remove('switch-right');
 				break;
 			}
 			case 'coupons_fav': {
@@ -138,8 +133,8 @@ export class HomeResultsPage implements OnInit {
 		}
 	}
 
-	toggleFav(){
-		switch(this.viewList) {
+	toggleFav() {
+		switch (this.viewList) {
 			case 'locals': {
 				this.refreshLocalsFavList();
 				this.viewList = 'locals_fav';
@@ -167,7 +162,7 @@ export class HomeResultsPage implements OnInit {
 		}
 	}
 
-	navigateToMapCard(){
+	navigateToMapCard() {
 		this.navCtrl.navigateForward('map-card');
 	}
 
@@ -176,33 +171,32 @@ export class HomeResultsPage implements OnInit {
 		this.items_locals_search = this.items_locals;
 		this.items_coupons_search = this.items_coupons;
 		const val = ev.target.value;
-		if (val && val.trim() != '') {
-
-			switch(this.viewList) {
+		if (val && val.trim() !== '') {
+			switch (this.viewList) {
 				case 'locals': {
-					this.items_locals_search = this.items_locals_search.filter((item) => {
-						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					this.items_locals_search = this.items_locals_search.filter(item => {
+						return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
 					});
 					this.show = true;
 					break;
 				}
 				case 'locals_fav': {
-					this.items_locals_search = this.items_locals_search.filter((item) => {
-						return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					this.items_locals_search = this.items_locals_search.filter(item => {
+						return item.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
 					});
 					this.show = true;
 					break;
 				}
 				case 'coupons': {
-					this.items_coupons_search = this.items_coupons_search.filter((item) => {
-						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					this.items_coupons_search = this.items_coupons_search.filter(item => {
+						return item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1;
 					});
 					this.show = true;
 					break;
 				}
 				case 'coupons_fav': {
-					this.items_coupons_search = this.items_coupons_search.filter((item) => {
-						return (item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+					this.items_coupons_search = this.items_coupons_search.filter(item => {
+						return item.coupon_name.toLowerCase().indexOf(val.toLowerCase()) > -1;
 					});
 					this.show = true;
 					break;
@@ -211,8 +205,8 @@ export class HomeResultsPage implements OnInit {
 		}
 	}
 
-	refreshDataSort(id_sort_const_type){
-		switch(this.viewList) {
+	refreshDataSort(id_sort_const_type) {
+		switch (this.viewList) {
 			case 'locals': {
 				this.presentLoading().then(a =>
 					this.connection.getDataByGet('locals/getOrderedList/1/' + id_sort_const_type).subscribe(data => {
@@ -260,69 +254,68 @@ export class HomeResultsPage implements OnInit {
 
 	async alertLocation() {
 		const changeLocation = await this.alertCtrl.create({
-		header: 'Wybierz miasto',
-		message: 'Opole',
-		buttons: [
-			{
-			text: 'Anuluj',
-			handler: data => {
-				console.log('Cancel clicked');
-			}
-			},
-			{
-			text: 'Zmień',
-			handler: async (data) => {
-				console.log('Change clicked', data);
-				const toast = await this.toastCtrl.create({
-				message: 'Zmieniono miasto',
-				duration: 3000,
-				position: 'top',
-				closeButtonText: 'OK',
-				showCloseButton: false
-				});
+			header: 'Wybierz miasto',
+			message: 'Opole',
+			buttons: [
+				{
+					text: 'Anuluj',
+					handler: data => {
+						console.log('Cancel clicked');
+					}
+				},
+				{
+					text: 'Zmień',
+					handler: async data => {
+						console.log('Change clicked', data);
+						const toast = await this.toastCtrl.create({
+							message: 'Zmieniono miasto',
+							duration: 3000,
+							position: 'top',
+							closeButtonText: 'OK',
+							showCloseButton: false
+						});
 
-				toast.present();
-			}
-			}
-		]
+						toast.present();
+					}
+				}
+			]
 		});
 		changeLocation.present();
 	}
 
-	async openLocationCard (id_local_data_main) {
+	async openLocationCard(id_local_data_main) {
 		const modal = await this.modalCtrl.create({
-		component: LocalCardPage,
-		componentProps: {
-			id_local_data_main: id_local_data_main
-		}
+			component: LocalCardPage,
+			componentProps: {
+				id_local_data_main: id_local_data_main
+			}
 		});
 		return await modal.present();
 	}
 
-	async openCouponCard (id_coupon_data_main, id_local_data_main, local_name) {
+	async openCouponCard(id_coupon_data_main, id_local_data_main, local_name) {
 		const modal = await this.modalCtrl.create({
-		component: CouponCardPage,
-		componentProps: {
-			id_coupon_data_main: id_coupon_data_main,
-			id_local_data_main: id_local_data_main,
-			local_name: local_name
-		}
+			component: CouponCardPage,
+			componentProps: {
+				id_coupon_data_main: id_coupon_data_main,
+				id_local_data_main: id_local_data_main,
+				local_name: local_name
+			}
 		});
 		return await modal.present();
 	}
 
-	async searchFilter () {
+	async searchFilter() {
 		const modal = await this.modalCtrl.create({
-		component: FilterCardPage,
-		componentProps: {
-		}
+			component: FilterCardPage,
+			componentProps: {}
 		});
 		return await modal.present();
 	}
 
 	async presentLoading() {
 		const loading = await this.loadingCtrl.create({
-			message: 'Ładowanie',
+			message: 'Ładowanie'
 		});
 		await loading.present();
 	}
@@ -348,7 +341,8 @@ export class HomeResultsPage implements OnInit {
 					handler: () => {
 						this.refreshDataSort(3);
 					}
-				}]
+				}
+			]
 		});
 
 		const couponsActionSheet = await this.actionSheetCtrl.create({
@@ -371,16 +365,16 @@ export class HomeResultsPage implements OnInit {
 					handler: () => {
 						this.refreshDataSort(3);
 					}
-				}]
+				}
+			]
 		});
 
-		if(this.viewList === 'locals' || this.viewList === 'locals_fav') {
+		if (this.viewList === 'locals' || this.viewList === 'locals_fav') {
 			await localsActionSheet.present();
 		}
 
-		if(this.viewList === 'coupons' || this.viewList === 'coupons_fav') {
+		if (this.viewList === 'coupons' || this.viewList === 'coupons_fav') {
 			await couponsActionSheet.present();
 		}
-
 	}
 }
