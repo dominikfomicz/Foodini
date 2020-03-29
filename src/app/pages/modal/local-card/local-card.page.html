@@ -1,139 +1,237 @@
 <ion-header *ngIf="show === true">
-  <ion-toolbar style="background-color:white; border-bottom: solid 1px #e6e6e6;">
-    <ion-buttons slot="start" style="position: absolute;">
-        <ion-button (click)="closeModal()">
-            <ion-icon name="ios-arrow-back" color="primary"></ion-icon>
-        </ion-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center">
-		<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary" style="text-transform: capitalize">
-			{{items.name}}
-			<!-- <ion-icon style="margin-left:10px" name="pin"></ion-icon> -->
-		</ion-button>
-	</ion-title>
-	<!-- <ion-buttons slot="primary">
-		<ion-button (click)="changeFavColor(items.local_id)">
-			<ion-icon slot="icon-only" [color]="favColor" name="star"></ion-icon>
-		</ion-button>
-	</ion-buttons> -->
-  </ion-toolbar>
+	<ion-toolbar style="background-color:white; border-bottom: solid 1px #e6e6e6;">
+		<ion-buttons slot="start" style="position: absolute;">
+			<ion-button (click)="closeModal()">
+				<ion-icon name="ios-arrow-back" color="primary"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="ion-text-center">
+			<ion-button shape="round" fill="clear" class="ion-align-self-center" size="medium" color="primary"
+				style="text-transform: capitalize">
+				{{items.name}}
+			</ion-button>
+		</ion-title>
+	</ion-toolbar>
 </ion-header>
-<!-- <div class="vertical-center" *ngIf="show === true">
-	<div class="center">
-		<img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" class="ion-align-self-end" style="background-color: #ffd500; border-radius: 20px; padding: 5px; border: solid 2px #0000001c;">
-	</div>
-</div> -->
 <ion-content *ngIf="show === true">
 	<div class="ion-text-center" style="position: relative;" *ngIf="show === true">
-		<div style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">Kupony: {{ items.coupons_count }}</div>
+		<div
+			style="background-color:red; padding:7px; color:white; position: absolute; bottom:10px; right: 5px; font-size: 10px; font-weight: bold; border-radius: 5px;">
+			Kupony: {{ items.coupons_count }}</div>
 		<img width="100%" src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/background.png">
 	</div>
 	<ion-grid>
 		<ion-row class="ion-text-center" style="font-size: 25px;color:black; position: relative">
-			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png" style="max-width: 6rem;"></ion-col>
-			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}</ion-col>
+			<ion-col size="4"><img src="http://repo.foodini.net.pl/storage/locals/{{items.local_id}}/logo.png"
+					style="max-width: 6rem;"></ion-col>
+			<ion-col size="6" style="display: flex;justify-content: center;align-items: center;">{{ items.name }}
+			</ion-col>
 			<ion-col size="2" style="display: flex; align-items: center;">
 				<div style="position: absolute; right:0px;">
-					<img [src]="favColor" style="height: 23px; width: auto; margin: 3vh 6vw 0 auto; display: block;" (click)="changeFavColor(items.local_id)">
-					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 6vw 0 auto; display: block; text-align: center; font-size: 2vh;">{{ items.favourite_count }}</p>
+					<img [src]="favColor" style="height: 23px; width: auto; margin: 3vh 6vw 0 auto; display: block;"
+						(click)="changeFavColor(items.local_id)">
+					<p
+						style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 6vw 0 auto; display: block; text-align: center; font-size: 2vh;">
+						{{ items.favourite_count }}</p>
 				</div>
 			</ion-col>
 		</ion-row>
 		<ion-row class="ion-text-center">
-			<ion-col style="margin-top:10px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
-				<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+			<ion-col style="margin-top:5px;" *ngFor="let tag of items.main_tags | keyvalue; let i = index">
+				<div *ngIf="i === 0"
+					style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+				<div *ngIf="i === 1"
+					style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
-				<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+				<div *ngIf="i === 2"
+					style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 11px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
 					{{tag.value.name}}
 				</div>
 			</ion-col>
 		</ion-row>
-		<ion-row margin class="ion-text-center" style="font-size: 0.8rem;">
-			<ion-col size="4" [ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">Lokal<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.local_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.local_open_status === false">Zamknięte</span></ion-col>
-			<ion-col size="4" [ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">Kuchnia<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/kuchnia.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.kitchen_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.kitchen_open_status === false">Zamknięte</span></ion-col>
-			<ion-col size="4" [ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">Dowóz<br><img style="height:30px; width: auto;margin: 10px auto 0px auto;display: block;" src="assets/img/dowoz.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;" *ngIf="items.delivery_open_status === true">Otwarte</span><span style="color:rgb(223, 19, 19); opacity: 1;" *ngIf="items.delivery_open_status === false">Zamknięte</span></ion-col>
+		<ion-row margin class="ion-text-center" style="font-size: 0.7rem;">
+			<ion-col size="4"
+				[ngClass]="{'': items.local_open_status === true, 'closed': items.local_open_status === false }">
+				Lokal<br><img style="height:25px; width: auto;margin: 10px auto 0px auto;display: block;"
+					src="assets/img/lokal.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;"
+					*ngIf="items.local_open_status === true">Otwarte</span><span
+					style="color:rgb(223, 19, 19); opacity: 1;"
+					*ngIf="items.local_open_status === false">Zamknięte</span></ion-col>
+			<ion-col size="4"
+				[ngClass]="{'': items.kitchen_open_status === true, 'closed': items.kitchen_open_status === false }">
+				Kuchnia<br><img style="height:25px; width: auto;margin: 10px auto 0px auto;display: block;"
+					src="assets/img/kuchnia.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;"
+					*ngIf="items.kitchen_open_status === true">Otwarte</span><span
+					style="color:rgb(223, 19, 19); opacity: 1;"
+					*ngIf="items.kitchen_open_status === false">Zamknięte</span></ion-col>
+			<ion-col size="4"
+				[ngClass]="{'': items.delivery_open_status === true, 'closed': items.delivery_open_status === false }">
+				Dowóz<br><img style="height:25px; width: auto;margin: 10px auto 0px auto;display: block;"
+					src="assets/img/dowoz.png"><br><span style="color:rgb(67, 223, 19); opacity: 1;"
+					*ngIf="items.delivery_open_status === true">Otwarte</span><span
+					style="color:rgb(223, 19, 19); opacity: 1;"
+					*ngIf="items.delivery_open_status === false">Zamknięte</span></ion-col>
 		</ion-row>
 		<ion-row class="ion-text-center">
-			<ion-col size="1.7" style="max-width: 100%;" class="hours_table" *ngFor="let item_hours of items.work_hours | keyvalue">
-				<span *ngIf="item_hours.value.id_day === 1">PN<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 2">WT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 3">ŚR<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 4">CZ<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 5">PT<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 6">SB<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
-				<span *ngIf="item_hours.value.id_day === 0">ND<br><div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}</div></span>
+			<ion-col size="1.7" style="max-width: 100%;" class="hours_table"
+				*ngFor="let item_hours of items.work_hours | keyvalue">
+				<span *ngIf="item_hours.value.id_day === 1">PN<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 2">WT<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 3">ŚR<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 4">CZ<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 5">PT<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 6">SB<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
+				<span *ngIf="item_hours.value.id_day === 0">ND<br>
+					<div class="work_hours">{{ item_hours.value.open_from }}<br>-<br>{{ item_hours.value.open_to }}
+					</div>
+				</span>
 			</ion-col>
 
 		</ion-row>
-		<ion-row text-center style="margin-top:20px;font-size: 0.6rem;">
-			<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img src="assets/img/gotowka.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Gotówka</ion-col>
-			<ion-col size="3" [ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img src="assets/img/karta.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Karta</ion-col>
-			<ion-col size="3" [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img src="assets/img/blik.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Blik</ion-col>
-			<ion-col size="3" [ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img src="assets/img/zblizeniowo.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Zbliżeniowo</ion-col>
+		<ion-row text-center
+			style="margin-top:10px;margin-bottom:10px;font-size: 0.7rem; border-bottom:1px solid #f5f5f5; padding-bottom: 10px;">
+			<ion-col class="social" size="4" (click)="openFacebook(items.facebook_url)">
+				<img style="margin-bottom:5px; max-height: 3.7rem; width: auto;"
+					src="/assets/img/facebook.svg"><br>FACEBOOK
+			</ion-col>
+			<ion-col class="social" size="4" (click)="openInstagram(items.instagram_url)">
+				<img style="margin-bottom:5px; max-height: 3.7rem; width: auto;" src="/assets/img/instagram.svg">
+				<br>INSTAGRAM
+			</ion-col>
+			<ion-col class="social" size="4" (click)="showMenu()"><img
+					style="margin-bottom:5px; max-height: 3.7rem; width: auto;" src="/assets/img/menu.svg">
+				<br>MENU
+			</ion-col>
+		</ion-row>
+		<ion-row text-center style="margin-top:20px;font-size: 0.7rem;">
+			<ion-col size="3" [ngClass]="{'': items.cash_payment == true, 'closed': items.cash_payment == false }"><img
+					src="assets/img/gotowka.png"
+					style="height:40px; width: auto;margin: auto;display: block;"><br>Gotówka</ion-col>
+			<ion-col size="3"
+				[ngClass]="{'': items.creditcards_payment == true, 'closed': items.creditcards_payment == false }"><img
+					src="assets/img/karta.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Karta
+			</ion-col>
+			<ion-col size="3" [ngClass]="{'': items.blik_payment == true, 'closed': items.blik_payment == false }"><img
+					src="assets/img/blik.png" style="height:40px; width: auto;margin: auto;display: block;"><br>Blik
+			</ion-col>
+			<ion-col size="3"
+				[ngClass]="{'': items.contactless_payment == true, 'closed': items.contactless_payment == false }"><img
+					src="assets/img/zblizeniowo.png"
+					style="height:40px; width: auto;margin: auto;display: block;"><br>Zbliżeniowo</ion-col>
 		</ion-row>
 	</ion-grid>
 
 	<br>
 	<ion-card no-margin style="margin-top:10px;">
-			<ion-list>
-				<ion-list-header>
-					Informacje
-				</ion-list-header>
+		<ion-list>
+			<ion-list-header>
+				Informacje
+			</ion-list-header>
 
-				<ion-item>
-					<ion-icon name="pin" color="primary" slot="start"></ion-icon>
-					<ion-label>
-						<a href="http://maps.google.com/?q={{items.address}}"><h2>{{ items.address }}</h2></a>
-					</ion-label>
-				</ion-item>
+			<ion-item>
+				<ion-icon name="pin" color="primary" slot="start"></ion-icon>
+				<ion-label>
+					<a href="http://maps.google.com/?q={{items.address}}">
+						<h2>{{ items.address }}</h2>
+					</a>
+				</ion-label>
+			</ion-item>
 
-				<ion-item>
-					<ion-icon name="call" color="primary" slot="start"></ion-icon>
-					<ion-label>
-						<a href="tel:{{ items.phone_number }}"><h2>{{ items.phone_number }}</h2></a>
-					</ion-label>
-				</ion-item>
+			<ion-item>
+				<ion-icon name="call" color="primary" slot="start"></ion-icon>
+				<ion-label>
+					<a href="tel:{{ items.phone_number }}">
+						<h2>{{ items.phone_number }}</h2>
+					</a>
+				</ion-label>
+			</ion-item>
 
-				<ion-item>
-					<ion-icon name="clipboard" color="primary" slot="start"></ion-icon>
-					<ion-label style="white-space: normal; text-align: justify; font-size: 10px;">
-						{{ items.description }}
-					</ion-label>
-				</ion-item>
-			</ion-list>
-			<ion-grid>
-				<ion-row (click)="expandTags()">
-					<ion-col>
-						<div>
-							Informacje dodatkowe <ion-icon name="arrow-dropdown"></ion-icon>
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row text-center class="tags" [class.active]="showTags">
-					<ion-col *ngFor="let tag of items.secondary_tags | keyvalue;">
-						<div style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
+			<ion-item>
+				<ion-icon name="clipboard" color="primary" slot="start"></ion-icon>
+				<ion-label style="white-space: normal; text-align: justify; font-size: 10px;">
+					{{ items.description }}
+				</ion-label>
+			</ion-item>
+		</ion-list>
+		<ion-grid>
+			<ion-row (click)="expandTags()">
+				<ion-col>
+					<div>
+						Informacje dodatkowe <ion-icon name="arrow-dropdown"></ion-icon>
+					</div>
+				</ion-col>
+			</ion-row>
+			<ion-row text-center class="tags" [class.active]="showTags">
+				<ion-col *ngFor="let tag of items.secondary_tags | keyvalue;">
+					<div
+						style="background-color:rgb(106, 44, 134); color: rgb(255, 213, 0); padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center; text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">
 						{{tag.value.name}}
-						</div>
-					</ion-col>
-				</ion-row>
-				<ion-row text-center style="margin-top:20px;margin-bottom:20px;font-size: 0.6rem;">
-					<ion-col class="social" size="4" (click)="openFacebook(items.facebook_url)"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/facebook.svg"><br>FACEBOOK</ion-col>
-					<ion-col class="social" size="4" (click)="openInstagram(items.instagram_url)"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/instagram.svg"><br>INSTAGRAM</ion-col>
-					<ion-col class="social" size="4" (click)="showMenu()"><img style="margin:auto;max-height: 4rem; width: auto;" src="/assets/img/menu.svg"><br>MENU</ion-col>
-				</ion-row>
-			</ion-grid>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
 	</ion-card>
 </ion-content>
 <ion-footer no-padding *ngIf="show === true">
 	<ion-grid no-padding>
-		<ion-row no-padding>
-			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary"(click)="openPhone(items.phone_number)"><ion-icon color="primary" slot="start" name="call"></ion-icon><span style="color: #6a2c86">Zadzwoń</span></ion-button></ion-col>
-			<ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon src="/assets/img/kupon.svg" color="secondary" slot="start"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col>
-			<!-- <ion-col no-padding size="6"><ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary" (click)="openCouponList(items.local_id, items.name, items.phone_number)" [disabled]="!coupons_button ? 'disabled': null"><ion-icon color="secondary" slot="start" name="barcode"></ion-icon><span style="color: #ffd500">Kupony</span></ion-button></ion-col> -->
+		<ion-row no-padding *ngIf="items.order_url !== null">
+			<ion-col no-padding size="3">
+				<ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary"
+					(click)="openPhone(items.phone_number)">
+					<ion-icon color="primary" name="call"></ion-icon>
+				</ion-button>
+			</ion-col>
+			<ion-col no-padding size="6">
+				<ion-button style="height: 60px; --background: rgb(4, 185, 4);" no-padding expand="block" size="full"
+					(click)="openOrder(items.order_url)">
+					<span style="color: white">ZAMÓW ONLINE</span>
+				</ion-button>
+			</ion-col>
+			<ion-col no-padding size="3">
+				<ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary"
+					(click)="openCouponList(items.local_id, items.name, items.phone_number)"
+					[disabled]="!coupons_button ? 'disabled': null">
+					<ion-icon src="/assets/img/kupon.svg" color="secondary"></ion-icon>
+				</ion-button>
+			</ion-col>
+		</ion-row>
+		<ion-row no-padding *ngIf="items.order_url === null">
+			<ion-col no-padding size="6">
+				<ion-button style="height: 60px;" no-padding expand="block" size="full" color="secondary"
+					(click)="openPhone(items.phone_number)">
+					<ion-icon color="primary" slot="start" name="call"></ion-icon><span
+						style="color: #6a2c86">Zadzwoń</span>
+				</ion-button>
+			</ion-col>
+			<ion-col no-padding size="6">
+				<ion-button style="height: 60px;" no-padding expand="block" size="full" color="primary"
+					(click)="openCouponList(items.local_id, items.name, items.phone_number)"
+					[disabled]="!coupons_button ? 'disabled': null">
+					<ion-icon src="/assets/img/kupon.svg" color="secondary" slot="start"></ion-icon><span
+						style="color: #ffd500">Kupony</span>
+				</ion-button>
+			</ion-col>
 		</ion-row>
 	</ion-grid>
 </ion-footer>

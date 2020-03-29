@@ -3,11 +3,19 @@
 		<ion-buttons slot="start" style="pointer-events: none;">
 			<ion-back-button icon="ios-arrow-back" text="" defaultHref=""></ion-back-button>
 			<div class="titleicon">
-				<img src="assets/img/small.png">
+				<img src="assets/img/small.png" />
 			</div>
 		</ion-buttons>
 		<ion-title text-center>
-			<ion-button shape="round" fill="clear" class="ion-align-self-center" style="text-transform: capitalize" size="medium" color="primary" (click)="alertLocation()">
+			<ion-button
+				shape="round"
+				fill="clear"
+				class="ion-align-self-center"
+				style="text-transform: capitalize"
+				size="medium"
+				color="primary"
+				(click)="alertLocation()"
+			>
 				Opole
 				<ion-icon style="margin-left:10px" name="pin"></ion-icon>
 			</ion-button>
@@ -30,7 +38,12 @@
 	</ion-toolbar>
 
 	<!-- Lokale -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'locals' || viewList === 'locals_fav'" style="margin-bottom: 0; background-color:white; margin-bottom: 50px;">
+	<div
+		class="ion-card"
+		class="no-radius"
+		*ngIf="viewList === 'locals' || viewList === 'locals_fav'"
+		style="margin-bottom: 0; background-color:white; margin-bottom: 50px;"
+	>
 		<div *ngIf="items_locals_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
@@ -41,24 +54,43 @@
 		<div class="ion-item ion-item-content" lines="none" detail="false" *ngFor="let item of items_locals_search" (click)="openLocationCard(item.local_id)">
 			<div class="ion-item" style="display: flex; align-items: center; justify-content: flex-center">
 				<ion-thumbnail slot="start">
-					<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png">
+					<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" />
 				</ion-thumbnail>
 			</div>
 			<ion-grid>
 				<ion-row>
 					<ion-col text-center size="12">
-						<ion-row class="title-company">
-							<h5 style="margin-left:5px"><b>{{ item.name }}</b></h5>
+						<ion-row class="title-company" *ngIf="item.order_url !== null">
+							<ion-col size="8">
+								<h5><b>{{ item.name }}</b></h5>
+							</ion-col>
+							<ion-col>
+								<div class="order-online">
+									ZAMÓW ONLINE
+								</div>
+							</ion-col>
+						</ion-row>
+						<ion-row class="title-company" *ngIf="item.order_url === null">
+							<h5><b>{{ item.name }}</b></h5>
 						</ion-row>
 						<ion-row class="tags">
 							<ion-col size="4" *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
-								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 0"
+									style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 1"
+									style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 2"
+									style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 9px; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
 							</ion-col>
@@ -67,16 +99,34 @@
 							<ion-col style=" margin: 0; padding: 0;">
 								<ion-row class="info">
 									<ion-col size="13" style="height: 100%; min-height: 21px; display: flex; align-items: flex-center; margin: 0; padding: 0;">
-										<div class="open_hours" style="display: flex; align-items: center; justify-center: flex-start;" *ngIf="item.is_open_now === true">
-											<div style="display: flex; align-items: center; padding: 0; margin: 0;">{{ item.open_from }} - {{ item.open_to }}</div>
+										<div
+											class="open_hours"
+											style="display: flex; align-items: center; justify-center: flex-start;"
+											*ngIf="item.is_open_now === true"
+										>
+											<div style="display: flex; align-items: center; padding: 0; margin: 0;">
+												{{ item.open_from }} - {{ item.open_to }}
+											</div>
 										</div>
 										<div class="close_hours" *ngIf="item.is_open_now === false">
 											Zamknięte
 										</div>
 										<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-											<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
-											<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
-											<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+											<img
+												class="icon"
+												src="/assets/img/first.png"
+												[ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }"
+											/>
+											<img
+												class="icon"
+												src="/assets/img/second.png"
+												[ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }"
+											/>
+											<img
+												class="icon"
+												src="/assets/img/third.png"
+												[ngClass]="{'closed': item.delivery == false, '': item.delivery == true }"
+											/>
 										</div>
 									</ion-col>
 								</ion-row>
@@ -89,7 +139,12 @@
 	</div>
 
 	<!-- Kupony -->
-	<div class="ion-card" class="no-radius" *ngIf="viewList === 'coupons' || viewList === 'coupons_fav'" style="margin-bottom: 0; background-color:white; margin-bottom: 50px;">
+	<div
+		class="ion-card"
+		class="no-radius"
+		*ngIf="viewList === 'coupons' || viewList === 'coupons_fav'"
+		style="margin-bottom: 0; background-color:white; margin-bottom: 50px;"
+	>
 		<div *ngIf="items_coupons_search.length === 0">
 			<div class="ion-item">
 				<ion-label text-center>
@@ -97,13 +152,20 @@
 				</ion-label>
 			</div>
 		</div>
-		<div class="ion-item ion-item-content" style="position:relative;" lines="none" *ngFor="let item of items_coupons_search" (click)="openCouponCard(item.coupon_id, item.local_id, item.local_name)" [ngClass]="{'closed': item.is_available == false, '': item.is_available == true }">
+		<div
+			class="ion-item ion-item-content"
+			style="position:relative;"
+			lines="none"
+			*ngFor="let item of items_coupons_search"
+			(click)="openCouponCard(item.coupon_id, item.local_id, item.local_name)"
+			[ngClass]="{'closed': item.is_available == false, '': item.is_available == true }"
+		>
 			<div style="position: absolute; top:20px; right:0px">
-				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="position: relative; width: 30px;">
+				<img src="http://repo.foodini.net.pl/storage/locals/{{item.local_id}}/logo.png" style="position: relative; width: 30px;" />
 			</div>
 			<div class="ion-item" style="display: flex; align-items: center; justify-content: flex-center">
 				<ion-thumbnail slot="start">
-					<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg">
+					<img src="http://repo.foodini.net.pl/storage/coupons/{{ item.coupon_id }}/logo.svg" />
 				</ion-thumbnail>
 			</div>
 			<ion-grid>
@@ -118,13 +180,22 @@
 						</ion-row>
 						<ion-row class="coupons_tags">
 							<ion-col size="4" *ngFor="let tag of item.tags | keyvalue; let i = index" [attr.data-index]="i">
-								<div *ngIf="i === 0" style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 0"
+									style="background-color: #dcdfbd; color: #4e5133; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 1" style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 1"
+									style="background-color: #d1ddf7; color: #161c21; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
-								<div *ngIf="i === 2" style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center">
+								<div
+									*ngIf="i === 2"
+									style="background-color: #f7c8c7; color: #513733; padding:5px; font-size: 2vw; height: 4vh; display: flex; justify-content: center; align-items: center; text-align: center"
+								>
 									{{tag.value.name}}
 								</div>
 							</ion-col>
@@ -136,21 +207,50 @@
 						<ion-row class="info" style="margin-top: 5px;">
 							<ion-col size="12" style="height: 100%; min-height: 18px; display: flex; justify-content: space-between; margin: 0; padding: 0;">
 								<div style=" display: flex; align-items: flex-center;">
-									<div style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === true">
+									<div
+										style="color: green; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3"
+										*ngIf="item.is_available === true"
+									>
 										Aktywny
 									</div>
-									<div style="color: red; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3" *ngIf="item.is_available === false">
+									<div
+										style="color: red; font-size: 10px; padding-right: 6px; border-right: 1px solid #e3e3e3"
+										*ngIf="item.is_available === false"
+									>
 										Nieaktywny
 									</div>
 									<div style="display: flex; align-items: center; justify-content: flex-start; font-size:15px;">
-										<img class="icon" src="/assets/img/first.png" [ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }">
-										<img class="icon" src="/assets/img/second.png" [ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }" >
-										<img class="icon" src="/assets/img/third.png" [ngClass]="{'closed': item.delivery == false, '': item.delivery == true }">
+										<img
+											class="icon"
+											src="/assets/img/first.png"
+											[ngClass]="{'closed': item.eat_in_local == false, '': item.eat_in_local == true }"
+										/>
+										<img
+											class="icon"
+											src="/assets/img/second.png"
+											[ngClass]="{'closed': item.pick_up_local == false, '': item.pick_up_local == true }"
+										/>
+										<img
+											class="icon"
+											src="/assets/img/third.png"
+											[ngClass]="{'closed': item.delivery == false, '': item.delivery == true }"
+										/>
 									</div>
 								</div>
 								<div>
-									<div *ngIf="item.coupon_left === -1" style="background-color:red; padding:7px; color:white; font-size: 7px; font-weight: 400;border-radius: 5px;">Bez limitu</div>
-									<div class="col" *ngIf="item.coupon_left > 0" style="background-color:red; padding:7px; color:white; font-size: 10px; font-weight: bold; border-radius: 5px;">x{{ item.coupon_left }}</div>
+									<div
+										*ngIf="item.coupon_left === -1"
+										style="background-color:red; padding:7px; color:white; font-size: 7px; font-weight: 400;border-radius: 5px;"
+									>
+										Bez limitu
+									</div>
+									<div
+										class="col"
+										*ngIf="item.coupon_left > 0"
+										style="background-color:red; padding:7px; color:white; font-size: 10px; font-weight: bold; border-radius: 5px;"
+									>
+										x{{ item.coupon_left }}
+									</div>
 								</div>
 							</ion-col>
 						</ion-row>
@@ -193,13 +293,22 @@
 			<ion-label>Kupony</ion-label>
 			<ion-icon name="radio-button-on"></ion-icon>
 		</ion-chip> -->
-		<div class="toggler_screen" style="position: relative; bottom:0px;background-color: #fff;float:left;border: solid #e3e3e3 3px; padding: 13px; border-radius: 25px; font-size: 1.1rem;" (click)="toggleSwitchButton()" >
-			<ion-label class="locals active" style="color: rgb(106, 44, 134);" [class.active]="viewList === 'locals' || viewList === 'locals_fav'">Lokale</ion-label>
-			<ion-label class="coupons" [class.active]="viewList === 'coupons' || viewList === 'coupons_fav'">  Kupony</ion-label>
-			<div class="slider" [ngClass]="{
+		<div
+			class="toggler_screen"
+			style="position: relative; bottom:0px;background-color: #fff;float:left;border: solid #e3e3e3 3px; padding: 13px; border-radius: 25px; font-size: 1.1rem;"
+			(click)="toggleSwitchButton()"
+		>
+			<ion-label class="locals active" style="color: rgb(106, 44, 134);" [class.active]="viewList === 'locals' || viewList === 'locals_fav'"
+				>Lokale</ion-label
+			>
+			<ion-label class="coupons" [class.active]="viewList === 'coupons' || viewList === 'coupons_fav'"> Kupony</ion-label>
+			<div
+				class="slider"
+				[ngClass]="{
 				'switch-right': switchState,
 				'switch-left': !switchState
-			}"></div>
+			}"
+			></div>
 		</div>
 	</div>
 </section>
@@ -211,19 +320,19 @@
 	</ion-tab-button> -->
 
 	<ion-tab-button [ngClass]="{'active_tab': viewFav === true, '': viewFav === false }" (click)="toggleFav()">
-	<ion-icon name="star"></ion-icon>
-	<ion-label>Ulubione</ion-label>
+		<ion-icon name="star"></ion-icon>
+		<ion-label>Ulubione</ion-label>
 	</ion-tab-button>
 
 	<ion-tab-button (click)="navigateToMapCard()">
-	<ion-icon name="pin"></ion-icon>
-	<ion-label>Mapa</ion-label>
+		<ion-icon name="pin"></ion-icon>
+		<ion-label>Mapa</ion-label>
 	</ion-tab-button>
 
 	<!-- <ion-tab-button (click)="searchFilter()"> -->
 	<ion-tab-button (click)="presentFilterActionSheet()">
-	<ion-icon name="options"></ion-icon>
-	<ion-label>Filtry</ion-label>
+		<ion-icon name="options"></ion-icon>
+		<ion-label>Filtry</ion-label>
 	</ion-tab-button>
 </ion-tab-bar>
 <!-- <popmenu></popmenu> -->

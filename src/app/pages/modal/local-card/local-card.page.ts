@@ -18,24 +18,24 @@ export class LocalCardPage implements OnInit {
 	coupons_button = true;
 
 	constructor(private modalCtrl: ModalController,
-				public navCtrl: NavController,
-				public loadingCtrl: LoadingController,
-				public connection: ConnectionService,
-				public platform: Platform ) {
+		public navCtrl: NavController,
+		public loadingCtrl: LoadingController,
+		public connection: ConnectionService,
+		public platform: Platform) {
 	}
 
 	ngOnInit() {
 		this.presentLoading().then(a =>
-			this.connection.getDataByGet('locals/getDetails/'+ this.id_local_data_main).subscribe(data => {
+			this.connection.getDataByGet('locals/getDetails/' + this.id_local_data_main).subscribe(data => {
 				this.items = data;
 				console.log(data);
-				if(this.items.is_favouirite === true){
+				if (this.items.is_favouirite === true) {
 					this.favColor = '/assets/img/star_color.svg';
 				} else {
 					this.favColor = '/assets/img/star.svg';
 				}
 
-				if(this.items.coupons_count === 0){
+				if (this.items.coupons_count === 0) {
 					this.coupons_button = false;
 				}
 				this.platform.ready().then(a => {
@@ -50,23 +50,23 @@ export class LocalCardPage implements OnInit {
 		this.modalCtrl.dismiss();
 	}
 
-	changeFavColor(id_local_data_main){
+	changeFavColor(id_local_data_main) {
 		if (this.favColor === '/assets/img/star.svg') {
 			this.favColor = '/assets/img/star_color.svg';
 			this.items.favourite_count = this.items.favourite_count + 1;
-			this.connection.getDataByPost('locals/addLocalToFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
+			this.connection.getDataByPost('locals/addLocalToFavourite', { id_local_data_main: id_local_data_main }).subscribe(data => {
 				console.log(data);
 			});
 		} else {
 			this.favColor = '/assets/img/star.svg';
 			this.items.favourite_count = this.items.favourite_count - 1;
-			this.connection.getDataByPost('locals/removeLocalFromFavourite', {id_local_data_main: id_local_data_main}).subscribe(data => {
+			this.connection.getDataByPost('locals/removeLocalFromFavourite', { id_local_data_main: id_local_data_main }).subscribe(data => {
 				console.log(data);
 			});
 		}
 	}
 
-	openCouponList(id_local_data_main, local_name, phone_number){
+	openCouponList(id_local_data_main, local_name, phone_number) {
 		this.navCtrl.navigateForward('local-coupons-card/' + id_local_data_main + '/' + local_name + '/' + phone_number);
 		this.closeModal();
 	}
@@ -97,24 +97,29 @@ export class LocalCardPage implements OnInit {
 
 	openPhone(phone_number) {
 		this.countStats('Phonenumber').then(a => {
-			window.open('tel:' + phone_number + ' }}', '_self');
+			window.open('tel:' + phone_number, '_self');
+		});
+	}
+
+	openOrder(order_url) {
+		this.countStats('Order').then(a => {
+			window.open(order_url, '_self');
 		});
 	}
 
 	async countStats(name) {
-		this.connection.getDataByPost('locals/show' + name + 'Count', {id_local_data_main: this.id_local_data_main}).subscribe(data => {
-			console.log(data);
+		this.connection.getDataByPost('locals/show' + name + 'Count', { id_local_data_main: this.id_local_data_main }).subscribe(data => {
 		});
 	}
 
-	async showMenu(){
+	async showMenu() {
 		this.countStats('Menu');
 		const modal = await this.modalCtrl.create({
 			component: ImagePage,
 			componentProps: {
 				id_local_data_main: this.id_local_data_main
 			}
-			});
+		});
 		return await modal.present();
 	}
 }
