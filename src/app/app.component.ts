@@ -54,19 +54,19 @@ export class AppComponent {
 
 	initializeApp() {
 		//sprawdza ststus po wyjściu z appki
-		if(localStorage.getItem('user_status') === '-1'){
+		if (localStorage.getItem('user_status') === '-1') {
 				this.user_type = -1;
 			}
-		if(localStorage.getItem('user_status') === '0'){
+		if (localStorage.getItem('user_status') === '0') {
 			this.user_type = 0;
 		}
-		if(localStorage.getItem('user_status') === '1'){
+		if (localStorage.getItem('user_status') === '1') {
 			this.user_type = 1;
 		}
-		if(localStorage.getItem('user_status') === '2'){
+		if (localStorage.getItem('user_status') === '2') {
 			this.user_type = 2;
 		}
-		if(localStorage.getItem('user_status') === '3'){
+		if (localStorage.getItem('user_status') === '3') {
 			this.user_type = 3;
 		}
 
@@ -98,19 +98,19 @@ export class AppComponent {
 			});
 
 			//sprawdza status usera po wyjściu z appki (podwójnie bo wywalało się na iphone)
-			if(localStorage.getItem('user_status') === '-1'){
+			if (localStorage.getItem('user_status') === '-1') {
 				this.user_type = -1;
 			}
-			if(localStorage.getItem('user_status') === '0'){
+			if (localStorage.getItem('user_status') === '0') {
 				this.user_type = 0;
 			}
-			if(localStorage.getItem('user_status') === '1'){
+			if (localStorage.getItem('user_status') === '1') {
 				this.user_type = 1;
 			}
-			if(localStorage.getItem('user_status') === '2'){
+			if (localStorage.getItem('user_status') === '2') {
 				this.user_type = 2;
 			}
-			if(localStorage.getItem('user_status') === '3'){
+			if (localStorage.getItem('user_status') === '3') {
 				this.user_type = 3;
 			}
 
@@ -133,24 +133,24 @@ export class AppComponent {
 
 		//kiedy wejdziemy w powiadomienie z Androida/iOS
 		this.oneSignal.handleNotificationOpened().subscribe(data => {
-			let msg = data.notification.payload.body;
-			let title = data.notification.payload.title;
-			let additionnalData = data.notification.payload.additionalData;
+			const msg = data.notification.payload.body;
+			const title = data.notification.payload.title;
+			const additionnalData = data.notification.payload.additionalData;
 			this.presentAlert(title, msg);
 		});
 
 		//kiedy otrzymamy powiadomienie z włączoną appką
 		this.oneSignal.handleNotificationReceived().subscribe(data => {
-			let msg = data.payload.body;
-			let title = data.payload.title;
-			let additionnalData = data.payload.additionalData;
+			const msg = data.payload.body;
+			const title = data.payload.title;
+			const additionnalData = data.payload.additionalData;
 
 			this.presentAlert(title, msg);
 		});
 		this.oneSignal.endInit();
 	}
 
-	logout(){
+	logout() {
 		this.auth.logout();
 		this.initializeApp();
 	}
@@ -161,7 +161,7 @@ export class AppComponent {
 		  subHeader: message,
 		  buttons: ['OK']
 		});
-	
+
 		await alert.present();
 	}
 }

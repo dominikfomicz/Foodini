@@ -71,7 +71,7 @@ export class ConnectionService {
 			);
 	}
 
-	selectItem(app_list_string){
+	selectItem(app_list_string) {
 		return this.getDataByPost('tools/getList', {app_list_string: app_list_string});
 	}
 

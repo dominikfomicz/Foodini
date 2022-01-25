@@ -59,7 +59,7 @@ export class RegisterPage implements OnInit {
 	}
 
 	mustBeTruthy(c: AbstractControl): { [key: string]: boolean } {
-		let rv: { [key: string]: boolean } = {};
+		const rv: { [key: string]: boolean } = {};
 		if (!c.value) {
 		  rv['notChecked'] = true;
 		}

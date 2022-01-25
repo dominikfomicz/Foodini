@@ -45,7 +45,7 @@ export class ManagersLocalsListPage implements OnInit {
 	}
 
 	async showPrompt(id_local_data_main) {
-		let prompt = this.alertCtrl.create({
+		const prompt = this.alertCtrl.create({
 			header: 'Dodawanie kelnera',
 			// message: "Enter a name for this new album you're so keen on adding",
 			inputs: [
