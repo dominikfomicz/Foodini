@@ -133,7 +133,7 @@ export class AuthService {
 		  subHeader: message,
 		  buttons: ['OK']
 		});
-	
+
 		await alert.present();
 	}
 }

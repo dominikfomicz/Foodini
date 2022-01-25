@@ -28,11 +28,11 @@
 		<ion-grid>
 			<ion-row style="position: relative">
 				<ion-col><img src="http://repo.foodini.net.pl/storage/coupons/{{id_coupon_data_main}}/logo.svg" style="max-height: 100px;"/></ion-col>
-				<div style="position: absolute; right:0px;">
+				<div style="position: absolute; right:0;">
 					<img [src]="favColor" style="height: 23px; width: auto; margin: 1vh 10vw 0 auto; display: block;" (click)="changeFavColor(id_coupon_data_main)">
 					<p style="color: #6a2c86;font-weight: 600;height: 23px; width: auto; margin: 1vh 10vw 0 auto; display: block; text-align: center;">{{ items.favourite_count }}</p>
 				</div>
-				<div style="position: absolute; left:0px;">
+				<div style="position: absolute; left:0;">
 
 					<div (click)="showLocal()"><img src="http://repo.foodini.net.pl/storage/locals/{{id_local_data_main}}/logo.png" style="height: 45px; width: auto; margin: 1vh auto 0 10vw; display: block; border-radius: 50%; padding: 5px; border: 1px solid #6a2c86 !important;"></div>
 					<!-- <ion-item (click)="openLocalCard()"> -->
@@ -69,9 +69,9 @@
 					</ion-col>
 				</ion-row>
 				<ion-row margin-top class="ion-text-center">
-					<ion-col size="4" [ngClass]="{'': items.eat_in_local === true, 'closed': items.eat_in_local === false }"><img src="/assets/img/na-miejscu-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na miejscu</ion-col>
-					<ion-col size="4" [ngClass]="{'': items.pick_up_local === true, 'closed': items.pick_up_local === false }"><img src="/assets/img/na-wynos-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na wynos</ion-col>
-					<ion-col size="4" [ngClass]="{'': items.delivery === true, 'closed': items.delivery === false }"><img src="/assets/img/na-dowoz-2.png" style="height:40px; width: auto;margin: 10px auto 0px auto;display: block;"><br>Na dowóz</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.eat_in_local === true, 'closed': items.eat_in_local === false }"><img src="/assets/img/na-miejscu-2.png" style="height:40px; width: auto;margin: 10px auto 0;display: block;"><br>Na miejscu</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.pick_up_local === true, 'closed': items.pick_up_local === false }"><img src="/assets/img/na-wynos-2.png" style="height:40px; width: auto;margin: 10px auto 0;display: block;"><br>Na wynos</ion-col>
+					<ion-col size="4" [ngClass]="{'': items.delivery === true, 'closed': items.delivery === false }"><img src="/assets/img/na-dowoz-2.png" style="height:40px; width: auto;margin: 10px auto 0;display: block;"><br>Na dowóz</ion-col>
 				</ion-row>
 				<ion-row margin-top class="ion-text-center">
 					<ion-col>Do wykorzystania: raz na 24 godziny</ion-col>

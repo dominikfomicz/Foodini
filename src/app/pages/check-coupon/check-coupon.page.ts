@@ -13,11 +13,11 @@ export class CheckCouponPage implements OnInit {
 	ngOnInit() {
 	}
 
-	checkCoupon(){
-		this.connection.getDataByPost('coupons/checkCoupon', {unique_number: this.unique_number}).subscribe(data=>{
-			if(data === 1){
+	checkCoupon() {
+		this.connection.getDataByPost('coupons/checkCoupon', {unique_number: this.unique_number}).subscribe(data => {
+			if (data === 1) {
 				alert('Zrealizowano kupon');
-			}else{
+			} else {
 				alert('Kupon nie istnieje');
 			}
 			console.log(data);

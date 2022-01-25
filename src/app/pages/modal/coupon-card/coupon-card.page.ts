@@ -34,15 +34,15 @@ export class CouponCardPage implements OnInit {
 			this.connection.getDataByGet('coupons/getDetails/' + this.id_coupon_data_main).subscribe(data => {
 				this.items = data;
 				console.log(data);
-				if(this.items.is_favouirite === true) {
+				if (this.items.is_favouirite === true) {
 					this.favColor = '/assets/img/star_color.svg';
 				} else {
 					this.favColor = '/assets/img/star.svg';
 				}
-				if(this.items.is_available === false) {
+				if (this.items.is_available === false) {
 					this.button = false;
 				}
-				if(this.items.already_used === true) {
+				if (this.items.already_used === true) {
 					this.button = false;
 				}
 				this.loadingCtrl.dismiss('loading');
@@ -55,7 +55,7 @@ export class CouponCardPage implements OnInit {
 		this.modalCtrl.dismiss();
 	}
 
-	changeFavColor(id_coupon_data_main){
+	changeFavColor(id_coupon_data_main) {
 		if (this.favColor === '/assets/img/star.svg') {
 			this.favColor = '/assets/img/star_color.svg';
 			this.items.favourite_count = this.items.favourite_count + 1;
@@ -71,7 +71,7 @@ export class CouponCardPage implements OnInit {
 		}
 	}
 
-	generateCode(id_coupon_data_main){
+	generateCode(id_coupon_data_main) {
 		this.connection.getDataByPost('coupons/orderCoupon', {id_coupon_data_main : id_coupon_data_main}).subscribe(data => {
 			this.code = data;
 			// console.log(data);
@@ -86,7 +86,7 @@ export class CouponCardPage implements OnInit {
 		});
 		await loading.present();
 	}
-	async showLocal(){
+	async showLocal() {
 		const modal = await this.modalCtrl.create({
 			component: LocalCardPage,
 			componentProps: {

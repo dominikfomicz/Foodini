@@ -30,13 +30,13 @@ export class MapCardPage implements OnInit {
 	}
 
 	loadMap() {
-		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
+		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data => {
 			Environment.setEnv({
 				'API_KEY_FOR_BROWSER_RELEASE': 'AIzaSyDhaNlp2f2UqXYSugZ34N2WnpNw3kZ3ffk',
 				'API_KEY_FOR_BROWSER_DEBUG': ''
 			});
 
-			let mapOptions: GoogleMapOptions = {
+			const mapOptions: GoogleMapOptions = {
 				camera: {
 					target: {
 						lat: 50.6745737,
@@ -49,7 +49,7 @@ export class MapCardPage implements OnInit {
 
 			this.map = GoogleMaps.create('map_canvas', mapOptions);
 
-			for(let i = 0; i <= Object.keys(data).length; i++){
+			for (let i = 0; i <= Object.keys(data).length; i++) {
 				// console.log(data[i]);
 				const marker: Marker = this.map.addMarkerSync({
 					icon: 'http://repo.foodini.net.pl/storage/locals/' + data[i].local_id + '/map.png',
@@ -65,8 +65,8 @@ export class MapCardPage implements OnInit {
 		});
 	}
 
-	refreshLocalsList(){
-		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data=>{
+	refreshLocalsList() {
+		this.connection.getDataByGet('/locals/getMapList/1').subscribe(data => {
 			this.items = data;
 			console.log(this.items);
 		});

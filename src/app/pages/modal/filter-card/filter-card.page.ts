@@ -19,7 +19,7 @@ export class FilterCardPage implements OnInit {
 					'Alfabetycznie rosnąco' : 4,
 					'Alfabetycznie malejąco' : 5
 				};
-	
+
 	public favColor = 'secondary';
 	public selectedFilter = 1;
 	constructor(private modalCtrl: ModalController, public navCtrl: NavController) { }

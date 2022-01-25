@@ -19,7 +19,7 @@ export class PopmenuComponent implements OnInit {
     return this.openMenu = !this.openMenu;
   }
 
-  consoleLog(){
+  consoleLog() {
     return 0;
   }
 

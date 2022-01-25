@@ -10,7 +10,7 @@ export class NoAuthGuard implements CanActivate {
 	constructor(private auth: AuthService, private router: Router) {}
 
 	canActivate(): boolean {
-		if (this.auth.isAuthenticated() === true){
+		if (this.auth.isAuthenticated() === true) {
 			return false;
 		}
 	}

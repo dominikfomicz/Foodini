@@ -72,7 +72,7 @@ export class LoginPage implements OnInit {
 
 	loginWithFacebook() {
 		// console.log(this.onFacebook.value.check);
-		if(this.onFacebook.value.check === true){
+		if (this.onFacebook.value.check === true) {
 			this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
 				this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
 					this.auth.registerFacebook(profile['name'], profile['email'], profile['id']).subscribe(
@@ -154,7 +154,7 @@ export class LoginPage implements OnInit {
 		  subHeader: message,
 		  buttons: ['OK']
 		});
-	
+
 		await alert.present();
 	  }
 
